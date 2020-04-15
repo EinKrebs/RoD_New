@@ -24,7 +24,7 @@ namespace RiskOfDeduction
                 "#                    #",
                 "#                    #",
                 "#         ##         #",
-                "#      #####         #",
+                "#      ####          #",
                 "#                    #",
                 "#           ####     #",
                 "#          #####     #",
@@ -74,16 +74,6 @@ namespace RiskOfDeduction
                 case Keys.Space:
                     game.Player.Jump();
                     break;
-            }
-
-            if (toRight)
-            {
-                game.Player.MoveTo(Direction.Right);
-            }
-
-            if (toLeft)
-            {
-                game.Player.MoveTo(Direction.Left);
             }
         }
 

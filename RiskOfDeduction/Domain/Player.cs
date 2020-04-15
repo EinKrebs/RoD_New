@@ -17,10 +17,11 @@ namespace RiskOfDeduction.Domain
         public float VelocityX { get; } = 10f;
         public float VelocityY { get; private set; }
         public float G { get; } = 10f;
+        public Direction Direction { get; private set; }
         
-        private Game game { get; }
-        private float oneTick { get; } = 0.25f;
-        private float jumpInitialVelocity { get; } = -40;
+        private Game Game { get; }
+        private float OneTick { get; } = 0.25f;
+        private float JumpInitialVelocity { get; } = -40;
 
         public Player(float x, float y, int width, int height, Game game)
         {
@@ -28,7 +29,7 @@ namespace RiskOfDeduction.Domain
             Y = y;
             Width = width;
             Height = height;
-            this.game = game;
+            Game = game;
         }
 
         public void MoveTo(Direction direction)
@@ -37,47 +38,75 @@ namespace RiskOfDeduction.Domain
             switch (direction)
             {
                 case Direction.Left:
-                    X -= VelocityX * oneTick;
+                    X -= VelocityX * OneTick;
                     break;
                 case Direction.Right:
-                    X += VelocityX * oneTick;
+                    X += VelocityX * OneTick;
                     break;
             }
 
-            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)))
+            var left = Math.Min(X, oldX);
+            var right = Math.Max(X, oldX);
+                
+            for (int i = 0; i < 10; i++)
             {
-                X = oldX;
+                var mid = (right + left) / 2;
+                if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(
+                    new RectangleF(mid, Y, Height,Width)))
+                {
+                    if (X < oldX)
+                    {
+                        left = mid;
+                    }
+                    else
+                    {
+                        right = mid;
+                    }
+                }
+                else
+                {
+                    if (X < oldX)
+                    {
+                        right = mid;
+                    }
+                    else
+                    {
+                        left = mid;
+                    }
+                }
             }
 
-            if (X > game.Width)
+            X = X < oldX ? right : left;
+
+            if (X > Game.Width)
             {
-                X = game.CurrentLevel.NextScene() ? X = 0 : oldX;
+                X = Game.CurrentLevel.NextScene() ? X = 0 : oldX;
             }
             else if (X + Width < 0)
             {
-                X = game.CurrentLevel.PreviousScene() ? game.Width : X = oldX;
+                X = Game.CurrentLevel.PreviousScene() ? Game.Width : X = oldX;
             }
         }
 
         public void Jump()
         {
-            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y + 1, Width, Height)))
+            if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y + 1, Width, Height)))
             {
-                VelocityY = jumpInitialVelocity;
+                VelocityY = JumpInitialVelocity;
             }
         }
 
         public void UpdateYPos()
         {
             var oldY = Y;
-            Y += VelocityY * oneTick;
-            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)) ||
-                Y + Height > game.Height)
+            Y += VelocityY * OneTick;
+            if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)) ||
+                Y + Height > Game.Height)
             {
                 Y = oldY;
                 VelocityY = 0;
             }
-            VelocityY += G * oneTick;
+            VelocityY += G * OneTick;
         }
     }
 }

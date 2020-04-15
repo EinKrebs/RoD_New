@@ -24,6 +24,11 @@
           <e p="Player.cs" t="Include" />
           <e p="Scene.cs" t="Include" />
         </e>
+        <e p="Drawing" t="Include">
+          <e p="GroundDrawer.cs" t="Include" />
+          <e p="HeroDrawer.cs" t="Include" />
+          <e p="IDrawable.cs" t="Include" />
+        </e>
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
         <e p="Form1.resx" t="Include" />

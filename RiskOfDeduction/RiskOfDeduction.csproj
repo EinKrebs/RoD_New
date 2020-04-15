@@ -81,6 +81,9 @@
     <Compile Include="Domain\Level.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Domain\Scene.cs" />
+    <Compile Include="Drawing\GroundDrawer.cs" />
+    <Compile Include="Drawing\HeroDrawer.cs" />
+    <Compile Include="Drawing\IDrawable.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
