@@ -10,7 +10,7 @@ namespace RiskOfDeduction.Domain
     {
         public int CurrentLevelIndex { get; set; }
         public List<Level> Levels { get; }
-        public Level currentLevel => Levels[CurrentLevelIndex];
+        public Level CurrentLevel => Levels[CurrentLevelIndex];
         public Player Player { get; private set; }
         public int Height { get; }
         public int Width { get; }

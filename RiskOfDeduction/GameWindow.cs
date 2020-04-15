@@ -55,7 +55,7 @@ namespace RiskOfDeduction
             var g = e.Graphics;
 
             g.DrawImage(Images.Hero, new RectangleF(game.Player.X, game.Player.Y, game.Player.Width, game.Player.Height));
-            foreach (var block in game.currentLevel.CurrentScene.LandScape)
+            foreach (var block in game.CurrentLevel.CurrentScene.LandScape)
             {
                 g.DrawImage(Images.Ground, new RectangleF(block.X, block.Y, block.Width, block.Height));
             }

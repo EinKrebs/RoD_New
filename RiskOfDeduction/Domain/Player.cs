@@ -20,7 +20,7 @@ namespace RiskOfDeduction.Domain
         
         private Game game { get; }
         private float oneTick { get; } = 0.25f;
-        private float jumpInitialVelocity { get; } = -25;
+        private float jumpInitialVelocity { get; } = -40;
 
         public Player(float x, float y, int width, int height, Game game)
         {
@@ -44,45 +44,34 @@ namespace RiskOfDeduction.Domain
                     break;
             }
 
-            if (game.currentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)))
+            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)))
             {
                 X = oldX;
             }
 
             if (X > game.Width)
             {
-                if (game.currentLevel.NextScene())
-                {
-                    X = 0;
-                }
-                else
-                {
-                    X = oldX;
-                }
+                X = game.CurrentLevel.NextScene() ? X = 0 : oldX;
             }
             else if (X + Width < 0)
             {
-                if (game.currentLevel.PreviousScene())
-                {
-                    X = game.Width;
-                }
-                else
-                {
-                    X = oldX;
-                }
+                X = game.CurrentLevel.PreviousScene() ? game.Width : X = oldX;
             }
         }
 
         public void Jump()
         {
-            VelocityY = jumpInitialVelocity;
+            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y + 1, Width, Height)))
+            {
+                VelocityY = jumpInitialVelocity;
+            }
         }
 
         public void UpdateYPos()
         {
             var oldY = Y;
             Y += VelocityY * oneTick;
-            if (game.currentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)) ||
+            if (game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)) ||
                 Y + Height > game.Height)
             {
                 Y = oldY;

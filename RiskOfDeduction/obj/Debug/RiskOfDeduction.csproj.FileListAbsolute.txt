@@ -29,3 +29,33 @@ D:\Docs\VS2019\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Memory.xml
 D:\Docs\VS2019\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Numerics.Vectors.xml
 D:\Docs\VS2019\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Docs\VS2019\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CopyComplete
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\NUnit3.TestAdapter.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\NUnit3.TestAdapter.pdb
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\nunit.engine.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\nunit.engine.api.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\RiskOfDeduction.exe.config
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\RiskOfDeduction.exe
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\RiskOfDeduction.pdb
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\NuGet.Frameworks.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\nunit.framework.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Buffers.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Collections.Immutable.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Memory.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Numerics.Vectors.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\NuGet.Frameworks.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\nunit.framework.pdb
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\nunit.framework.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Buffers.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Collections.Immutable.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Memory.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Numerics.Vectors.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.csprojAssemblyReference.cache
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.Form1.resources
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.Images.resources
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.Properties.Resources.resources
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.GenerateResource.cache
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CopyComplete
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.exe
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.pdb
