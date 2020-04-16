@@ -19,8 +19,8 @@ namespace RiskOfDeduction.Drawing
         public HeroDrawer(Player player)
         {
             Player = player;
-            RightSprite = Image.FromFile("Resources/Hero.png");
-            LeftSprite = Image.FromFile("Resources/HeroLeft.png");
+            RightSprite = Images.Hero;
+            LeftSprite = Images.HeroLeft;
             PlayerOldX = Player.X;
         }
 
@@ -38,7 +38,7 @@ namespace RiskOfDeduction.Drawing
                     Direction = Direction.Right;
                 }
             }
-            else
+            else if (Player.X - PlayerOldX < 0)
             {
                 if (Direction == Direction.Left)
                 {

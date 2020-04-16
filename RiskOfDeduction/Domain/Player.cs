@@ -14,7 +14,7 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 10f;
+        public float VelocityX { get; } = 20f;
         public float VelocityY { get; private set; }
         public float G { get; } = 10f;
         public Direction Direction { get; private set; }
@@ -76,7 +76,7 @@ namespace RiskOfDeduction.Domain
                 }
             }
 
-            X = X < oldX ? right : left;
+            X = (float)Math.Round(X < oldX ? right : left);
 
             if (X > Game.Width)
             {
