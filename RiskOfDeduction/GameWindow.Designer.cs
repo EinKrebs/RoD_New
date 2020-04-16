@@ -30,26 +30,19 @@ namespace RiskOfDeduction
         private void InitializeComponent()
         {
             this.DoubleBuffered = true;
-
             this.components = new System.ComponentModel.Container();
-
-            this.ClientSize = new System.Drawing.Size(gameWidth, gameHeight);
-
+            this.ClientSize = new System.Drawing.Size(this.gameWidth, this.gameHeight);
             this.Text = "GameWindow";
-            this.ClientSize = new Size(gameWidth, gameHeight);
-
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-            this.BackgroundImage = Images.Sky;
-
-            timer = new Timer(components);
-            timer.Enabled = true;
-            timer.Interval = 25;
-            timer.Tick += OnTimerTick;
-
-            this.Paint += DrawGame;
-
-            this.KeyDown += Game_KeyDown;
-            this.KeyUp += Game_KeyUp;
+            this.ClientSize = new System.Drawing.Size(this.gameWidth, this.gameHeight);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImage = global::RiskOfDeduction.Images.Sky;
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.timer.Enabled = true;
+            this.timer.Interval = 25;
+            this.timer.Tick += this.OnTimerTick;
+            this.Paint += this.DrawGame;
+            this.KeyDown += this.Game_KeyDown;
+            this.KeyUp += this.Game_KeyUp;
         }
 
         #endregion

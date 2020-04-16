@@ -31,6 +31,8 @@
           <e p="HeroDrawer.cs" t="Include" />
           <e p="IDrawable.cs" t="Include" />
           <e p="IDrawer.cs" t="Include" />
+          <e p="LevelDrawer.cs" t="Include" />
+          <e p="SceneDrawer.cs" t="Include" />
         </e>
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />

@@ -1,31 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class GroundDrawer : IEnumerable<BlockDrawer>
+    public class GroundDrawer : IDrawer
     {
         private Ground Ground { get; set; }
 
-        private List<BlockDrawer> Drawer { get; set; }
+        private List<BlockDrawer> Drawer { get; }
 
         public GroundDrawer(Ground ground)
         {
+            Drawer = new List<BlockDrawer>();
             foreach (var block in ground)
             {
-                Drawer.Add(new BlockDrawer());
+                Drawer.Add(new BlockDrawer(block));
             }
         }
-        
-        public IEnumerator<BlockDrawer> GetEnumerator()
-        {
-            return ((IEnumerable<BlockDrawer>) Drawer).GetEnumerator();
-        }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public IEnumerable<IDrawable> GetDrawables()
         {
-            return GetEnumerator();
+            return Drawer;
         }
     }
 }

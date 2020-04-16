@@ -6,7 +6,7 @@ namespace RiskOfDeduction.Drawing
     public class HeroDrawer : IDrawable
     {
         public Image Image { get; private set; }
-        public RectangleF Frame { get; private set; }
+        public RectangleF Position { get; private set; }
 
         private Player Player { get; }
         private int Count { get; } = 1;
@@ -22,6 +22,7 @@ namespace RiskOfDeduction.Drawing
             RightSprite = Images.Hero;
             LeftSprite = Images.HeroLeft;
             PlayerOldX = Player.X;
+            Update();
         }
 
         public void Update()
@@ -53,7 +54,7 @@ namespace RiskOfDeduction.Drawing
 
             PlayerOldX = Player.X;
             Image = Direction == Direction.Left ? LeftSprite : RightSprite;
-            Frame = new RectangleF(Player.Width * CurrentFrame, 0, Player.Width, Player.Height);
+            Position = new RectangleF(Player.X, Player.Y, Player.Width, Player.Height);
         }
     }
 }

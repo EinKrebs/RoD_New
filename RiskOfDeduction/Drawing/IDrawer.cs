@@ -1,9 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 namespace RiskOfDeduction.Drawing
 {
     public interface IDrawer
     {
-        void DrawTo(object sender, PaintEventArgs e);
+        IEnumerable<IDrawable> GetDrawables();
     }
 }
