@@ -6,13 +6,14 @@ using System.Windows.Forms;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Level
+    public class Level : IModel
     {
         private List<Scene> scenes;
 
         public int CurrentSceneIndex { get; private set; }
         public IReadOnlyList<Scene> Scenes => scenes;
         public Scene CurrentScene => scenes[CurrentSceneIndex];
+        public IEnumerable<IGameObject> Objects => CurrentScene.Objects;
 
         public Level()
         {
@@ -54,29 +55,33 @@ namespace RiskOfDeduction.Domain
 
         public bool NextScene()
         {
-            if (CurrentSceneIndex + 1 < scenes.Count)
-            {
-                CurrentSceneIndex++;
-                return true;
-            }
+            if (CurrentSceneIndex + 1 >= scenes.Count) return false;
+            CurrentSceneIndex++;
+            return true;
 
-            return false;
         }
 
         public bool PreviousScene()
         {
-            if (CurrentSceneIndex - 1 >= 0)
-            {
-                CurrentSceneIndex--;
-                return true;
-            }
+            if (CurrentSceneIndex - 1 < 0) return false;
+            CurrentSceneIndex--;
+            return true;
 
-            return false;
         }
 
         public static Level GenerateLevelFromStringArray(string[] map, int sceneLength, int blockSize)
         {
             return new Level(map, sceneLength, blockSize);
+        }
+
+        public void Update()
+        {
+            CurrentScene.Update();
+        }
+
+        public void Remove(IGameObject gameObject)
+        {
+            CurrentScene.Remove(gameObject);
         }
     }
 }

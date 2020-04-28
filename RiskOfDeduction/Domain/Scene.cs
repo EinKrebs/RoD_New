@@ -1,19 +1,25 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Scene
+    public class Scene : IModel
     {
         public Ground LandScape { get; }
+        public HashSet<Shot> Shots { get; set; } = new HashSet<Shot>();
+
+        public IEnumerable<IGameObject> Objects => ((IEnumerable<IGameObject>) LandScape).Concat(Shots);
 
         public Scene()
         {
             LandScape = new Ground();
+            Shots = new HashSet<Shot>();
         }
 
         public Scene(Ground ground)
         {
             LandScape = ground;
+            Shots = new HashSet<Shot>();
         }
 
         public Scene(string[] map, int blockSize)
@@ -36,6 +42,22 @@ namespace RiskOfDeduction.Domain
         public static Scene BuildSceneFromStringArray(string[] map, int blockSize)
         {
             return new Scene(map, blockSize);
+        }
+
+        public void Update() 
+        {
+            foreach (var shot in Shots)
+            {
+                shot.Move();
+            }
+        }
+
+        public void Remove(IGameObject gameObject)
+        {
+            if (gameObject is Shot shot)
+            {
+                Shots.Remove(shot);
+            }
         }
     }
 }

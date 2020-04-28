@@ -43,6 +43,8 @@ namespace RiskOfDeduction
             this.Paint += this.DrawGame;
             this.KeyDown += this.Game_KeyDown;
             this.KeyUp += this.Game_KeyUp;
+            this.MouseClick += this.Game_MouseClick;
+            this.MouseMove += this.Game_MouseMove;
         }
 
         #endregion

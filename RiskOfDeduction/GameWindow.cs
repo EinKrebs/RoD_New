@@ -42,7 +42,7 @@ namespace RiskOfDeduction
 
         private void OnTimerTick(object sender, EventArgs e)
         {
-            Game.Player.UpdateYPos();
+            Game.Update();
             Drawer.UpdateDrawables();
             if (ToRight)
             {
@@ -83,6 +83,21 @@ namespace RiskOfDeduction
                     Game.Player.Jump();
                     break;
             }
+        }
+
+        private void Game_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    Game.Player.Shoot();
+                    break;
+            }
+        }
+
+        private void Game_MouseMove(object sender, MouseEventArgs e)
+        {
+            Game.Crosshair.Move(e.X, e.Y);
         }
 
         private void Game_KeyUp(object sender, KeyEventArgs e)

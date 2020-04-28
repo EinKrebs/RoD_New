@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
@@ -17,7 +18,7 @@ namespace RiskOfDeduction.Drawing
 
         public IEnumerable<IDrawable> GetDrawables()
         {
-            return LandscapeDrawer.GetDrawables();
+            return LandscapeDrawer.GetDrawables().Concat(Scene.Shots.Select(shot => new ShotDrawer(shot)));
         }
     }
 }

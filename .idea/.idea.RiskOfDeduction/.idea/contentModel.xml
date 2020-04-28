@@ -15,14 +15,17 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain" t="Include">
           <e p="Block.cs" t="Include" />
+          <e p="Crosshair.cs" t="Include" />
           <e p="Direction.cs" t="Include" />
           <e p="Game.cs" t="Include" />
           <e p="Ground.cs" t="Include" />
           <e p="IGameObject.cs" t="Include" />
+          <e p="IModel.cs" t="Include" />
           <e p="IMovable.cs" t="Include" />
           <e p="Level.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Scene.cs" t="Include" />
+          <e p="Shot.cs" t="Include" />
         </e>
         <e p="Drawing" t="Include">
           <e p="BlockDrawer.cs" t="Include" />
@@ -33,6 +36,7 @@
           <e p="IDrawer.cs" t="Include" />
           <e p="LevelDrawer.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
+          <e p="ShotDrawer.cs" t="Include" />
         </e>
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
@@ -52,10 +56,17 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="Resources" t="Include">
+          <e p="AniTest1.png" t="Include" />
+          <e p="AniTest2.png" t="Include" />
+          <e p="AniTest3.png" t="Include" />
+          <e p="AniTestL1.png" t="Include" />
+          <e p="AniTestL2.png" t="Include" />
+          <e p="AniTestL3.png" t="Include" />
           <e p="Ground.png" t="Include" />
           <e p="Hero.png" t="Include" />
           <e p="HeroLeft.png" t="Include" />
           <e p="Jump.wav" t="Include" />
+          <e p="Shot.png" t="Include" />
           <e p="sky.jpg" t="Include" />
         </e>
         <e p="RiskOfDeduction.csproj" t="IncludeRecursive" />

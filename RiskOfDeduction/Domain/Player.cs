@@ -14,11 +14,10 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 20f;
+        public float VelocityX { get; } = 15f;
         public float VelocityY { get; private set; }
         public float G { get; } = 10f;
-        public Direction Direction { get; private set; }
-        
+        private Direction Direction { get; set; }
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
         private float JumpInitialVelocity { get; } = -40;
@@ -78,6 +77,15 @@ namespace RiskOfDeduction.Domain
 
             X = (float)Math.Round(X < oldX ? right : left);
 
+            if (X > oldX)
+            {
+                Direction = Direction.Right;
+            }
+            else if (X < oldX)
+            {
+                Direction = Direction.Left;
+            }
+
             if (X > Game.Width)
             {
                 X = Game.CurrentLevel.NextScene() ? X = 0 : oldX;
@@ -94,6 +102,15 @@ namespace RiskOfDeduction.Domain
             {
                 VelocityY = JumpInitialVelocity;
             }
+        }
+
+        public void Shoot()
+        {
+            var angle = Math.Atan2(Game.Crosshair.Y - (Y + Height / 2), Game.Crosshair.X - (X + Width / 2));
+            var shot = new Shot(X + (Direction == Direction.Left ? -1 : 1) * (Width / 2 + 10),
+                Y + Height / 2 - 10,
+                angle,
+                Game);
         }
 
         public void UpdateYPos()
