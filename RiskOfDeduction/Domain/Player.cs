@@ -14,6 +14,11 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
+        public bool DiesInColliding(IGameObject other)
+        {
+            return other is Shot;
+        }
+
         public float VelocityX { get; } = 15f;
         public float VelocityY { get; private set; }
         public float G { get; } = 10f;
@@ -106,11 +111,10 @@ namespace RiskOfDeduction.Domain
 
         public void Shoot()
         {
-            var angle = Math.Atan2(Game.Crosshair.Y - (Y + Height / 2), Game.Crosshair.X - (X + Width / 2));
-            var shot = new Shot(X + (Direction == Direction.Left ? -1 : 1) * (Width / 2 + 10),
-                Y + Height / 2 - 10,
-                angle,
-                Game);
+            var initX = X + (Direction == Direction.Left ? -1 : 1) * (Width / 2 + 10);
+            var initY = Y + Height / 2 - 10;
+            var angle = Math.Atan2(Game.Crosshair.Y - initY, Game.Crosshair.X - initX);
+            var shot = new Shot(initX, initY, angle, Game);
         }
 
         public void UpdateYPos()

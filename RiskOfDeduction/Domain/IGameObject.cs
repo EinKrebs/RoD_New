@@ -12,5 +12,7 @@ namespace RiskOfDeduction.Domain
         float Y { get; }
         int Width { get; }
         int Height { get; }
+
+        bool DiesInColliding(IGameObject other);
     }
 }

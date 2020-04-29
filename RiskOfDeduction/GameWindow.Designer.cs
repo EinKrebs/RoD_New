@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -45,6 +46,8 @@ namespace RiskOfDeduction
             this.KeyUp += this.Game_KeyUp;
             this.MouseClick += this.Game_MouseClick;
             this.MouseMove += this.Game_MouseMove;
+            this.MouseEnter += (sender, args) => Cursor.Hide();
+            this.MouseLeave += (sender, args) => Cursor.Show();
         }
 
         #endregion

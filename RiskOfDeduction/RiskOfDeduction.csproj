@@ -85,6 +85,7 @@
     <Compile Include="Domain\Scene.cs" />
     <Compile Include="Domain\Shot.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />
+    <Compile Include="Drawing\CrosshairDrawer.cs" />
     <Compile Include="Drawing\GameDrawer.cs" />
     <Compile Include="Drawing\GroundDrawer.cs" />
     <Compile Include="Drawing\HeroDrawer.cs" />
@@ -162,6 +163,7 @@
     <Content Include="Resources\AniTestL1.png" />
     <Content Include="Resources\AniTestL2.png" />
     <Content Include="Resources\AniTestL3.png" />
+    <Content Include="Resources\Crosshair.png" />
     <Content Include="Resources\HeroLeft.png" />
     <Content Include="Resources\Shot.png" />
   </ItemGroup>

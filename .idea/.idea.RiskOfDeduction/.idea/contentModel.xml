@@ -29,6 +29,7 @@
         </e>
         <e p="Drawing" t="Include">
           <e p="BlockDrawer.cs" t="Include" />
+          <e p="CrosshairDrawer.cs" t="Include" />
           <e p="GameDrawer.cs" t="Include" />
           <e p="GroundDrawer.cs" t="Include" />
           <e p="HeroDrawer.cs" t="Include" />
@@ -62,6 +63,7 @@
           <e p="AniTestL1.png" t="Include" />
           <e p="AniTestL2.png" t="Include" />
           <e p="AniTestL3.png" t="Include" />
+          <e p="Crosshair.png" t="Include" />
           <e p="Ground.png" t="Include" />
           <e p="Hero.png" t="Include" />
           <e p="HeroLeft.png" t="Include" />

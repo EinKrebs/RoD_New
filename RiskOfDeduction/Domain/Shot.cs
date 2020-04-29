@@ -8,6 +8,11 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; } = 20;
         public int Height { get; } = 20;
+        public bool DiesInColliding(IGameObject other)
+        {
+            return other is Block;
+        }
+
         public float VelocityX { get; }
         public float VelocityY { get; }
         public float G { get; } = 10f;
