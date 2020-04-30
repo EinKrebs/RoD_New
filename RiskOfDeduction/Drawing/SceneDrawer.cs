@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RiskOfDeduction.Domain;
 
@@ -18,7 +19,22 @@ namespace RiskOfDeduction.Drawing
 
         public IEnumerable<IDrawable> GetDrawables()
         {
-            return LandscapeDrawer.GetDrawables().Concat(Scene.Shots.Select(shot => new ShotDrawer(shot)));
+            return LandscapeDrawer
+                .GetDrawables()
+                .Concat(Scene
+                    .GetActives()
+                    .Select(active =>
+                    {
+                        switch (active.GetType().Name)
+                        {
+                            case "Shot":
+                                return (IDrawable) new ShotDrawer(active as Shot);
+                            case "Turret":
+                                return (IDrawable) new TurretDrawer(active as Turret);
+                            default:
+                                throw new ArgumentException("Unknown type");
+                        }
+                    }));
         }
     }
 }

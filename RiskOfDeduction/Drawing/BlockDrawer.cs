@@ -7,7 +7,9 @@ namespace RiskOfDeduction.Drawing
     {
         public Image Image { get; } = Images.Ground;
         public RectangleF Position { get; }
-        
+        public double Angle { get; } = 0;
+        public int DrawingPriority { get; } = 0;
+
         private Block Block { get; }
 
         public BlockDrawer(Block block)

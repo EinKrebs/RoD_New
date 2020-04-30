@@ -8,6 +8,8 @@ namespace RiskOfDeduction.Drawing
     {
         public Image Image { get; }
         public RectangleF Position { get; private set; }
+        public double Angle { get; } = 0;
+        public int DrawingPriority { get; } = 100;
         private Crosshair Crosshair { get; }
 
         public CrosshairDrawer(Crosshair crosshair)

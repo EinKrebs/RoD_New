@@ -6,6 +6,9 @@ namespace RiskOfDeduction.Drawing
     {
         Image Image { get; }
         RectangleF Position { get; }
+        double Angle { get; }
+        int DrawingPriority { get; }
+        
 
         void Update();
     }

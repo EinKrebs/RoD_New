@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Player : IMovable
+    public class Player : IMovable, IActive
     {
         public float X { get; private set; }
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
+
         public bool DiesInColliding(IGameObject other)
         {
             return other is Shot;
         }
 
-        public float VelocityX { get; } = 15f;
+        public float VelocityX { get; } = 20f;
         public float VelocityY { get; private set; }
         public float G { get; } = 10f;
         private Direction Direction { get; set; }
@@ -55,8 +56,7 @@ namespace RiskOfDeduction.Domain
             for (int i = 0; i < 10; i++)
             {
                 var mid = (right + left) / 2;
-                if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(
-                    new RectangleF(mid, Y, Height,Width)))
+                if (Game.Objects.Any(gameObject => gameObject != this && Game.AreColliding(this, gameObject)))
                 {
                     if (X < oldX)
                     {
@@ -111,18 +111,27 @@ namespace RiskOfDeduction.Domain
 
         public void Shoot()
         {
-            var initX = X + (Direction == Direction.Left ? -1 : 1) * (Width / 2 + 10);
+            var initX = Direction == Direction.Left ? X : X + Width;
             var initY = Y + Height / 2 - 10;
-            var angle = Math.Atan2(Game.Crosshair.Y - initY, Game.Crosshair.X - initX);
-            var shot = new Shot(initX, initY, angle, Game);
+            var angle = Math.Atan2(
+                Game.Crosshair.Y - initY + Game.Crosshair.Height / 2 - 4,
+                Game.Crosshair.X - initX + Game.Crosshair.Width / 2 - 4);
+            var direction = -Math.PI / 2 < angle && angle < Math.PI / 2 ? Direction.Right : Direction.Left;
+            if (direction == Direction)
+            {
+                var shot = new Shot(initX, initY, angle, 8, Game);
+            }
         }
 
-        public void UpdateYPos()
+        public void Update()
         {
             var oldY = Y;
             Y += VelocityY * OneTick;
-            if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y, Width, Height)) ||
-                Y + Height > Game.Height)
+            if (Game.Objects.Any(gameObject => gameObject != this 
+                                               && !(gameObject is Shot) 
+                                               && Game.AreColliding(this, gameObject)) 
+                || Y + Height > Game.Height
+                || Y < 0)
             {
                 Y = oldY;
                 VelocityY = 0;

@@ -2,15 +2,15 @@
 
 namespace RiskOfDeduction.Domain
 {
-    public class Shot : IMovable
+    public class Shot : IMovable, IActive
     {
         public float X { get; private set; }
         public float Y { get; private set; }
-        public int Width { get; } = 20;
-        public int Height { get; } = 20;
+        public int Width { get; }
+        public int Height { get; }
         public bool DiesInColliding(IGameObject other)
         {
-            return other is Block;
+            return true;
         }
 
         public float VelocityX { get; }
@@ -18,18 +18,22 @@ namespace RiskOfDeduction.Domain
         public float G { get; } = 10f;
         private float Speed { get; } = 50f;
         private Game Game { get; }
+        public double Angle { get; }
 
-        public Shot(float x, float y, double angle, Game game)
+        public Shot(float x, float y, double angle, int size, Game game)
         {
             VelocityX = (float)Cos(angle) * Speed;
             VelocityY = (float) Sin(angle) * Speed;
+            Angle = angle;
             X = x;
             Y = y;
+            Width = size;
+            Height = size;
             Game = game;
-            Game.CurrentLevel.CurrentScene.Shots.Add(this);
+            Game.CurrentLevel.CurrentScene.AddShot(this);
         }
 
-        public void Move()
+        public void Update()
         {
             X += VelocityX;
             Y += VelocityY;

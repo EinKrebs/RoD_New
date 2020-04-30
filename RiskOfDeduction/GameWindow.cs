@@ -27,16 +27,16 @@ namespace RiskOfDeduction
                 "#                    #",
                 "#                    #",
                 "#                    #",
-                "#         ##         #",
-                "#      ####          #",
                 "#                    #",
+                "#                    #",
+                "#             T      #",
                 "#           ####     #",
                 "#          #####     #",
                 "#     #############  #",
                 "######################"
             };
             Game.InitializePlayer(200, 200, blockSize, blockSize);
-            Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize));
+            Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize, Game));
             Drawer = new GameDrawer(Game);
         }
 
@@ -59,9 +59,12 @@ namespace RiskOfDeduction
         private void DrawGame(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
-            
-            Drawer.GetDrawables().ToList().ForEach(drawable => g.DrawImage(drawable.Image, drawable.Position));
-            
+            Drawer
+                .GetDrawables()
+                .OrderBy(drawable => drawable.DrawingPriority)
+                .ToList()
+                .ForEach(drawable => g.DrawImage(drawable.Image, drawable.Position));
+
             // g.DrawImage(Images.Hero, new RectangleF(game.Player.X, game.Player.Y, game.Player.Width, game.Player.Height));
             // foreach (var block in Game.CurrentLevel.CurrentScene.LandScape)
             // {
@@ -111,6 +114,13 @@ namespace RiskOfDeduction
                     ToLeft = false;
                     break;
             }
+        }
+
+        private void Game_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor.Show();
+            ToLeft = false;
+            ToRight = false;
         }
     }
 }

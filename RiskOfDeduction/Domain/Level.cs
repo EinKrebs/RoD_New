@@ -25,7 +25,7 @@ namespace RiskOfDeduction.Domain
             this.scenes = new List<Scene>(scenes);
         }
 
-        public Level(string[] map, int sceneLength, int blockSize)
+        public Level(string[] map, int sceneLength, int blockSize, Game game)
         {
             if (sceneLength % blockSize != 0)
             {
@@ -47,7 +47,7 @@ namespace RiskOfDeduction.Domain
                 {
                     currentScene.Add(s.Substring(i * sceneLength, sceneLength));
                 }
-                scenesFromStringArray.Add(Scene.BuildSceneFromStringArray(currentScene.ToArray(), blockSize));
+                scenesFromStringArray.Add(Scene.BuildSceneFromStringArray(currentScene.ToArray(), blockSize, game));
             }
 
             scenes = scenesFromStringArray;
@@ -69,9 +69,9 @@ namespace RiskOfDeduction.Domain
 
         }
 
-        public static Level GenerateLevelFromStringArray(string[] map, int sceneLength, int blockSize)
+        public static Level GenerateLevelFromStringArray(string[] map, int sceneLength, int blockSize, Game game)
         {
-            return new Level(map, sceneLength, blockSize);
+            return new Level(map, sceneLength, blockSize, game);
         }
 
         public void Update()

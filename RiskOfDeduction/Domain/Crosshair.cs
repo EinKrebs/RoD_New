@@ -6,6 +6,7 @@
         public float Y { get; private set; }
         public int Width { get; } = 20;
         public int Height { get; } = 20;
+
         public bool DiesInColliding(IGameObject other)
         {
             return false;

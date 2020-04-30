@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiskOfDeduction.Domain
 {
@@ -37,12 +33,11 @@ namespace RiskOfDeduction.Domain
         {
             Levels.Add(level);
         }
-
-
-        private bool AreColliding(IGameObject first, IGameObject second)
+        
+        public static bool AreColliding(IGameObject first, IGameObject second)
         {
-            var firstRectangle = new RectangleF(first.X, first.Y, first.Width, first.Height);
-            var secondRectangle = new RectangleF(second.X, second.Y, second.Width, second.Height);
+            var firstRectangle = first.GetRect();
+            var secondRectangle = second.GetRect();
             return firstRectangle.IntersectsWith(secondRectangle);
         }
 
@@ -63,7 +58,7 @@ namespace RiskOfDeduction.Domain
 
         public void Update()
         {
-            Player.UpdateYPos();
+            Player.Update();
             CurrentLevel.Update();
             Objects.Where(gameObject => !IsValid(gameObject)).ToList().ForEach(Remove);
         }

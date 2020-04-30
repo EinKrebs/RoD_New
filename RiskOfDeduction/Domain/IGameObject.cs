@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace RiskOfDeduction.Domain
 {
@@ -14,5 +11,13 @@ namespace RiskOfDeduction.Domain
         int Height { get; }
 
         bool DiesInColliding(IGameObject other);
+    }
+
+    public static class GameObjectExtension
+    {
+        public static RectangleF GetRect(this IGameObject gameObject)
+        {
+            return new RectangleF(gameObject.X, gameObject.Y, gameObject.Width, gameObject.Height);
+        }
     }
 }

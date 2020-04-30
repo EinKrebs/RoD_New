@@ -33,7 +33,7 @@ namespace RiskOfDeduction.Tests
                 "          ",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(0 * blockSize, 1 * blockSize, blockSize, blockSize);
 
@@ -53,7 +53,7 @@ namespace RiskOfDeduction.Tests
                 "#        #",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(2 * blockSize, 1 * blockSize, blockSize, blockSize);
 
@@ -73,7 +73,7 @@ namespace RiskOfDeduction.Tests
                 "# #       ",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(2 * blockSize, 1 * blockSize, blockSize, blockSize);
 
@@ -93,7 +93,7 @@ namespace RiskOfDeduction.Tests
                 "# #       ",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(2 * blockSize, 1 * blockSize, blockSize, blockSize);
 
@@ -113,14 +113,14 @@ namespace RiskOfDeduction.Tests
                 "          ",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(2 * blockSize, 1 * blockSize, blockSize, blockSize);
 
             var oldY = game.Player.Y;
             for (var i = 0; i < 10; i++)
             {
-                game.Player.UpdateYPos();
+                game.Player.Update();
             }
             var newY = game.Player.Y;
 
@@ -136,14 +136,14 @@ namespace RiskOfDeduction.Tests
                 "          ",
                 "##########"
             };
-            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize);
+            var level = Level.GenerateLevelFromStringArray(textLevel, sceneWidth, blockSize, game);
             game.AddLevel(level);
             game.InitializePlayer(2 * blockSize, 0 * blockSize, blockSize, blockSize);
 
             var oldY = game.Player.Y;
             for (var i = 0; i < 100; i++)
             {
-                game.Player.UpdateYPos();
+                game.Player.Update();
             }
             var newY = game.Player.Y;
 

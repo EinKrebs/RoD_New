@@ -8,6 +8,8 @@ namespace RiskOfDeduction.Drawing
     {
         public Image Image { get; private set; }
         public RectangleF Position { get; private set; }
+        public double Angle { get; } = 0;
+        public int DrawingPriority { get; } = 0;
 
         private Player Player { get; }
         private int Count { get; } = 2;
