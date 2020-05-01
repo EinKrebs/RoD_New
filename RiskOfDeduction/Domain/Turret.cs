@@ -29,7 +29,7 @@ namespace RiskOfDeduction.Domain
             Center = x;
             Y = y;
             Game = game;
-            Timer = 16;
+            Timer = 30;
             Update();
         }
 
@@ -51,7 +51,7 @@ namespace RiskOfDeduction.Domain
                 Shoot();
                 Firing = true;
             }
-            Timer = Timer > 0 ? Timer - 1 : 10;
+            Timer = Timer > 0 ? Timer - 1 : 30;
         }
     }
 }

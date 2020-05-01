@@ -22,18 +22,18 @@ namespace RiskOfDeduction
             Game = new Game(gameWidth, gameHeight);
             var textLevel = new[]
             {
-                "######################",
-                "#                    #",
-                "#                    #",
-                "#                    #",
-                "#                    #",
-                "#                    #",
-                "#                    #",
-                "#             T      #",
-                "#           ####     #",
-                "#          #####     #",
-                "#     #############  #",
-                "######################"
+                "##############################",
+                "#                            #",
+                "#                            #",
+                "#                            #",
+                "#                            #",
+                "#                            #",
+                "#                            #",
+                "#                   ML       #",
+                "#           ####   #####     #",
+                "#          ######            #",
+                "#     #############    T     #",
+                "##############################"
             };
             Game.InitializePlayer(200, 200, blockSize, blockSize);
             Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize, Game));

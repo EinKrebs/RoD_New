@@ -10,7 +10,7 @@ namespace RiskOfDeduction
         private System.ComponentModel.IContainer components = null;
         private Timer timer { get; set; }
         private int gameHeight { get; } = 600;
-        private int gameWidth { get; } = 1100;
+        private int gameWidth { get; } = 1500;
         private int blockSize { get; } = 50;
 
         protected override void Dispose(bool disposing)

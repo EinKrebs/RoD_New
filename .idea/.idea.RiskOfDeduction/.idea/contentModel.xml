@@ -27,6 +27,7 @@
           <e p="Player.cs" t="Include" />
           <e p="Scene.cs" t="Include" />
           <e p="Shot.cs" t="Include" />
+          <e p="Tank.cs" t="Include" />
           <e p="Turret.cs" t="Include" />
         </e>
         <e p="Drawing" t="Include">
@@ -40,6 +41,7 @@
           <e p="LevelDrawer.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
           <e p="ShotDrawer.cs" t="Include" />
+          <e p="TankDrawer.cs" t="Include" />
           <e p="TurretDrawer.cs" t="Include" />
         </e>
         <e p="Form1.cs" t="Include" />
@@ -60,24 +62,33 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="Resources" t="Include">
-          <e p="AniTest1.png" t="Include" />
-          <e p="AniTest2.png" t="Include" />
-          <e p="AniTest3.png" t="Include" />
-          <e p="AniTestL1.png" t="Include" />
-          <e p="AniTestL2.png" t="Include" />
-          <e p="AniTestL3.png" t="Include" />
-          <e p="Bullet.png" t="Include" />
           <e p="Crosshair.png" t="Include" />
           <e p="Ground.png" t="Include" />
-          <e p="Hero.png" t="Include" />
-          <e p="HeroLeft.png" t="Include" />
           <e p="Jump.wav" t="Include" />
+          <e p="Player" t="Include">
+            <e p="AniTest1.png" t="Include" />
+            <e p="AniTest2.png" t="Include" />
+            <e p="AniTest3.png" t="Include" />
+            <e p="AniTestL1.png" t="Include" />
+            <e p="AniTestL2.png" t="Include" />
+            <e p="AniTestL3.png" t="Include" />
+            <e p="Hero.png" t="Include" />
+            <e p="HeroLeft.png" t="Include" />
+          </e>
           <e p="Shot.png" t="Include" />
           <e p="sky.jpg" t="Include" />
-          <e p="TurretL.png" t="Include" />
-          <e p="TurretLFiring.png" t="Include" />
-          <e p="TurretR.png" t="Include" />
-          <e p="TurretRFiring.png" t="Include" />
+          <e p="Tank" t="Include">
+            <e p="TankL.png" t="Include" />
+            <e p="TankLFiring.png" t="Include" />
+            <e p="TankR.png" t="Include" />
+            <e p="TankRFiring.png" t="Include" />
+          </e>
+          <e p="Turret" t="Include">
+            <e p="TurretL.png" t="Include" />
+            <e p="TurretLFiring.png" t="Include" />
+            <e p="TurretR.png" t="Include" />
+            <e p="TurretRFiring.png" t="Include" />
+          </e>
         </e>
         <e p="RiskOfDeduction.csproj" t="IncludeRecursive" />
         <e p="Tests" t="Include">

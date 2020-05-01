@@ -6,10 +6,9 @@ namespace RiskOfDeduction.Domain
     public class Scene : IModel
     {
         public Ground LandScape { get; }
-        private HashSet<Shot> Shots { get; } = new HashSet<Shot>();
-        private HashSet<Turret> Turrets { get; } = new HashSet<Turret>();
-
-        public IEnumerable<IGameObject> Objects => ((IEnumerable<IGameObject>) LandScape).Concat(Shots).Concat(Turrets);
+        private HashSet<IActive> Actives { get; } = new HashSet<IActive>();
+        private List<IActive> ToAdd { get; set; } = new List<IActive>();
+        public IEnumerable<IGameObject> Objects => Actives.Concat((IEnumerable<IGameObject>)LandScape);
 
         public Scene()
         {
@@ -28,14 +27,22 @@ namespace RiskOfDeduction.Domain
             {
                 for (var j = 0; j < map[i].Length; j++)
                 {
-                    if (map[i][j] == '#')
+                    switch (map[i][j])
                     {
-                        blocks.Add(new Block(j * blockSize, i * blockSize, blockSize, blockSize));
-                    }
-                    else if (map[i][j] == 'T')
-                    {
-                        Turrets.Add(new Turret(j * blockSize, i * blockSize, game));
-                        j++; 
+                        case '#':
+                            blocks.Add(new Block(j * blockSize, i * blockSize, blockSize, blockSize));
+                            break;
+                        case 'T':
+                            Actives.Add(new Turret(j * blockSize, i * blockSize, game));
+                            break;
+                        case 'M':
+                            Actives.Add(new Tank(
+                                j * blockSize,
+                                i * blockSize,
+                                map[i][j + 1] == 'L' ? Direction.Left : Direction.Right,
+                                game));
+                            j++;
+                            break;
                     }
                 }
             }
@@ -50,33 +57,33 @@ namespace RiskOfDeduction.Domain
 
         public void Update() 
         {
-            foreach (var activeObject in GetActives())
+            foreach (var active in Actives)
             {
-                activeObject.Update();
+                active.Update();
             }
+
+            foreach (var active in ToAdd)
+            {
+                active.Update();
+                Actives.Add(active);
+            }
+            
+            ToAdd = new List<IActive>();
         }
 
         public void Remove(IGameObject gameObject)
         {
-            if (gameObject is Shot shot)
+            if (gameObject is IActive active)
             {
-                Shots.Remove(shot);
-            }
-
-            if (gameObject is Turret turret)
-            {
-                Turrets.Remove(turret);
+                Actives.Remove(active);
             }
         }
 
         public void AddShot(Shot shot)
         {
-            Shots.Add(shot);
+            ToAdd.Add(shot);
         }
 
-        public IEnumerable<IActive> GetActives()
-        {
-            return Shots.Concat((IEnumerable<IActive>) Turrets);
-        }
+        public IEnumerable<IActive> GetActives() => Actives;
     }
 }

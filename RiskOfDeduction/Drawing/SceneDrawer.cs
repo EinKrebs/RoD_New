@@ -31,6 +31,8 @@ namespace RiskOfDeduction.Drawing
                                 return (IDrawable) new ShotDrawer(active as Shot);
                             case "Turret":
                                 return (IDrawable) new TurretDrawer(active as Turret);
+                            case "Tank":
+                                return (IDrawable) new TankDrawer(active as Tank); 
                             default:
                                 throw new ArgumentException("Unknown type");
                         }
