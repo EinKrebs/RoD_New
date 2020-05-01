@@ -55,13 +55,15 @@ namespace RiskOfDeduction.Domain
             var directionToPlayer = Game.Player.X + Game.Player.Width / 2 - (X + Width / 2) < 0 
                 ? Direction.Left 
                 : Direction.Right;
-            if (Y - Game.Player.Height <= Game.Player.Y 
-                && Game.Player.Y <= Y + Height 
-                && Timer == 0 
+            if (Y - Game.Player.Height <= Game.Player.Y
+                && Game.Player.Y <= Y + Height
+                && Timer == 0
                 && directionToPlayer == Direction)
             {
-                Timer = Math.Max(Timer - 1, 0);
-            }
+                Shoot();
+                Timer = 40;
+            } 
+            Timer = Math.Max(Timer - 1, 0);
             var oldX = X;
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
             var checkRectangle = new RectangleF(
