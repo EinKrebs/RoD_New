@@ -56,10 +56,10 @@ namespace RiskOfDeduction.Domain
             var left = Math.Min(X, oldX);
             var right = Math.Max(X, oldX);
                 
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 var mid = (right + left) / 2;
-                if (Game.Objects.Any(gameObject => gameObject != this && Game.AreColliding(this, gameObject)))
+                if (Game.Objects.Any(gameObject => !gameObject.Equals(this) && Game.AreColliding(this, gameObject)))
                 {
                     if (X < oldX)
                     {
@@ -120,10 +120,10 @@ namespace RiskOfDeduction.Domain
                 Game.Crosshair.Y - initY + Game.Crosshair.Height / 2 - 4,
                 Game.Crosshair.X - initX + Game.Crosshair.Width / 2 - 4);
             var direction = -Math.PI / 2 < angle && angle < Math.PI / 2 ? Direction.Right : Direction.Left;
-            if (direction == Direction)
-            {
-                var shot = new Shot(initX, initY, angle, 8, Game);
-            }
+            //if (direction == Direction)
+            //{
+            var shot = new Shot(initX, initY, angle, 8, Game);
+            //}
         }
 
         public void Update()

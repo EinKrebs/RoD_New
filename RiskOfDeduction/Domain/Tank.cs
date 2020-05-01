@@ -6,6 +6,7 @@ namespace RiskOfDeduction.Domain
 {
     public class Tank : IMovable, IActive
     {
+        private int Timer = 40;
         public float X { get; private set; }
         public float Y { get; private set; }
         public int Width { get; } = 100;
@@ -14,10 +15,10 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; private set; } = 0;
         public float G { get; } = 10;
         private int Hp { get; set; } = 10;
-        private int Timer = 40;
         private int ShotSize { get; } = 18;
         public Direction Direction { get; private set; }
         private Game Game { get; set; }
+
 
         public Tank(int x, int y, Direction direction, Game game)
         {

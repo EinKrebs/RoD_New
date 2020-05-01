@@ -23,7 +23,7 @@ namespace RiskOfDeduction.Domain
         public Shot(float x, float y, double angle, int size, Game game)
         {
             VelocityX = (float)Cos(angle) * Speed;
-            VelocityY = (float) Sin(angle) * Speed;
+            VelocityY = (float)Sin(angle) * Speed;
             Angle = angle;
             X = x;
             Y = y;

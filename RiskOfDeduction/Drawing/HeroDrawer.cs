@@ -14,14 +14,14 @@ namespace RiskOfDeduction.Drawing
         private Player Player { get; }
         private int Count { get; } = 2;
         private int FrameTime { get; } = 5;
-        private bool Moving { get; set; } = false;
+        private bool Moving { get; set; }
         private int CurrentFrame { get; set; }
         private Direction Direction { get; set; }
         private float PlayerOldX { get; set; }
-        private Image LeftSprite { get; set; }
-        private Image RightSprite { get; set; }
-        private Image[,] MovingFrames { get; set; }
-        private Image[] StandingFrames { get; set; }
+        private Image LeftSprite { get; }
+        private Image RightSprite { get; }
+        private Image[,] MovingFrames { get; }
+        private Image[] StandingFrames { get; }
 
         public HeroDrawer(Player player)
         {

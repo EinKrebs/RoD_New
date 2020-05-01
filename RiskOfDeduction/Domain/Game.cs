@@ -43,21 +43,6 @@ namespace RiskOfDeduction.Domain
             return firstRectangle.IntersectsWith(secondRectangle);
         }
 
-        private bool IsValid(IGameObject gameObject)
-        {
-            if (Objects.Any(otherObject => otherObject != gameObject 
-                                           && AreColliding(gameObject, otherObject) 
-                                           && gameObject.DiesInColliding(otherObject)))
-            {
-                return false;
-            }
-
-            return 0 <= gameObject.X
-                   && gameObject.X + gameObject.Width < Width
-                   && 0 <= gameObject.Y
-                   && gameObject.Y + gameObject.Height < Height;
-        }
-
         public void Update()
         {
             Player.Update();
@@ -73,6 +58,21 @@ namespace RiskOfDeduction.Domain
         public void Over(bool success)
         {
             Running = false;
+        }
+
+        private bool IsValid(IGameObject gameObject)
+        {
+            if (Objects.Any(otherObject => !otherObject.Equals(gameObject)
+                                           && AreColliding(gameObject, otherObject)
+                                           && gameObject.DiesInColliding(otherObject)))
+            {
+                return false;
+            }
+
+            return 0 <= gameObject.X
+                   && gameObject.X + gameObject.Width < Width
+                   && 0 <= gameObject.Y
+                   && gameObject.Y + gameObject.Height < Height;
         }
     }
 }

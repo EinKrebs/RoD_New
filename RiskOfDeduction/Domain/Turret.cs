@@ -21,7 +21,7 @@ namespace RiskOfDeduction.Domain
         {
             if (!(other is Shot)) return false;
             Hp--;
-            return Hp == 0;
+            return Hp <= 0;
         }
 
         public Turret(int x, int y, Game game)
