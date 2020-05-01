@@ -9,6 +9,7 @@ namespace RiskOfDeduction.Domain
         private HashSet<IActive> Actives { get; } = new HashSet<IActive>();
         private List<IActive> ToAdd { get; set; } = new List<IActive>();
         public IEnumerable<IGameObject> Objects => Actives.Concat((IEnumerable<IGameObject>)LandScape);
+        private Game Game { get; }
 
         public Scene()
         {
@@ -22,6 +23,7 @@ namespace RiskOfDeduction.Domain
 
         public Scene(string[] map, int blockSize, Game game)
         {
+            Game = game;
             var blocks = new List<Block>();
             for (var i = 0; i < map.Length; i++)
             {
@@ -73,6 +75,10 @@ namespace RiskOfDeduction.Domain
 
         public void Remove(IGameObject gameObject)
         {
+            if (gameObject is Player)
+            {
+                Game.Over(false);
+            }
             if (gameObject is IActive active)
             {
                 Actives.Remove(active);

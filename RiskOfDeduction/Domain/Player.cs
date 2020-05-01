@@ -14,19 +14,14 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-
-        public bool DiesInColliding(IGameObject other)
-        {
-            return other is Shot;
-        }
-
         public float VelocityX { get; } = 20f;
         public float VelocityY { get; private set; }
-        public float G { get; } = 10f;
+        public float G { get; } = 20f;
         private Direction Direction { get; set; }
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
-        private float JumpInitialVelocity { get; } = -40;
+        private float JumpInitialVelocity { get; } = -60;
+        private int Hp { get; set; } = 10;
 
         public Player(float x, float y, int width, int height, Game game)
         {
@@ -35,6 +30,14 @@ namespace RiskOfDeduction.Domain
             Width = width;
             Height = height;
             Game = game;
+        }
+
+        public bool DiesInColliding(IGameObject other)
+        {
+            if (!(other is Shot)) return false;
+            if (Hp == 0) return true;
+            Hp--;
+            return false;
         }
 
         public void MoveTo(Direction direction)

@@ -14,7 +14,8 @@ namespace RiskOfDeduction.Domain
         public int Width { get; }
         public float G { get; } = 10;
         public float OneTick { get; } = 0.25f;
-        public IEnumerable<IGameObject> Objects => CurrentLevel.Objects;
+        public bool Running { get; private set; }
+        public IEnumerable<IGameObject> Objects => CurrentLevel.Objects.Append(Player);
 
         public Game(int width, int height)
         {
@@ -22,6 +23,7 @@ namespace RiskOfDeduction.Domain
             Height = height;
             Levels = new List<Level>();
             Crosshair = new Crosshair();
+            Running = true;
         }
 
         public void InitializePlayer(float x, float y, int width, int height)
@@ -66,6 +68,11 @@ namespace RiskOfDeduction.Domain
         public void Remove(IGameObject gameObject)
         {
             CurrentLevel.Remove(gameObject);
+        }
+
+        public void Over(bool success)
+        {
+            Running = false;
         }
     }
 }

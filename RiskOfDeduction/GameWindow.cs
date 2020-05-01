@@ -58,6 +58,10 @@ namespace RiskOfDeduction
 
         private void DrawGame(object sender, PaintEventArgs e)
         {
+            if (!Game.Running)
+            {
+                return;
+            }
             var g = e.Graphics;
             Drawer
                 .GetDrawables()
