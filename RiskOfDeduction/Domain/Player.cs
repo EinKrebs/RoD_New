@@ -122,7 +122,7 @@ namespace RiskOfDeduction.Domain
             var direction = -Math.PI / 2 < angle && angle < Math.PI / 2 ? Direction.Right : Direction.Left;
             //if (direction == Direction)
             //{
-            var shot = new Shot(initX, initY, angle, 8, Game);
+            var shot = new Shot(initX, initY, angle, 15, Game);
             //}
         }
 
