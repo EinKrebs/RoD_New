@@ -6,17 +6,18 @@ namespace RiskOfDeduction.Domain
 {
     public class Tank : IMovable, IActive
     {
-        private int Timer = 40;
         public float X { get; private set; }
         public float Y { get; private set; }
         public int Width { get; } = 100;
         public int Height { get; } = 50;
         public float VelocityX { get; } = 1;
-        public float VelocityY { get; private set; } = 0;
+        public float VelocityY { get; private set; }
         public float G { get; } = 10;
-        private int Hp { get; set; } = 10;
-        private int ShotSize { get; } = 18;
         public Direction Direction { get; private set; }
+        public int Hp { get; private set; } = 10;
+
+        private int Tick = 40;
+        private int ShotSize { get; } = 18;
         private Game Game { get; set; }
 
 
@@ -30,17 +31,15 @@ namespace RiskOfDeduction.Domain
         
         public bool DiesInColliding(IGameObject other)
         {
-            if (other is Shot)
+            if (other is Shot shot)
             {
-                if (Hp == 0)
+                if (shot.sender == ShotSender.Player)
                 {
-                    return true;
+                    Hp--;
                 }
-
-                Hp--;
             }
 
-            return false;
+            return Hp <= 0;
         }
 
         public void Shoot()
@@ -48,7 +47,7 @@ namespace RiskOfDeduction.Domain
             var x = Direction == Direction.Left ? X - ShotSize : X + Width;
             var y = Y + 20;
             var angle = Direction == Direction.Left ? Math.PI : 0;
-            var shot = new Shot(x, y, angle, ShotSize, Game);
+            var shot = new Shot(x, y, angle, ShotSize, Game, ShotSender.Tank);
         }
 
         public void Update()
@@ -58,13 +57,13 @@ namespace RiskOfDeduction.Domain
                 : Direction.Right;
             if (Y - Game.Player.Height <= Game.Player.Y
                 && Game.Player.Y <= Y + Height
-                && Timer == 0
+                && Tick == 0
                 && directionToPlayer == Direction)
             {
                 Shoot();
-                Timer = 40;
+                Tick = 40;
             } 
-            Timer = Math.Max(Timer - 1, 0);
+            Tick = Math.Max(Tick - 1, 0);
             var oldX = X;
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
             var checkRectangle = new RectangleF(

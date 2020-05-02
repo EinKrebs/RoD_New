@@ -17,11 +17,12 @@ namespace RiskOfDeduction.Domain
         public float VelocityX { get; } = 20f;
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
-        private Direction Direction { get; set; }
+        public Direction Direction { get; private set; }
+        public int Hp { get; private set; } = 10;
+
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
         private float JumpInitialVelocity { get; } = -60;
-        private int Hp { get; set; } = 10;
 
         public Player(float x, float y, int width, int height, Game game)
         {
@@ -122,7 +123,7 @@ namespace RiskOfDeduction.Domain
             var direction = -Math.PI / 2 < angle && angle < Math.PI / 2 ? Direction.Right : Direction.Left;
             //if (direction == Direction)
             //{
-            var shot = new Shot(initX, initY, angle, 15, Game);
+            var shot = new Shot(initX, initY, angle, 15, Game, ShotSender.Player);
             //}
         }
 

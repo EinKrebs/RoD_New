@@ -57,7 +57,7 @@ namespace RiskOfDeduction.Domain
 
         public void Over(bool success)
         {
-            Running = false;
+            Running = success;
         }
 
         private bool IsValid(IGameObject gameObject)

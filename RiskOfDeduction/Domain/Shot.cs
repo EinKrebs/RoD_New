@@ -1,4 +1,6 @@
-﻿using static System.Math;
+﻿using System.ComponentModel.Design;
+using NUnit.Framework.Constraints;
+using static System.Math;
 
 namespace RiskOfDeduction.Domain
 {
@@ -8,19 +10,27 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public bool DiesInColliding(IGameObject other)
-        {
-            return true;
-        }
-
         public float VelocityX { get; }
         public float VelocityY { get; }
         public float G { get; } = 10f;
-        private float Speed { get; } = 50f;
-        private Game Game { get; }
         public double Angle { get; }
+        public ShotSender sender { get;  }
 
-        public Shot(float x, float y, double angle, int size, Game game)
+        private float Speed { get; } = 20f;
+        private Game Game { get; }
+
+        public bool DiesInColliding(IGameObject other)
+        {
+            if (sender == ShotSender.Player && other is Player
+                || (sender == ShotSender.Tank || sender == ShotSender.Turret) && (other is Turret || other is Tank))
+            {
+                return false;
+            }
+
+            return !(other is Shot);
+        }
+
+        public Shot(float x, float y, double angle, int size, Game game, ShotSender sender)
         {
             VelocityX = (float)Cos(angle) * Speed;
             VelocityY = (float)Sin(angle) * Speed;
@@ -31,6 +41,7 @@ namespace RiskOfDeduction.Domain
             Height = size;
             Game = game;
             Game.CurrentLevel.CurrentScene.AddShot(this);
+            this.sender = sender;
         }
 
         public void Update()
