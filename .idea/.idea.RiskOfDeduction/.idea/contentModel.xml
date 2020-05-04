@@ -27,6 +27,7 @@
           <e p="Player.cs" t="Include" />
           <e p="Scene.cs" t="Include" />
           <e p="Shot.cs" t="Include" />
+          <e p="ShotSender.cs" t="Include" />
           <e p="Tank.cs" t="Include" />
           <e p="Turret.cs" t="Include" />
         </e>
@@ -92,7 +93,9 @@
         </e>
         <e p="RiskOfDeduction.csproj" t="IncludeRecursive" />
         <e p="Tests" t="Include">
+          <e p="ObjectsTest.cs" t="Include" />
           <e p="PlayerMovesTests.cs" t="Include" />
+          <e p="ShotTest.cs" t="Include" />
         </e>
       </e>
       <e p="RiskOfDeduction.sln" t="IncludeFlat" />
