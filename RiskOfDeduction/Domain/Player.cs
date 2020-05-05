@@ -14,7 +14,7 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 20f;
+        public float VelocityX { get; } = 25f;
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
@@ -57,9 +57,10 @@ namespace RiskOfDeduction.Domain
             var left = Math.Min(X, oldX);
             var right = Math.Max(X, oldX);
                 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 2; i++)
             {
                 var mid = (right + left) / 2;
+                X = mid;
                 if (Game.Objects.Any(gameObject => !gameObject.Equals(this) && Game.AreColliding(this, gameObject)))
                 {
                     if (X < oldX)
