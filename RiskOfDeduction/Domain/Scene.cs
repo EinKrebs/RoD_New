@@ -8,7 +8,7 @@ namespace RiskOfDeduction.Domain
         public Ground LandScape { get; }
         private HashSet<IActive> Actives { get; } = new HashSet<IActive>();
         private List<IActive> ToAdd { get; set; } = new List<IActive>();
-        public IEnumerable<IGameObject> Objects => Actives.Concat((IEnumerable<IGameObject>)LandScape);
+        public IEnumerable<IGameObject> Objects => Actives.Append((IGameObject)LandScape);
         private Game Game { get; }
 
         public Scene()
@@ -48,13 +48,27 @@ namespace RiskOfDeduction.Domain
                     }
                 }
             }
-
-            LandScape = new Ground(blocks);
+            LandScape = new Ground(map, blockSize);
         }
 
         public static Scene BuildSceneFromStringArray(string[] map, int blockSize, Game game)
         {
             return new Scene(map, blockSize, game);
+        }
+
+        public bool AreColliding(IGameObject first, IGameObject second)
+        {
+            if (first is Ground firstGround)
+            {
+                return firstGround.IntersectsWith(second.GetRect());
+            }
+
+            if (second is Ground secondGround)
+            {
+                return secondGround.IntersectsWith(first.GetRect());
+            }
+
+            return first.GetRect().IntersectsWith(second.GetRect());
         }
 
         public void Update() 

@@ -34,8 +34,11 @@ namespace RiskOfDeduction
                 "#          ######            #",
                 "#     #############    T     #",
                 "##############################"
+                // "                              ",
+                // "##############################"
             };
             Game.InitializePlayer(200, 200, blockSize, blockSize);
+            // Game.InitializePlayer(0, 0, blockSize, blockSize);
             Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize, Game));
             Drawer = new GameDrawer(Game);
         }

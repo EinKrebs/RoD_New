@@ -8,9 +8,20 @@ using System.Linq;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Ground : IEnumerable<Block>
+    public class Ground : IGameObject
     {
+        public float X { get; }
+        public float Y { get; }
+        public int Width { get; }
+        public int Height { get; }
+        public bool DiesInColliding(IGameObject other)
+        {
+            return false;
+        }
+        
         private HashSet<Block> groundBlocks { get; }
+        public StaticObject[,] Objects { get; }
+        public int BlockSize { get; }
 
         public Ground()
         {
@@ -25,6 +36,8 @@ namespace RiskOfDeduction.Domain
         public Ground(string[] map, int blockSize)
         {
             groundBlocks = new HashSet<Block>();
+            BlockSize = blockSize;
+            Objects = new StaticObject[map[0].Length, map.Length];
             for (var i = 0; i < map.Length; i++)
             {
                 for (var j = 0; j < map[i].Length; j++)
@@ -33,37 +46,35 @@ namespace RiskOfDeduction.Domain
                     {
                         groundBlocks.Add(new Block(j * blockSize, i * blockSize, blockSize, blockSize));
                     }
+
+                    Objects[j, i] = map[i][j] == '#' ? StaticObject.Block : StaticObject.Nothing;
                 }
             }
         }
 
-        public void AddBlock(Block newBlock)
+        public bool IntersectsWith(RectangleF obj)
         {
-            groundBlocks.Add(newBlock);
-        }
-
-        public bool IsThereAnyIntersection(RectangleF obj)
-        {
-            return groundBlocks.Any(block =>
+            var left = (int) ((obj.Left + 0.05f) / BlockSize);
+            var right = (int) ((obj.Right - 0.05f) / BlockSize);
+            var top = (int) ((obj.Top + 0.05) / BlockSize);
+            var bottom = (int) ((obj.Bottom - 0.05) / BlockSize);
+            for (var i = left; i <= right; i++)
             {
-                var blockRectangle = new RectangleF(block.X, block.Y, block.Width, block.Height);
-                return blockRectangle.IntersectsWith(obj);
-            });
+                for (var j = top; j <= bottom; j++)
+                {
+                    if (Objects[i, j] == StaticObject.Block)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public static Ground BuildGroundFromStringArray(string[] map, int blockSize)
         {
             return new Ground(map, blockSize);
-        }
-
-        public IEnumerator<Block> GetEnumerator()
-        {
-            return ((IEnumerable<Block>) groundBlocks).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

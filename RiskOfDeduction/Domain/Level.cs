@@ -74,6 +74,11 @@ namespace RiskOfDeduction.Domain
             return new Level(map, sceneLength, blockSize, game);
         }
 
+        public bool AreColliding(IGameObject first, IGameObject second)
+        {
+            return CurrentScene.AreColliding(first, second);
+        }
+
         public void Update()
         {
             CurrentScene.Update();

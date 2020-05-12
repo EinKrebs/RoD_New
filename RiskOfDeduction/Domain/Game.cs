@@ -35,12 +35,10 @@ namespace RiskOfDeduction.Domain
         {
             Levels.Add(level);
         }
-        
-        public static bool AreColliding(IGameObject first, IGameObject second)
+
+        public bool AreColliding(IGameObject first, IGameObject second)
         {
-            var firstRectangle = first.GetRect();
-            var secondRectangle = second.GetRect();
-            return firstRectangle.IntersectsWith(secondRectangle);
+            return CurrentLevel.AreColliding(first, second);
         }
 
         public void Update()

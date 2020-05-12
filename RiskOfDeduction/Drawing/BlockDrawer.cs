@@ -18,6 +18,19 @@ namespace RiskOfDeduction.Drawing
             Position = new RectangleF(Block.X, Block.Y, Block.Width, Block.Height);
         }
 
+        public BlockDrawer(RectangleF position, bool grass)
+        {
+            Position = position;
+            if (grass)
+            {
+                Image = Images.Ground;
+            }
+            else
+            {
+                Image = Images.Ground;
+            }
+        }
+
         public void Update()
         {
             

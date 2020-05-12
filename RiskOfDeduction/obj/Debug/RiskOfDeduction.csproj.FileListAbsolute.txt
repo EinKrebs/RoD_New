@@ -90,3 +90,4 @@ D:\RoD\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CoreCompileInputs.cache
 D:\RoD\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CopyComplete
 D:\RoD\RiskOfDeduction\obj\Debug\RiskOfDeduction.exe
 D:\RoD\RiskOfDeduction\obj\Debug\RiskOfDeduction.pdb
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CoreCompileInputs.cache

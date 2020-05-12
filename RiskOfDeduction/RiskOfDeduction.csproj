@@ -87,6 +87,7 @@
     <Compile Include="Domain\Scene.cs" />
     <Compile Include="Domain\Shot.cs" />
     <Compile Include="Domain\ShotSender.cs" />
+    <Compile Include="Domain\Static.cs" />
     <Compile Include="Domain\Tank.cs" />
     <Compile Include="Domain\Turret.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />

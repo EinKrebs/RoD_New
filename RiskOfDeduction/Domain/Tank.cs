@@ -68,8 +68,8 @@ namespace RiskOfDeduction.Domain
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
             var checkRectangle = new RectangleF(
                 X + (Direction == Direction.Left ? -Width / 2 : Width),
-                Y + 0.01f,
-                Width / 2,
+                Y + 0.2f,
+                Width,
                 Height);
             if (!Game.Objects.Any(gameObject => checkRectangle.IntersectsWith(gameObject.GetRect())))
             {
@@ -77,7 +77,7 @@ namespace RiskOfDeduction.Domain
                 Direction = 1 - Direction;
             }
 
-            checkRectangle = new RectangleF(X, Y + 0.01f, Width, Height);
+            checkRectangle = new RectangleF(X, Y + 0.1f, Width, Height);
             if (!Game.Objects.Any(gameObject => checkRectangle.IntersectsWith(gameObject.GetRect())))
             {
                 Y += VelocityY;

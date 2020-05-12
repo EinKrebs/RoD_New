@@ -108,7 +108,7 @@ namespace RiskOfDeduction.Domain
 
         public void Jump()
         {
-            if (Game.CurrentLevel.CurrentScene.LandScape.IsThereAnyIntersection(new RectangleF(X, Y + 1, Width, Height)))
+            if (Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X, Y + 1, Width, Height)))
             {
                 VelocityY = JumpInitialVelocity;
             }

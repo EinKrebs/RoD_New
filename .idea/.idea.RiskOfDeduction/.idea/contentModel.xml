@@ -28,6 +28,7 @@
           <e p="Scene.cs" t="Include" />
           <e p="Shot.cs" t="Include" />
           <e p="ShotSender.cs" t="Include" />
+          <e p="Static.cs" t="Include" />
           <e p="Tank.cs" t="Include" />
           <e p="Turret.cs" t="Include" />
         </e>
