@@ -14,15 +14,15 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; }
         public float G { get; } = 10f;
         public double Angle { get; }
-        public ShotSender sender { get;  }
+        public ShotSender Sender { get;  }
 
         private float Speed { get; } = 20f;
         private Game Game { get; }
 
         public bool DiesInColliding(IGameObject other)
         {
-            if (sender == ShotSender.Player && other is Player
-                || (sender == ShotSender.Tank || sender == ShotSender.Turret) && (other is Turret || other is Tank))
+            if (Sender == ShotSender.Player && other is Player
+                || (Sender == ShotSender.Tank || Sender == ShotSender.Turret) && (other is Turret || other is Tank))
             {
                 return false;
             }
@@ -41,7 +41,7 @@ namespace RiskOfDeduction.Domain
             Height = size;
             Game = game;
             Game.CurrentLevel.CurrentScene.AddShot(this);
-            this.sender = sender;
+            this.Sender = sender;
         }
 
         public void Update()

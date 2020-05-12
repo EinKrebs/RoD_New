@@ -28,7 +28,7 @@ namespace RiskOfDeduction.Drawing
                                 j * Ground.BlockSize,
                                 Ground.BlockSize,
                                 Ground.BlockSize),
-                            i > 0 && Ground.Objects[i - 1, j] == StaticObject.Nothing 
+                            j > 0 && Ground.Objects[i, j - 1] == StaticObject.Nothing 
                         ));
                     }
                 }

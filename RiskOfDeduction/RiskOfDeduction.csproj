@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Crosshair.png" />
+    <Content Include="Resources\Grass.png" />
     <Content Include="Resources\Player\AniTest1.png" />
     <Content Include="Resources\Player\AniTest2.png" />
     <Content Include="Resources\Player\AniTest3.png" />
@@ -178,6 +179,7 @@
     <Content Include="Resources\Tank\TankLFiring.png" />
     <Content Include="Resources\Tank\TankR.png" />
     <Content Include="Resources\Tank\TankRFiring.png" />
+    <Content Include="Resources\Tree.png" />
     <Content Include="Resources\Turret\TurretL.png" />
     <Content Include="Resources\Turret\TurretLFiring.png" />
     <Content Include="Resources\Turret\TurretR.png" />

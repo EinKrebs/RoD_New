@@ -23,7 +23,7 @@ namespace RiskOfDeduction.Domain
         {
             if (other is Shot shot)
             {
-                if (shot.sender == ShotSender.Player)
+                if (shot.Sender == ShotSender.Player)
                 {
                     Hp--;
                 }

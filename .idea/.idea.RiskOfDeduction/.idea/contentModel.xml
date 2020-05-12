@@ -65,6 +65,7 @@
         </e>
         <e p="Resources" t="Include">
           <e p="Crosshair.png" t="Include" />
+          <e p="Grass.png" t="Include" />
           <e p="Ground.png" t="Include" />
           <e p="Jump.wav" t="Include" />
           <e p="Player" t="Include">
@@ -85,6 +86,7 @@
             <e p="TankR.png" t="Include" />
             <e p="TankRFiring.png" t="Include" />
           </e>
+          <e p="Tree.png" t="Include" />
           <e p="Turret" t="Include">
             <e p="TurretL.png" t="Include" />
             <e p="TurretLFiring.png" t="Include" />

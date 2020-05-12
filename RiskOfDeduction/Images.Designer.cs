@@ -73,6 +73,16 @@ namespace RiskOfDeduction {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Grass {
+            get {
+                object obj = ResourceManager.GetObject("Grass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ground {
             get {
                 object obj = ResourceManager.GetObject("Ground", resourceCulture);
@@ -216,6 +226,16 @@ namespace RiskOfDeduction {
         internal static System.Drawing.Bitmap TankRightFiring {
             get {
                 object obj = ResourceManager.GetObject("TankRightFiring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tree {
+            get {
+                object obj = ResourceManager.GetObject("Tree", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

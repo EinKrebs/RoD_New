@@ -33,7 +33,7 @@ namespace RiskOfDeduction.Domain
         {
             if (other is Shot shot)
             {
-                if (shot.sender == ShotSender.Player)
+                if (shot.Sender == ShotSender.Player)
                 {
                     Hp--;
                 }
@@ -66,25 +66,29 @@ namespace RiskOfDeduction.Domain
             Tick = Math.Max(Tick - 1, 0);
             var oldX = X;
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
-            var checkRectangle = new RectangleF(
-                X + (Direction == Direction.Left ? -Width / 2 : Width),
-                Y + 0.2f,
-                Width,
-                Height);
-            if (!Game.Objects.Any(gameObject => checkRectangle.IntersectsWith(gameObject.GetRect())))
+            X += (Direction == Direction.Left ? -Width : Width);
+            Y += 0.1f;
+            if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
             {
                 X = oldX;
+                Y -= 0.1f;
                 Direction = 1 - Direction;
             }
-
-            checkRectangle = new RectangleF(X, Y + 0.1f, Width, Height);
-            if (!Game.Objects.Any(gameObject => checkRectangle.IntersectsWith(gameObject.GetRect())))
+            else
+            {
+                X -= (Direction == Direction.Left ? -Width : Width);
+                Y -= 0.1f;
+            }
+            
+            Y += 0.1f;
+            if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
             {
                 Y += VelocityY;
                 VelocityY += G;
             }
             else
             {
+                Y -= 0.1f;
                 VelocityY = 0;
             }
         }

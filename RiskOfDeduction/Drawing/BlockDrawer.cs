@@ -23,7 +23,7 @@ namespace RiskOfDeduction.Drawing
             Position = position;
             if (grass)
             {
-                Image = Images.Ground;
+                Image = Images.Grass;
             }
             else
             {

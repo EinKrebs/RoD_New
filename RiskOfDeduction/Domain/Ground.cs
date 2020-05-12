@@ -35,6 +35,10 @@ namespace RiskOfDeduction.Domain
 
         public Ground(string[] map, int blockSize)
         {
+            X = 0;
+            Y = 0;
+            Width = map[0].Length * blockSize;
+            Height = map.Length * blockSize;
             groundBlocks = new HashSet<Block>();
             BlockSize = blockSize;
             Objects = new StaticObject[map[0].Length, map.Length];

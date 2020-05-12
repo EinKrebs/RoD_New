@@ -35,7 +35,7 @@ namespace RiskOfDeduction.Domain
 
         public bool DiesInColliding(IGameObject other)
         {
-            if (!(other is Shot)) return false;
+            if (!(other is Shot) || (other as Shot).Sender == ShotSender.Player) return false;
             if (Hp == 0) return true;
             Hp--;
             return false;

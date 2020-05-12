@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RiskOfDeduction.Domain
@@ -43,9 +44,17 @@ namespace RiskOfDeduction.Domain
 
         public void Update()
         {
+            var currentObjects = Objects.ToList();
+            var levelUpdate = (Action) CurrentLevel.Update;
+            var levelUpdateResult = levelUpdate.BeginInvoke(null, null);
+            var collisions = (Func<List<IGameObject>, List<IGameObject>>) 
+                (objects => objects
+                    .Where(gameObject => !IsValid(gameObject, objects))
+                    .ToList());
+            var collisionsResult = collisions.BeginInvoke(currentObjects, null, null);
             Player.Update();
-            CurrentLevel.Update();
-            Objects.Where(gameObject => !IsValid(gameObject)).ToList().ForEach(Remove);
+            levelUpdate.EndInvoke(levelUpdateResult);
+            collisions.EndInvoke(collisionsResult).ForEach(Remove);
         }
 
         public void Remove(IGameObject gameObject)
@@ -58,9 +67,9 @@ namespace RiskOfDeduction.Domain
             Running = success;
         }
 
-        private bool IsValid(IGameObject gameObject)
+        private bool IsValid(IGameObject gameObject, List<IGameObject> objects)
         {
-            if (Objects.Any(otherObject => !otherObject.Equals(gameObject)
+            if (objects.Any(otherObject => !otherObject.Equals(gameObject)
                                            && AreColliding(gameObject, otherObject)
                                            && gameObject.DiesInColliding(otherObject)))
             {
