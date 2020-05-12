@@ -127,14 +127,14 @@
   <data name="Tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Tree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Hero" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\Hero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HeroRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Player\CapsuleRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sky" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\sky.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="HeroLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\HeroLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Resources\Player\CapsuleLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RightStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Player\AniTest1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

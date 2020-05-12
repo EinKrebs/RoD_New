@@ -12,7 +12,7 @@ namespace RiskOfDeduction.Drawing
         public int DrawingPriority { get; } = 0;
 
         private Player Player { get; }
-        private int Count { get; } = 2;
+        private int Count { get; } = 1;
         private int FrameTime { get; } = 5;
         private bool Moving { get; set; }
         private int CurrentFrame { get; set; }
@@ -26,11 +26,11 @@ namespace RiskOfDeduction.Drawing
         public HeroDrawer(Player player)
         {
             Player = player;
-            RightSprite = Images.Hero;
+            RightSprite = Images.HeroRight;
             LeftSprite = Images.HeroLeft;
             PlayerOldX = Player.X;
-            MovingFrames = new Image[,] {{Images.RightWalk1, Images.RightWalk2}, {Images.LeftWalk1, Images.LeftWalk2}};
-            StandingFrames = new Image[]{Images.RightStand, Images.LeftStand};
+            MovingFrames = new Image[,] {{Images.HeroRight}, {Images.HeroLeft}};
+            StandingFrames = new Image[]{Images.HeroRight, Images.HeroLeft};
             Update();
         }
 

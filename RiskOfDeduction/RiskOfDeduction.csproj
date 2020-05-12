@@ -173,6 +173,10 @@
     <Content Include="Resources\Player\AniTestL1.png" />
     <Content Include="Resources\Player\AniTestL2.png" />
     <Content Include="Resources\Player\AniTestL3.png" />
+    <Content Include="Resources\Player\CapsuleLeft.png" />
+    <Content Include="Resources\Player\CapsuleLeftFiring.png" />
+    <Content Include="Resources\Player\CapsuleRight.png" />
+    <Content Include="Resources\Player\CapsuleRightFiring.png" />
     <Content Include="Resources\Player\HeroLeft.png" />
     <None Include="Resources\shot.png" />
     <Content Include="Resources\Tank\TankL.png" />
