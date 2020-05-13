@@ -19,6 +19,7 @@ namespace RiskOfDeduction.Domain
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
+        private int Timer { get; set; } = 0; 
 
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
@@ -116,6 +117,8 @@ namespace RiskOfDeduction.Domain
 
         public void Shoot()
         {
+            if (Timer > 0) return;
+            Timer = 5;
             var initX = Direction == Direction.Left ? X : X + Width;
             var initY = Y + Height / 2 - 10;
             var angle = Math.Atan2(
@@ -130,6 +133,7 @@ namespace RiskOfDeduction.Domain
 
         public void Update()
         {
+            Timer = Math.Max(Timer - 1, 0);
             var oldY = Y;
             Y += VelocityY * OneTick;
             var newY = Y;
