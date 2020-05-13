@@ -4,8 +4,8 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class HeroDrawer : IDrawable
-    {
+    public class HeroDrawer
+         {
         public Image Image { get; private set; }
         public RectangleF Position { get; private set; }
         public double Angle { get; } = 0;
@@ -31,10 +31,10 @@ namespace RiskOfDeduction.Drawing
             PlayerOldX = Player.X;
             MovingFrames = new Image[,] {{Images.HeroRight}, {Images.HeroLeft}};
             StandingFrames = new Image[]{Images.HeroRight, Images.HeroLeft};
-            Update();
+            GetDrawable();
         }
 
-        public void Update()
+        public Drawable GetDrawable()
         {
             if (Player.X - PlayerOldX > 0)
             {
@@ -72,6 +72,7 @@ namespace RiskOfDeduction.Drawing
                 ? (Moving ? MovingFrames[1, CurrentFrame / FrameTime] : StandingFrames[1]) 
                 : (Moving ? MovingFrames[0, CurrentFrame / FrameTime] : StandingFrames[0]);
             Position = new RectangleF(Player.X, Player.Y, Player.Width, Player.Height);
+            return new Drawable(Image, Position, DrawingPriority);
         }
     }
 }

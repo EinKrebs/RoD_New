@@ -1,29 +1,28 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class TurretDrawer : IDrawable
+    public class TurretDrawer
     {
-        public Image Image { get; private set; }
-        public RectangleF Position { get; private set; }
-        public double Angle { get; } = 0;
-        public int DrawingPriority { get; } = 10;
-        private Turret Turret { get; }
+        private static Image Left { get; } = Images.TurretLeft;
+        private static Image Right { get; } = Images.TurretRight; 
+        private static Image LeftFiring { get; } = Images.TurretLeftFiring; 
+        private static Image RightFiring { get; } = Images.TurretRightFiring;
 
-        public TurretDrawer(Turret turret)
+        public Drawable GetDrawable(Turret turret)
         {
-            Turret = turret;
-            Position = new RectangleF(Turret.X, Turret.Y, Turret.Width, Turret.Height);
-            Update();
-        }
-        
-        public void Update()
-        {
-            Image = Turret.Direction == Direction.Left 
-                ? Turret.Firing ? Images.TurretLeftFiring : Images.TurretLeft
-                : Turret.Firing ? Images.TurretRightFiring : Images.TurretRight;
-            Position = new RectangleF(Turret.X, Turret.Y, Turret.Width, Turret.Height);
+            var position = turret.GetRect();
+            var image = turret.Firing
+                ? turret.Direction == Direction.Left
+                    ? LeftFiring
+                    : RightFiring
+                : turret.Direction == Direction.Left
+                    ? Left
+                    : Right;
+            return new Drawable(image, position, 10);
         }
     }
 }

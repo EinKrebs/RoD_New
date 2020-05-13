@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using RiskOfDeduction.Domain;
 
@@ -10,6 +11,9 @@ namespace RiskOfDeduction.Drawing
         private Scene Scene { get; }
         
         private GroundDrawer LandscapeDrawer { get; }
+        private TankDrawer TankDrawer { get; } = new TankDrawer();
+        private TurretDrawer TurretDrawer { get; } = new TurretDrawer();
+        private ShotDrawer ShotDrawer { get; } = new ShotDrawer();
 
         public SceneDrawer(Scene scene)
         {
@@ -17,7 +21,7 @@ namespace RiskOfDeduction.Drawing
             LandscapeDrawer = new GroundDrawer(scene.LandScape);
         }
 
-        public IEnumerable<IDrawable> GetDrawables()
+        public IEnumerable<Drawable> GetDrawables()
         {
             return LandscapeDrawer
                 .GetDrawables()
@@ -28,11 +32,11 @@ namespace RiskOfDeduction.Drawing
                         switch (active.GetType().Name)
                         {
                             case "Shot":
-                                return (IDrawable) new ShotDrawer(active as Shot);
+                                return ShotDrawer.GetDrawable(active as Shot);
                             case "Turret":
-                                return (IDrawable) new TurretDrawer(active as Turret);
+                                return TurretDrawer.GetDrawable(active as Turret);
                             case "Tank":
-                                return (IDrawable) new TankDrawer(active as Tank); 
+                                return TankDrawer.GetDrawable(active as Tank); 
                             default:
                                 throw new ArgumentException("Unknown type");
                         }

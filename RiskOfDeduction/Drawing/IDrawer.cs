@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace RiskOfDeduction.Drawing
 {
     public interface IDrawer
     {
-        IEnumerable<IDrawable> GetDrawables();
+        IEnumerable<Drawable> GetDrawables();
     }
 }

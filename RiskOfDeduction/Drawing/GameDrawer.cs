@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,20 +22,12 @@ namespace RiskOfDeduction.Drawing
             LevelDrawers = game.Levels.Select(level => new LevelDrawer(level)).ToList();
         }
 
-        public IEnumerable<IDrawable> GetDrawables()
+        public IEnumerable<Drawable> GetDrawables()
         {
             return LevelDrawers[Game.CurrentLevelIndex]
                 .GetDrawables()
-                .Append(HeroDrawer)
-                .Append(CrosshairDrawer);
-        }
-        
-        public void UpdateDrawables()
-        {
-            foreach (var drawable in GetDrawables())
-            {
-                drawable.Update();
-            }
+                .Append(HeroDrawer.GetDrawable())
+                .Append(CrosshairDrawer.GetDrawable());
         }
     }
 }

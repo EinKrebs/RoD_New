@@ -46,7 +46,6 @@ namespace RiskOfDeduction
         private void OnTimerTick(object sender, EventArgs e)
         {
             Game.Update();
-            Drawer.UpdateDrawables();
             if (ToRight)
             {
                 Game.Player.MoveTo(Direction.Right);

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using RiskOfDeduction.Domain;
 
@@ -15,7 +17,7 @@ namespace RiskOfDeduction.Drawing
             Scenes = level.Scenes.Select(scene => new SceneDrawer(scene)).ToList();
         }
         
-        public IEnumerable<IDrawable> GetDrawables()
+        public IEnumerable<Drawable> GetDrawables()
         {
             return Scenes[Level.CurrentSceneIndex].GetDrawables();
         }

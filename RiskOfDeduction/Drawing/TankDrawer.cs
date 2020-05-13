@@ -1,26 +1,27 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class TankDrawer : IDrawable
+    public class TankDrawer
     {
-        public Image Image { get; private set; }
-        public RectangleF Position { get; private set; }
-        public double Angle { get; } = 0;
-        public int DrawingPriority { get; } = 10;
-        private Tank Tank { get; }
-
-        public TankDrawer(Tank tank)
-        {
-            Tank = tank;
-            Update();
-        }
+        private static Image Left { get; } = Images.TankLeft;
+        private static Image Right { get; } = Images.TankRight;
+        private static Image LeftFiring { get; } = Images.TankLeftFiring;
+        private static Image RightFiring { get; } = Images.TankRightFiring;
         
-        public void Update()
+        public Drawable GetDrawable(Tank tank)
         {
-            Position = new RectangleF(Tank.X, Tank.Y, Tank.Width, Tank.Height);
-            Image = Tank.Direction == Direction.Left ? Images.TankLeft : Images.TankRight;
+            var position = tank.GetRect();
+            var image = tank.Firing
+                ? tank.Direction == Direction.Left 
+                    ? LeftFiring 
+                    : RightFiring
+                : tank.Direction == Direction.Left
+                    ? Left
+                    : Right;
+            return new Drawable(image, position, 9);
         }
     }
 }

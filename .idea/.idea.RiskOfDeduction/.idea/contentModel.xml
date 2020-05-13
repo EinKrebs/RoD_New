@@ -35,6 +35,7 @@
         <e p="Drawing" t="Include">
           <e p="BlockDrawer.cs" t="Include" />
           <e p="CrosshairDrawer.cs" t="Include" />
+          <e p="Drawable.cs" t="Include" />
           <e p="GameDrawer.cs" t="Include" />
           <e p="GroundDrawer.cs" t="Include" />
           <e p="HeroDrawer.cs" t="Include" />

@@ -1,15 +1,11 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
     public interface IDrawable
     {
-        Image Image { get; }
-        RectangleF Position { get; }
-        double Angle { get; }
-        int DrawingPriority { get; }
-        
-
-        void Update();
+        Tuple<Image, RectangleF> GetImageAndPosition(IGameObject obj);
     }
 }

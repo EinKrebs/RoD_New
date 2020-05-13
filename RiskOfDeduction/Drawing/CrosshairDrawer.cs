@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class CrosshairDrawer : IDrawable
+    public class CrosshairDrawer
     {
         public Image Image { get; }
         public RectangleF Position { get; private set; }
@@ -16,11 +17,12 @@ namespace RiskOfDeduction.Drawing
         {
             Crosshair = crosshair;
             Image = Images.Crosshair;
-            Update();
+            GetDrawable();
         }
-        public void Update()
+        public Drawable GetDrawable()
         {
             Position = new RectangleF(Crosshair.X, Crosshair.Y, Crosshair.Width, Crosshair.Height);
+            return new Drawable(Image, Position, DrawingPriority);
         }
     }
 }

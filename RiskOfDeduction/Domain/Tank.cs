@@ -15,6 +15,7 @@ namespace RiskOfDeduction.Domain
         public float G { get; } = 10;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
+        public bool Firing { get; private set; } = false;
 
         private int Tick = 40;
         private int ShotSize { get; } = 18;
@@ -48,10 +49,12 @@ namespace RiskOfDeduction.Domain
             var y = Y + 20;
             var angle = Direction == Direction.Left ? Math.PI : 0;
             var shot = new Shot(x, y, angle, ShotSize, Game, ShotSender.Tank);
+            Firing = true;
         }
 
         public void Update()
         {
+            Firing = false;
             var directionToPlayer = Game.Player.X + Game.Player.Width / 2 - (X + Width / 2) < 0 
                 ? Direction.Left 
                 : Direction.Right;
