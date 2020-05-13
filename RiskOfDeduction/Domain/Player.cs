@@ -132,15 +132,38 @@ namespace RiskOfDeduction.Domain
         {
             var oldY = Y;
             Y += VelocityY * OneTick;
-            if (Game.Objects.Any(gameObject => gameObject != this 
-                                               && !(gameObject is Shot) 
-                                               && Game.AreColliding(this, gameObject)) 
-                || Y + Height > Game.Height
-                || Y < 0)
+            var newY = Y;
+            if (Y < 0)
             {
-                Y = oldY;
-                VelocityY = 0;
+                Y = 0;
             }
+
+            if (Y > Game.Height - Height)
+            {
+                Y = Game.Height - Height;
+            }
+            
+            var left = oldY;
+            var right = Y;
+            
+            for (var i = 0; i < 10; i++)
+            {
+                var mid = (left + right) / 2;
+                Y = mid;
+                if (Game.Objects.Any(gameObject => gameObject != this
+                                                   && !(gameObject is Shot)
+                                                   && Game.AreColliding(this, gameObject)))
+                {
+                    right = mid;
+                }
+                else
+                {
+                    left = mid;
+                }
+            }
+
+            Y = (float) Math.Round(right);
+            VelocityY = Math.Abs(newY - Y) < 1 ? VelocityY : 0;
             VelocityY += G * OneTick;
         }
     }

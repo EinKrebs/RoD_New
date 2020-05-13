@@ -46,7 +46,7 @@ namespace RiskOfDeduction
             this.KeyUp += this.Game_KeyUp;
             this.MouseClick += this.Game_MouseClick;
             this.MouseMove += this.Game_MouseMove;
-            this.MouseEnter += (sender, args) => Cursor.Show();
+            this.MouseEnter += (sender, args) => Cursor.Hide();
             this.MouseLeave += this.Game_MouseLeave;
             Cursor.Clip = new Rectangle(this.Location, this.Size);
         }

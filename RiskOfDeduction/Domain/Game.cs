@@ -45,15 +45,13 @@ namespace RiskOfDeduction.Domain
         public void Update()
         {
             var currentObjects = Objects.ToList();
-            var levelUpdate = (Action) CurrentLevel.Update;
-            var levelUpdateResult = levelUpdate.BeginInvoke(null, null);
             var collisions = (Func<List<IGameObject>, List<IGameObject>>) 
                 (objects => objects
                     .Where(gameObject => !IsValid(gameObject, objects))
                     .ToList());
             var collisionsResult = collisions.BeginInvoke(currentObjects, null, null);
             Player.Update();
-            levelUpdate.EndInvoke(levelUpdateResult);
+            CurrentLevel.Update();
             collisions.EndInvoke(collisionsResult).ForEach(Remove);
         }
 
