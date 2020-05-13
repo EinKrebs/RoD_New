@@ -156,7 +156,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Player\Hero.png" />
     <None Include="Resources\sky.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -168,17 +167,10 @@
   <ItemGroup>
     <Content Include="Resources\Crosshair.png" />
     <Content Include="Resources\Grass.png" />
-    <Content Include="Resources\Player\AniTest1.png" />
-    <Content Include="Resources\Player\AniTest2.png" />
-    <Content Include="Resources\Player\AniTest3.png" />
-    <Content Include="Resources\Player\AniTestL1.png" />
-    <Content Include="Resources\Player\AniTestL2.png" />
-    <Content Include="Resources\Player\AniTestL3.png" />
     <Content Include="Resources\Player\CapsuleLeft.png" />
     <Content Include="Resources\Player\CapsuleLeftFiring.png" />
     <Content Include="Resources\Player\CapsuleRight.png" />
     <Content Include="Resources\Player\CapsuleRightFiring.png" />
-    <Content Include="Resources\Player\HeroLeft.png" />
     <None Include="Resources\shot.png" />
     <Content Include="Resources\Tank\TankL.png" />
     <Content Include="Resources\Tank\TankLFiring.png" />

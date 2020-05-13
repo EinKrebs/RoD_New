@@ -70,18 +70,10 @@
           <e p="Ground.png" t="Include" />
           <e p="Jump.wav" t="Include" />
           <e p="Player" t="Include">
-            <e p="AniTest1.png" t="Include" />
-            <e p="AniTest2.png" t="Include" />
-            <e p="AniTest3.png" t="Include" />
-            <e p="AniTestL1.png" t="Include" />
-            <e p="AniTestL2.png" t="Include" />
-            <e p="AniTestL3.png" t="Include" />
             <e p="CapsuleLeft.png" t="Include" />
             <e p="CapsuleLeftFiring.png" t="Include" />
             <e p="CapsuleRight.png" t="Include" />
             <e p="CapsuleRightFiring.png" t="Include" />
-            <e p="Hero.png" t="Include" />
-            <e p="HeroLeft.png" t="Include" />
           </e>
           <e p="Shot.png" t="Include" />
           <e p="sky.jpg" t="Include" />

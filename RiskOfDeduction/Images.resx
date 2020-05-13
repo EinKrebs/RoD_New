@@ -136,24 +136,6 @@
   <data name="HeroLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Player\CapsuleLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RightStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTest1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RightWalk1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTest2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RightWalk2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTest3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LeftStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTestL1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LeftWalk1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTestL2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LeftWalk2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Player\AniTestL3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Shot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Shot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
