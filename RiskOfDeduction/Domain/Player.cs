@@ -97,13 +97,13 @@ namespace RiskOfDeduction.Domain
                 Direction = Direction.Left;
             }
 
-            if (X > Game.Width)
+            if (X + Width > Game.Width - 1)
             {
-                X = Game.CurrentLevel.NextScene() ? X = 0 : oldX;
+                X = Game.CurrentLevel.NextScene() ? 0 : oldX;
             }
-            else if (X + Width < 0)
+            else if (X < 1)
             {
-                X = Game.CurrentLevel.PreviousScene() ? Game.Width : X = oldX;
+                X = Game.CurrentLevel.PreviousScene() ? Game.Width - Width : oldX;
             }
         }
 

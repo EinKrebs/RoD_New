@@ -58,10 +58,10 @@ namespace RiskOfDeduction.Domain
 
         public bool IntersectsWith(RectangleF obj)
         {
-            var left = (int) ((obj.Left + 0.05f) / BlockSize);
-            var right = (int) ((obj.Right - 0.05f) / BlockSize);
-            var top = (int) ((obj.Top + 0.05) / BlockSize);
-            var bottom = (int) ((obj.Bottom - 0.05) / BlockSize);
+            var left = Math.Max((int) ((obj.Left + 0.05f) / BlockSize), 0);
+            var right = Math.Min((int) ((obj.Right - 0.05f) / BlockSize), Objects.GetLength(0) - 1);
+            var top = Math.Max((int) ((obj.Top + 0.05) / BlockSize), 0);
+            var bottom = Math.Min((int) ((obj.Bottom - 0.05) / BlockSize), Objects.GetLength(1) - 1);
             for (var i = left; i <= right; i++)
             {
                 for (var j = top; j <= bottom; j++)

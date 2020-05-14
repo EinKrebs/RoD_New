@@ -44,15 +44,21 @@ namespace RiskOfDeduction.Domain
 
         public void Update()
         {
-            var currentObjects = Objects.ToList();
-            var collisions = (Func<List<IGameObject>, List<IGameObject>>) 
-                (objects => objects
-                    .Where(gameObject => !IsValid(gameObject, objects))
-                    .ToList());
-            var collisionsResult = collisions.BeginInvoke(currentObjects, null, null);
             Player.Update();
             CurrentLevel.Update();
-            collisions.EndInvoke(collisionsResult).ForEach(Remove);
+            var currentObjects = Objects.ToList();
+            // var collisions = (Func<List<IGameObject>, List<IGameObject>>) 
+            //     (objects => objects
+            //         .Where(gameObject => !IsValid(gameObject, objects))
+            //         .ToList());
+            // var collisionsResult = collisions.BeginInvoke(currentObjects, null, null);
+            // // Player.Update();
+            // collisions.EndInvoke(collisionsResult).ForEach(Remove);
+            currentObjects
+                .Where(gameObject => !IsValid(gameObject, currentObjects))
+                .ToList()
+                .ForEach(Remove);
+            
         }
 
         public void Remove(IGameObject gameObject)
@@ -67,6 +73,13 @@ namespace RiskOfDeduction.Domain
 
         private bool IsValid(IGameObject gameObject, List<IGameObject> objects)
         {
+            if (!(-0.05 <= gameObject.X
+                  && gameObject.X + gameObject.Width < Width + 0.05
+                  && -0.05 <= gameObject.Y
+                  && gameObject.Y + gameObject.Height < Height + 0.05))
+            {
+                return false;
+            }
             if (objects.Any(otherObject => !otherObject.Equals(gameObject)
                                            && AreColliding(gameObject, otherObject)
                                            && gameObject.DiesInColliding(otherObject)))
@@ -74,10 +87,7 @@ namespace RiskOfDeduction.Domain
                 return false;
             }
 
-            return 0 <= gameObject.X
-                   && gameObject.X + gameObject.Width < Width
-                   && 0 <= gameObject.Y
-                   && gameObject.Y + gameObject.Height < Height;
+            return true;
         }
     }
 }
