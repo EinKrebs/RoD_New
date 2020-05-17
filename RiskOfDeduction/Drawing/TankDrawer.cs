@@ -9,7 +9,8 @@ namespace RiskOfDeduction.Drawing
         public int DrawingPriority { get; }
         
         private Tank Tank { get; }
-        private static Image TankImage { get; }
+        private static Image TankImage { get; } = Images.TankRight;
+        private static Image FiringImage { get; } = Images.TankRightFiring;
 
         public TankDrawer(Tank tank)
         {
@@ -18,7 +19,10 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
-            throw new NotImplementedException();
+            if (Tank.Firing)
+            {
+                g.DrawImage(FiringImage, new RectangleF());
+            }
         }
     }
 }

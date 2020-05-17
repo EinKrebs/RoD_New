@@ -9,7 +9,8 @@ namespace RiskOfDeduction.Drawing
     {
         public int DrawingPriority { get; }
 
-        private static Image TurretImage { get; } = Images.TurretLeft;
+        private static Image TurretImage { get; } = Images.TurretRight;
+        private static Image FiringImage { get; } = Images.TurretRightFiring;
         private Turret Turret { get; }
 
         public TurretDrawer(Turret turret)
@@ -19,7 +20,22 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
-            throw new NotImplementedException();
+            DrawFrameConsideringDirection(g, Turret.Firing ? FiringImage : TurretImage);
+        }
+
+        private void DrawFrameConsideringDirection(Graphics g, Image image)
+        {
+            if (Turret.Direction == Direction.Left)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            }
+
+            g.DrawImage(image, new RectangleF(Turret.X, Turret.Y, Turret.Width, Turret.Height));
+
+            if (Turret.Direction == Direction.Left)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            }
         }
     }
 }
