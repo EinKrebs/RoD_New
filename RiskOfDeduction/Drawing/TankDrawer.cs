@@ -19,9 +19,21 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
-            if (Tank.Firing)
+            DrawFrameConsideringDirection(g, Tank.Firing ? FiringImage : TankImage);
+        }
+
+        private void DrawFrameConsideringDirection(Graphics g, Image image)
+        {
+            if (Tank.Direction == Direction.Left)
             {
-                g.DrawImage(FiringImage, new RectangleF());
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            }
+
+            g.DrawImage(image, new RectangleF(Tank.X, Tank.Y, Tank.Width, Tank.Height));
+
+            if (Tank.Direction == Direction.Left)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
             }
         }
     }
