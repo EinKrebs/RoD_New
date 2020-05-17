@@ -9,25 +9,18 @@ namespace RiskOfDeduction.Drawing
 {
     public class GameDrawer : IDrawer
     {
+        public int DrawingPriority { get; }
+
         private Game Game { get; set; }
-        private HeroDrawer HeroDrawer { get; }
-        private CrosshairDrawer CrosshairDrawer { get; }
-        private List<LevelDrawer> LevelDrawers { get; }
 
         public GameDrawer(Game game)
         {
             Game = game;
-            HeroDrawer = new HeroDrawer(game.Player);
-            CrosshairDrawer = new CrosshairDrawer(game.Crosshair);
-            LevelDrawers = game.Levels.Select(level => new LevelDrawer(level)).ToList();
         }
 
-        public IEnumerable<Drawable> GetDrawables()
+        public void DrawItem(Graphics g)
         {
-            return LevelDrawers[Game.CurrentLevelIndex]
-                .GetDrawables()
-                .Append(HeroDrawer.GetDrawable())
-                .Append(CrosshairDrawer.GetDrawable());
+            throw new NotImplementedException();
         }
     }
 }

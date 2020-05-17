@@ -8,18 +8,18 @@ namespace RiskOfDeduction.Drawing
 {
     public class LevelDrawer : IDrawer
     {
+        public int DrawingPriority { get; }
+
         private Level Level { get; }
-        private List<SceneDrawer> Scenes { get; }
 
         public LevelDrawer(Level level)
         {
             Level = level;
-            Scenes = level.Scenes.Select(scene => new SceneDrawer(scene)).ToList();
         }
-        
-        public IEnumerable<Drawable> GetDrawables()
+
+        public void DrawItem(Graphics g)
         {
-            return Scenes[Level.CurrentSceneIndex].GetDrawables();
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,13 +4,26 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class BlockDrawer
+    public class BlockDrawer : IDrawer
     {
-        private Image Image { get; } = Images.Ground;
+        public int DrawingPriority { get; } = 50;
 
-        public Drawable GetDrawable(Block block)
+        private static Image Image { get; set; } = Images.Ground;
+        private Block Block { get; }
+
+        public BlockDrawer(Block block)
+        { 
+            Block = block;
+        }
+
+        public void DrawItem(Graphics g)
         {
-            return new Drawable(Image, block.GetRect(), 100);
+            g.DrawImage(Image, new RectangleF(Block.X, Block.Y, Block.Width, Block.Height));
+        }
+
+        public static void SetBlockImage(Image image)
+        {
+            Image = image;
         }
     }
 }

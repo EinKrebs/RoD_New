@@ -5,24 +5,21 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class TurretDrawer
+    public class TurretDrawer : IDrawer
     {
-        private static Image Left { get; } = Images.TurretLeft;
-        private static Image Right { get; } = Images.TurretRight; 
-        private static Image LeftFiring { get; } = Images.TurretLeftFiring; 
-        private static Image RightFiring { get; } = Images.TurretRightFiring;
+        public int DrawingPriority { get; }
 
-        public Drawable GetDrawable(Turret turret)
+        private static Image TurretImage { get; } = Images.TurretLeft;
+        private Turret Turret { get; }
+
+        public TurretDrawer(Turret turret)
         {
-            var position = turret.GetRect();
-            var image = turret.Firing
-                ? turret.Direction == Direction.Left
-                    ? LeftFiring
-                    : RightFiring
-                : turret.Direction == Direction.Left
-                    ? Left
-                    : Right;
-            return new Drawable(image, position, 10);
+            Turret = turret;
+        }
+
+        public void DrawItem(Graphics g)
+        {
+            throw new NotImplementedException();
         }
     }
 }

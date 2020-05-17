@@ -4,75 +4,68 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class HeroDrawer
-         {
-        public Image Image { get; private set; }
-        public RectangleF Position { get; private set; }
-        public double Angle { get; } = 0;
+    public class HeroDrawer : IDrawer
+    {
         public int DrawingPriority { get; } = 0;
 
         private Player Player { get; }
-        private int Count { get; } = 1;
-        private int FrameTime { get; } = 5;
-        private bool Moving { get; set; }
-        private int CurrentFrame { get; set; }
-        private Direction Direction { get; set; }
-        private float PlayerOldX { get; set; }
-        private Image LeftSprite { get; }
-        private Image RightSprite { get; }
-        private Image[,] MovingFrames { get; }
-        private Image[] StandingFrames { get; }
+        private Image[] MovingFrames { get; } = {Images.HeroRight};
+        private Image[] StandingFrames { get; } = {Images.HeroRight};
+        private Image[] JumpingFrames { get; } = {Images.HeroRight};
+        private int CurrentStandingIndex { get; set; }
+        private int CurrentMovingIndex { get; set; }
+        private int CurrentJumpingIndex { get; set; }
 
         public HeroDrawer(Player player)
         {
             Player = player;
-            RightSprite = Images.HeroRight;
-            LeftSprite = Images.HeroLeft;
-            PlayerOldX = Player.X;
-            MovingFrames = new Image[,] {{Images.HeroRight}, {Images.HeroLeft}};
-            StandingFrames = new Image[]{Images.HeroRight, Images.HeroLeft};
-            GetDrawable();
         }
 
-        public Drawable GetDrawable()
+        public void DrawItem(Graphics g)
         {
-            if (Player.X - PlayerOldX > 0)
+            if (Player.InJump)
             {
-                if (Direction == Direction.Right)
-                {
-                    CurrentFrame = (CurrentFrame + 1) % (Count * FrameTime);
-                }
-                else
-                {
-                    CurrentFrame = 0;
-                    Direction = Direction.Right;
-                }
-                Moving = true;
+                CurrentStandingIndex = 0;
+                CurrentMovingIndex = 0;
+
+                DrawFrameConsideringDirection(g, JumpingFrames[CurrentJumpingIndex]);
+
+                CurrentJumpingIndex = (CurrentJumpingIndex + 1) % JumpingFrames.Length;
             }
-            else if (Player.X - PlayerOldX < 0)
+            else if (Player.IsMoving)
             {
-                if (Direction == Direction.Left)
-                {
-                    CurrentFrame = (CurrentFrame + 1) % (Count * FrameTime);
-                }
-                else
-                {
-                    CurrentFrame = 0;
-                    Direction = Direction.Left;
-                }
-                Moving = true;
+                CurrentJumpingIndex = 0;
+                CurrentStandingIndex = 0;
+
+                DrawFrameConsideringDirection(g, MovingFrames[CurrentMovingIndex]);
+
+                CurrentMovingIndex = (CurrentMovingIndex + 1) % MovingFrames.Length;
             }
             else
             {
-                Moving = false;
+                CurrentJumpingIndex = 0;
+                CurrentMovingIndex = 0;
+
+                DrawFrameConsideringDirection(g, StandingFrames[CurrentStandingIndex]);
+
+                CurrentStandingIndex = (CurrentStandingIndex + 1) % StandingFrames.Length;
+
+            }
+        }
+
+        private void DrawFrameConsideringDirection(Graphics g, Image image)
+        {
+            if (Player.Direction == Direction.Left)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
             }
 
-            PlayerOldX = Player.X;
-            Image = Direction == Direction.Left 
-                ? (Moving ? MovingFrames[1, CurrentFrame / FrameTime] : StandingFrames[1]) 
-                : (Moving ? MovingFrames[0, CurrentFrame / FrameTime] : StandingFrames[0]);
-            Position = new RectangleF(Player.X, Player.Y, Player.Width, Player.Height);
-            return new Drawable(Image, Position, DrawingPriority);
+            g.DrawImage(image, new RectangleF(Player.X, Player.Y, Player.Width, Player.Height));
+
+            if (Player.Direction == Direction.Left)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            }
         }
     }
 }

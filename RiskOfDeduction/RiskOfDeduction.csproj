@@ -92,11 +92,9 @@
     <Compile Include="Domain\Turret.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />
     <Compile Include="Drawing\CrosshairDrawer.cs" />
-    <Compile Include="Drawing\Drawable.cs" />
     <Compile Include="Drawing\GameDrawer.cs" />
     <Compile Include="Drawing\GroundDrawer.cs" />
     <Compile Include="Drawing\HeroDrawer.cs" />
-    <Compile Include="Drawing\IDrawable.cs" />
     <Compile Include="Drawing\IDrawer.cs" />
     <Compile Include="Drawing\LevelDrawer.cs" />
     <Compile Include="Drawing\SceneDrawer.cs" />

@@ -15,7 +15,7 @@ namespace RiskOfDeduction.Domain
         public float G { get; } = 10;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
-        public bool Firing { get; private set; } = false;
+        public bool Firing { get; private set; }
 
         private int Tick = 40;
         private int ShotSize { get; } = 18;

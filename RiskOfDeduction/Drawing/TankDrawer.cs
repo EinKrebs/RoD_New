@@ -4,24 +4,21 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class TankDrawer
+    public class TankDrawer : IDrawer
     {
-        private static Image Left { get; } = Images.TankLeft;
-        private static Image Right { get; } = Images.TankRight;
-        private static Image LeftFiring { get; } = Images.TankLeftFiring;
-        private static Image RightFiring { get; } = Images.TankRightFiring;
+        public int DrawingPriority { get; }
         
-        public Drawable GetDrawable(Tank tank)
+        private Tank Tank { get; }
+        private static Image TankImage { get; }
+
+        public TankDrawer(Tank tank)
         {
-            var position = tank.GetRect();
-            var image = tank.Firing
-                ? tank.Direction == Direction.Left 
-                    ? LeftFiring 
-                    : RightFiring
-                : tank.Direction == Direction.Left
-                    ? Left
-                    : Right;
-            return new Drawable(image, position, 9);
+            Tank = tank;
+        }
+
+        public void DrawItem(Graphics g)
+        {
+            throw new NotImplementedException();
         }
     }
 }

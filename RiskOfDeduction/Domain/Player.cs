@@ -19,8 +19,13 @@ namespace RiskOfDeduction.Domain
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
-        private int Timer { get; set; } = 0; 
+        public bool InJump =>
+            Game != null
+            && Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X + 0.05f, Y + 0.05f,
+                Width - 0.05f, Height));
+        public bool IsMoving { get; private set; }
 
+        private int Timer { get; set; } = 0;
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
         private float JumpInitialVelocity { get; } = -60;
@@ -91,10 +96,16 @@ namespace RiskOfDeduction.Domain
             if (X > oldX)
             {
                 Direction = Direction.Right;
+                IsMoving = true;
             }
             else if (X < oldX)
             {
                 Direction = Direction.Left;
+                IsMoving = true;
+            }
+            else
+            {
+                IsMoving = false;
             }
 
             if (X + Width > Game.Width - 1)

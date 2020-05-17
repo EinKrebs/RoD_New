@@ -6,6 +6,7 @@ namespace RiskOfDeduction.Drawing
 {
     public interface IDrawer
     {
-        IEnumerable<Drawable> GetDrawables();
+        int DrawingPriority { get; }
+        void DrawItem(Graphics g);
     }
 }

@@ -4,13 +4,21 @@ using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    public class ShotDrawer
+    public class ShotDrawer : IDrawer
     {
-        private static Image Image { get; } = Images.Shot;
+        public int DrawingPriority { get; } = 10;
 
-        public Drawable GetDrawable(Shot shot)
+        private static Image ShotImage { get; } = Images.Shot;
+        private Shot Shot { get; }
+
+        public ShotDrawer(Shot shot)
         {
-            return new Drawable(Image, shot.GetRect(), 1000);
+            Shot = shot;
+        }
+
+        public void DrawItem(Graphics g)
+        {
+            g.DrawImage(ShotImage, new RectangleF(Shot.X, Shot.Y, Shot.Width, Shot.Height));
         }
     }
 }
