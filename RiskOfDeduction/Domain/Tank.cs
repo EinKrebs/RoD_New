@@ -16,6 +16,7 @@ namespace RiskOfDeduction.Domain
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
         public bool Firing { get; private set; }
+        public bool Dead => Hp <= 0;
 
         private int Tick = 40;
         private int ShotSize { get; } = 18;

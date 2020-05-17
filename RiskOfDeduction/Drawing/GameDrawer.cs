@@ -11,7 +11,7 @@ namespace RiskOfDeduction.Drawing
     {
         public int DrawingPriority { get; }
 
-        private Game Game { get; set; }
+        private Game Game { get; }
 
         public GameDrawer(Game game)
         {

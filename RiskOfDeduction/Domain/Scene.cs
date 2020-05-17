@@ -5,10 +5,12 @@ namespace RiskOfDeduction.Domain
 {
     public class Scene : IModel
     {
+        public IEnumerable<IGameObject> Objects => Actives.Append((IGameObject)LandScape);
+        public IEnumerable<IActive> GetActives() => Actives;
         public Ground LandScape { get; }
+
         private HashSet<IActive> Actives { get; } = new HashSet<IActive>();
         private List<IActive> ToAdd { get; set; } = new List<IActive>();
-        public IEnumerable<IGameObject> Objects => Actives.Append((IGameObject)LandScape);
         private Game Game { get; }
 
         public Scene()
@@ -84,7 +86,7 @@ namespace RiskOfDeduction.Domain
                 Actives.Add(active);
             }
             
-            ToAdd = new List<IActive>();
+            ToAdd.Clear();
         }
 
         public void Remove(IGameObject gameObject)
@@ -103,7 +105,5 @@ namespace RiskOfDeduction.Domain
         {
             ToAdd.Add(shot);
         }
-
-        public IEnumerable<IActive> GetActives() => Actives;
     }
 }

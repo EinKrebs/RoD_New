@@ -14,6 +14,7 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; } = 0;
         public float G { get; } = 10;
         public int Hp { get; private set; } = 4;
+        public bool Dead => Hp <= 0;
 
         private int Timer { get; set; }
         private Game Game { get; }

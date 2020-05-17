@@ -11,15 +11,17 @@ namespace RiskOfDeduction.Drawing
         public int DrawingPriority { get; }
 
         private Level Level { get; }
+        private List<SceneDrawer> SceneDrawers { get; }
 
         public LevelDrawer(Level level)
         {
             Level = level;
+            SceneDrawers = level.Scenes.Select(scene => new SceneDrawer(scene)).ToList();
         }
 
         public void DrawItem(Graphics g)
         {
-            throw new NotImplementedException();
+            SceneDrawers[Level.CurrentSceneIndex].DrawItem(g);
         }
     }
 }
