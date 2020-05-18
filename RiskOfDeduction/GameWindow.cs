@@ -55,7 +55,7 @@ namespace RiskOfDeduction
             {
                 Game.Player.MoveTo(Direction.Left);
             }
-            Refresh();
+            Invalidate();
         }
 
         private void DrawGame(object sender, PaintEventArgs e)
