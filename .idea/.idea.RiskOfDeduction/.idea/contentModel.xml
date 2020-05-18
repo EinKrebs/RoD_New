@@ -14,32 +14,36 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain" t="Include">
-          <e p="Block.cs" t="Include" />
-          <e p="Crosshair.cs" t="Include" />
           <e p="Direction.cs" t="Include" />
-          <e p="Game.cs" t="Include" />
-          <e p="Ground.cs" t="Include" />
-          <e p="IActive.cs" t="Include" />
-          <e p="IGameObject.cs" t="Include" />
           <e p="IModel.cs" t="Include" />
           <e p="IMovable.cs" t="Include" />
-          <e p="Level.cs" t="Include" />
+          <e p="Mobs" t="Include">
+            <e p="IActive.cs" t="Include" />
+            <e p="Tank.cs" t="Include" />
+            <e p="Turret.cs" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="Game.cs" t="Include" />
+            <e p="IGameObject.cs" t="Include" />
+            <e p="Level.cs" t="Include" />
+            <e p="Scene.cs" t="Include" />
+            <e p="ShotSender.cs" t="Include" />
+          </e>
           <e p="Player.cs" t="Include" />
-          <e p="Scene.cs" t="Include" />
           <e p="Shot.cs" t="Include" />
-          <e p="ShotSender.cs" t="Include" />
-          <e p="Static.cs" t="Include" />
-          <e p="Tank.cs" t="Include" />
-          <e p="Turret.cs" t="Include" />
+          <e p="Statics" t="Include">
+            <e p="Block.cs" t="Include" />
+            <e p="Crosshair.cs" t="Include" />
+            <e p="Ground.cs" t="Include" />
+            <e p="Static.cs" t="Include" />
+          </e>
         </e>
         <e p="Drawing" t="Include">
           <e p="BlockDrawer.cs" t="Include" />
           <e p="CrosshairDrawer.cs" t="Include" />
-          <e p="Drawable.cs" t="Include" />
           <e p="GameDrawer.cs" t="Include" />
           <e p="GroundDrawer.cs" t="Include" />
           <e p="HeroDrawer.cs" t="Include" />
-          <e p="IDrawable.cs" t="Include" />
           <e p="IDrawer.cs" t="Include" />
           <e p="LevelDrawer.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
