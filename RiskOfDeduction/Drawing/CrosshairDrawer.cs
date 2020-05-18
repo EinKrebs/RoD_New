@@ -7,7 +7,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class CrosshairDrawer : IDrawer
     {
-        public int DrawingPriority { get; } = 100;
+        public IGameObject MainItem => Crosshair;
+        public int DrawingPriority { get; } = 1;
 
         private static Image CrossHairImage { get; } = Images.Crosshair;
         private Crosshair Crosshair { get; }

@@ -64,18 +64,9 @@ namespace RiskOfDeduction
             {
                 return;
             }
-            var g = e.Graphics;
-            Drawer
-                .GetDrawables()
-                .OrderBy(drawable => drawable.DrawingPriority)
-                .ToList()
-                .ForEach(drawable => g.DrawImage(drawable.Image, drawable.Position));
 
-            // g.DrawImage(Images.Hero, new RectangleF(game.Player.X, game.Player.Y, game.Player.Width, game.Player.Height));
-            // foreach (var block in Game.CurrentLevel.CurrentScene.LandScape)
-            // {
-            //     g.DrawImage(Images.Ground, new RectangleF(block.X, block.Y, block.Width, block.Height));
-            // }
+            var g = e.Graphics;
+            Drawer.DrawItem(g);
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)

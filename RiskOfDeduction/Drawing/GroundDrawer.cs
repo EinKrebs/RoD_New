@@ -7,7 +7,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class GroundDrawer : IDrawer
     {
-        public int DrawingPriority { get; }
+        public IGameObject MainItem => Ground;
+        public int DrawingPriority { get; } = 2;
 
         private Ground Ground { get; }
         private List<IDrawer> blockDrawers { get; }

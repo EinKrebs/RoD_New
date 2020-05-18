@@ -6,7 +6,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class TankDrawer : IDrawer
     {
-        public int DrawingPriority { get; }
+        public IGameObject MainItem => Tank;
+        public int DrawingPriority { get; } = 10;
         
         private Tank Tank { get; }
         private static Image TankImage { get; } = Images.TankRight;

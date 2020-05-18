@@ -6,7 +6,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class ShotDrawer : IDrawer
     {
-        public int DrawingPriority { get; } = 10;
+        public IGameObject MainItem => Shot;
+        public int DrawingPriority { get; } = 5;
 
         private static Image ShotImage { get; } = Images.Shot;
         private Shot Shot { get; }

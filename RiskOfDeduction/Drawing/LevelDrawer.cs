@@ -8,6 +8,7 @@ namespace RiskOfDeduction.Drawing
 {
     public class LevelDrawer : IDrawer
     {
+        public IGameObject MainItem => null;
         public int DrawingPriority { get; }
 
         private Level Level { get; }

@@ -10,6 +10,7 @@ namespace RiskOfDeduction.Drawing
 {
     public class SceneDrawer : IDrawer
     {
+        public IGameObject MainItem => null;
         public int DrawingPriority { get; }
 
         private Scene Scene { get; }
@@ -19,11 +20,16 @@ namespace RiskOfDeduction.Drawing
         {
             Scene = scene;
             Drawers = scene.Objects.Select(DrawerFromGameObj).ToList();
+            scene.ObjAdded += obj => Drawers.Add(DrawerFromGameObj(obj));
+            scene.ObjRemoved += obj => Drawers.RemoveAll(drawer => drawer.MainItem == obj);
         }
 
         public void DrawItem(Graphics g)
         {
-            Drawers.ForEach(drawer => drawer.DrawItem(g));
+            foreach (var drawer in Drawers.OrderBy(drawer => drawer.DrawingPriority))
+            {
+                drawer.DrawItem(g);
+            }
         }
 
         private IDrawer DrawerFromGameObj(IGameObject obj)

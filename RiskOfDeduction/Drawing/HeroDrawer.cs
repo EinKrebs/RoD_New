@@ -6,12 +6,13 @@ namespace RiskOfDeduction.Drawing
 {
     public class HeroDrawer : IDrawer
     {
+        public IGameObject MainItem => Player;
         public int DrawingPriority { get; } = 0;
 
         private Player Player { get; }
-        private Image[] MovingFrames { get; } = {Images.HeroRight};
-        private Image[] StandingFrames { get; } = {Images.HeroRight};
-        private Image[] JumpingFrames { get; } = {Images.HeroRight};
+        private static Image[] MovingFrames { get; } = {Images.HeroRight};
+        private static Image[] StandingFrames { get; } = {Images.HeroRight};
+        private static Image[] JumpingFrames { get; } = {Images.HeroRight};
         private int CurrentStandingIndex { get; set; }
         private int CurrentMovingIndex { get; set; }
         private int CurrentJumpingIndex { get; set; }

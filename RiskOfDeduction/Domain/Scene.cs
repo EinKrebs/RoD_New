@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RiskOfDeduction.Domain
@@ -8,6 +9,9 @@ namespace RiskOfDeduction.Domain
         public IEnumerable<IGameObject> Objects => Actives.Append((IGameObject)LandScape);
         public IEnumerable<IActive> GetActives() => Actives;
         public Ground LandScape { get; }
+
+        public event Action<IGameObject> ObjAdded;
+        public event Action<IGameObject> ObjRemoved;
 
         private HashSet<IActive> Actives { get; } = new HashSet<IActive>();
         private List<IActive> ToAdd { get; set; } = new List<IActive>();
@@ -91,6 +95,8 @@ namespace RiskOfDeduction.Domain
 
         public void Remove(IGameObject gameObject)
         {
+            ObjRemoved(gameObject);
+
             if (gameObject is Player)
             {
                 Game.Over(false);
@@ -104,6 +110,7 @@ namespace RiskOfDeduction.Domain
         public void AddShot(Shot shot)
         {
             ToAdd.Add(shot);
+            ObjAdded(shot);
         }
     }
 }

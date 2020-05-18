@@ -6,7 +6,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class BlockDrawer : IDrawer
     {
-        public int DrawingPriority { get; } = 50;
+        public IGameObject MainItem => Block;
+        public int DrawingPriority { get; } = 3;
 
         private static Image Image { get; set; } = Images.Ground;
         private Block Block { get; }

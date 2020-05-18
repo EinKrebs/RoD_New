@@ -7,7 +7,8 @@ namespace RiskOfDeduction.Drawing
 {
     public class TurretDrawer : IDrawer
     {
-        public int DrawingPriority { get; }
+        public IGameObject MainItem => Turret;
+        public int DrawingPriority { get; } = 20;
 
         private static Image TurretImage { get; } = Images.TurretRight;
         private static Image FiringImage { get; } = Images.TurretRightFiring;
