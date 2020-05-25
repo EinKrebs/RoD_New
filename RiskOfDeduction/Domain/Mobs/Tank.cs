@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Tank : IMovable, IActive
+    public class Tank : IMovable, IActive, IHp
     {
         public float X { get; private set; }
         public float Y { get; private set; }
@@ -14,7 +14,8 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; private set; }
         public float G { get; } = 10;
         public Direction Direction { get; private set; }
-        public int Hp { get; private set; } = 10;
+        public int Hp { get; private set; } = 5;
+        public int MaxHP { get; } = 5;
         public bool Firing { get; private set; }
         public bool Dead => Hp <= 0;
 

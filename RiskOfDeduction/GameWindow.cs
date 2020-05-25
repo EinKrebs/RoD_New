@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using RiskOfDeduction.Domain;
 using System.Media;
 using RiskOfDeduction.Drawing;
+using Menu = RiskOfDeduction.Drawing.Menu;
 
 namespace RiskOfDeduction
 {
@@ -14,7 +15,8 @@ namespace RiskOfDeduction
         private Game Game { get; set; }
         private bool ToRight { get; set; } = false;
         private bool ToLeft { get; set; } = false;
-        private GameDrawer Drawer { get; } 
+        private GameDrawer Drawer { get; }
+        private Menu Menu { get; }
 
         public GameWindow()
         {
@@ -41,6 +43,7 @@ namespace RiskOfDeduction
             // Game.InitializePlayer(0, 0, blockSize, blockSize);
             Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize, Game));
             Drawer = new GameDrawer(Game);
+            Menu = new Menu(this, Game);
         }
 
         private void OnTimerTick(object sender, EventArgs e)
@@ -55,6 +58,7 @@ namespace RiskOfDeduction
             {
                 Game.Player.MoveTo(Direction.Left);
             }
+
             Invalidate();
         }
 
@@ -67,10 +71,30 @@ namespace RiskOfDeduction
 
             var g = e.Graphics;
             Drawer.DrawItem(g);
+            if (Game.IsPaused)
+            {
+                Menu.Draw(g);
+                Drawer.CrosshairDrawer.DrawItem(g);
+            }
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (!Game.IsPaused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Play();
+                }
+            }
+            if (Game.IsPaused)
+            {
+                return;
+            }
             switch (e.KeyCode)
             {
                 case Keys.D:
@@ -90,7 +114,15 @@ namespace RiskOfDeduction
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    Game.Player.Shoot();
+                    if (!Game.IsPaused)
+                    {
+                        Game.Player.Shoot();
+                    }
+                    else
+                    {
+                        Menu.OnClicked();
+                    }
+
                     break;
             }
         }
@@ -102,6 +134,10 @@ namespace RiskOfDeduction
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Game.IsPaused)
+            {
+                return;
+            }
             switch (e.KeyCode)
             {
                 case Keys.D:
@@ -118,6 +154,20 @@ namespace RiskOfDeduction
             Cursor.Show();
             ToLeft = false;
             ToRight = false;
+        }
+
+        private void Pause()
+        {
+            timer.Stop();
+            Game.Pause();
+            Menu.MenuStart();
+        }
+
+        private void Play()
+        {
+            timer.Start();
+            Game.Play();
+            Menu.MenuFinish();
         }
     }
 }

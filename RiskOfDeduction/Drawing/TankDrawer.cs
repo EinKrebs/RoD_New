@@ -20,6 +20,7 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
+            HpBarDrawer.DrawHp(Tank, g);
             DrawFrameConsideringDirection(g, Tank.Firing ? FiringImage : TankImage);
         }
 

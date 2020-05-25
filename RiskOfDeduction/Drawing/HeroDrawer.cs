@@ -24,6 +24,7 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
+            HpBarDrawer.DrawHp(Player, g);
             if (Player.InJump)
             {
                 CurrentStandingIndex = 0;

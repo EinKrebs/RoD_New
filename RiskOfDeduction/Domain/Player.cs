@@ -8,17 +8,19 @@ using System.Threading.Tasks;
 
 namespace RiskOfDeduction.Domain
 {
-    public class Player : IMovable, IActive
+    public class Player : IMovable, IActive, IHp
     {
         public float X { get; private set; }
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 25f;
+        public float VelocityX { get; } = 35f;
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 10;
+        public int MaxHP { get; } = 10;
+
         public bool InJump =>
             Game != null
             && Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X + 0.05f, Y + 0.05f,

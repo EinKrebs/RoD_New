@@ -2,7 +2,7 @@
 
 namespace RiskOfDeduction.Domain
 {
-    public class Turret : IActive, IMovable
+    public class Turret : IActive, IMovable, IHp
     {
         public float X { get; set; }
         public float Y { get; }
@@ -14,6 +14,7 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; } = 0;
         public float G { get; } = 10;
         public int Hp { get; private set; } = 4;
+        public int MaxHP { get; } = 4;
         public bool Dead => Hp <= 0;
 
         private int Timer { get; set; }

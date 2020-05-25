@@ -17,6 +17,7 @@ namespace RiskOfDeduction.Domain
         public float OneTick { get; } = 0.25f;
         public bool Running { get; private set; }
         public IEnumerable<IGameObject> Objects => CurrentLevel.Objects.Append(Player);
+        public bool IsPaused { get; private set; }
 
         public Game(int width, int height)
         {
@@ -69,6 +70,16 @@ namespace RiskOfDeduction.Domain
         public void Over(bool success)
         {
             Running = success;
+        }
+
+        public void Pause()
+        {
+            IsPaused = true;
+        }
+
+        public void Play()
+        {
+            IsPaused = false;
         }
 
         private bool IsValid(IGameObject gameObject, List<IGameObject> objects)

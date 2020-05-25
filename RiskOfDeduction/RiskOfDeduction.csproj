@@ -79,6 +79,7 @@
     <Compile Include="Domain\Model\Direction.cs" />
     <Compile Include="Domain\Model\Game.cs" />
     <Compile Include="Domain\Model\IGameObject.cs" />
+    <Compile Include="Domain\Model\IHp.cs" />
     <Compile Include="Domain\Model\IModel.cs" />
     <Compile Include="Domain\Model\IMovable.cs" />
     <Compile Include="Domain\Model\Level.cs" />
@@ -95,8 +96,11 @@
     <Compile Include="Drawing\GameDrawer.cs" />
     <Compile Include="Drawing\GroundDrawer.cs" />
     <Compile Include="Drawing\HeroDrawer.cs" />
+    <Compile Include="Drawing\HpBarDrawer.cs" />
     <Compile Include="Drawing\IDrawer.cs" />
     <Compile Include="Drawing\LevelDrawer.cs" />
+    <Compile Include="Drawing\Menu.cs" />
+    <Compile Include="Drawing\MenuAction.cs" />
     <Compile Include="Drawing\SceneDrawer.cs" />
     <Compile Include="Drawing\ShotDrawer.cs" />
     <Compile Include="Drawing\TankDrawer.cs" />
@@ -165,6 +169,7 @@
   <ItemGroup>
     <Content Include="Resources\Crosshair.png" />
     <Content Include="Resources\Grass.png" />
+    <Content Include="Resources\menu.png" />
     <Content Include="Resources\Player\CapsuleLeft.png" />
     <Content Include="Resources\Player\CapsuleLeftFiring.png" />
     <Content Include="Resources\Player\CapsuleRight.png" />

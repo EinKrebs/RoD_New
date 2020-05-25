@@ -11,11 +11,11 @@ namespace RiskOfDeduction.Drawing
     {
         public IGameObject MainItem => null;
         public int DrawingPriority { get; }
+        public CrosshairDrawer CrosshairDrawer { get; }
 
         private Game Game { get; }
         private List<LevelDrawer> LevelDrawers { get; }
         private HeroDrawer HeroDrawer { get; }
-        private CrosshairDrawer CrosshairDrawer { get; }
 
         public GameDrawer(Game game)
         {

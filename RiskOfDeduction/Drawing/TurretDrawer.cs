@@ -21,6 +21,7 @@ namespace RiskOfDeduction.Drawing
 
         public void DrawItem(Graphics g)
         {
+            HpBarDrawer.DrawHp(Turret, g);
             DrawFrameConsideringDirection(g, Turret.Firing ? FiringImage : TurretImage);
         }
 
