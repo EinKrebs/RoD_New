@@ -36,6 +36,12 @@ namespace RiskOfDeduction
 
         private void OnTimerTick(object sender, EventArgs e)
         {
+            if (Game.IsPaused)
+            {
+                Invalidate();
+                return;
+            }
+
             Game.Update();
             if (ToRight)
             {
@@ -121,10 +127,6 @@ namespace RiskOfDeduction
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Game.IsPaused)
-            {
-                return;
-            }
             switch (e.KeyCode)
             {
                 case Keys.D:
@@ -143,19 +145,20 @@ namespace RiskOfDeduction
             ToRight = false;
         }
 
-        private void Pause()
+        public void Pause()
         {
-            timer.Stop();
             Game.Pause();
-            Menu.MenuStart();
         }
 
-        private void Play()
+        public void Play()
         {
-            timer.Start();
-            timer.Interval = 25;
             Game.Play();
-            Menu.MenuFinish();
+        }
+
+        public void ToMainMenu()
+        {
+            Game.Pause();
+            Game.ToMainMenu();
         }
     }
 }

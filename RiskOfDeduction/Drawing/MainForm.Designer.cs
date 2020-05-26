@@ -33,11 +33,13 @@ namespace RiskOfDeduction.Drawing
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            //this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "MainForm";
             GameWindow = new GameWindow();
             MainMenu = new MainMenu();
             Game = new Game(1920, 1080);
+            this.Width = Game.Width;
+            this.Height = Game.Height;
             Game.GameStateChanged += On_GameStateChanged;
 
             MainMenu.Dock = DockStyle.Fill;

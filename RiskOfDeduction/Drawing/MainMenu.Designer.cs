@@ -66,10 +66,10 @@ namespace RiskOfDeduction.Drawing
         private Game Game { get; set; }
 
         private MainMenuElement[] actions { get; set; }
-        private int Padding { get; } = 20;
+        private int Padding { get; } = 50;
         private int Margin { get; } = 10;
-        private int ButtonHeight { get; } = 70;
-        private int ButtonWidth { get; } = 200;
+        private int ButtonHeight { get; } = 100;
+        private int ButtonWidth { get; } = 300;
         private int LogoWidth { get; } = 300;
         private int LogoHeight { get; } = 300;
     }

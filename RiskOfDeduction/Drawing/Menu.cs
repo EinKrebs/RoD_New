@@ -14,8 +14,7 @@ namespace RiskOfDeduction.Drawing
 {
     public class Menu
     {
-        private Form Parent { get; }
-        private Timer Timer { get; }
+        private GameWindow Parent { get; }
         private string[] ActionLabels { get; } = {"Continue", "Exit", "To main menu"};
         private MenuAction[] Actions { get; }
         private Game Game { get; }
@@ -23,31 +22,14 @@ namespace RiskOfDeduction.Drawing
             40,
             FontStyle.Bold,
             GraphicsUnit.Pixel);
-        private bool Stopped { get; set; }
+        public bool Stopped { get; set; }
 
         public Menu(GameWindow parent, Game game)
         {
             Parent = parent;
-            Timer = new Timer();
             var a = new Label();
             Actions = new MenuAction[ActionLabels.Length];
             Game = game;
-            
-
-            Timer.Interval = 25;
-            Timer.Tick += (sender, args) => OnTick();
-        }
-
-        public void MenuStart()
-        {
-            Timer.Start();
-            Stopped = false;
-        }
-
-        public void MenuFinish()
-        {
-            Timer.Stop();
-            Stopped = true;
         }
 
         public void Draw(Graphics g)
@@ -82,10 +64,14 @@ namespace RiskOfDeduction.Drawing
                 switch (action.Label)
                 {
                     case "Continue":
-                        SendKeys.Send("{ESCAPE}");
+                        Parent.Play();
                         break;
                     case "Exit":
+                        Parent.Pause();
                         Parent.Close();
+                        break;
+                    case "To main menu":
+                        Parent.ToMainMenu();
                         break;
                 }
             }
@@ -104,14 +90,6 @@ namespace RiskOfDeduction.Drawing
                 brush,
                 action.Rect,
                 stringFormat);
-        }
-
-        private void OnTick()
-        {
-            if (!Stopped)
-            {
-                Parent.Invalidate();
-            }
         }
     }
 }
