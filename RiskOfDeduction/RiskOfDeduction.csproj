@@ -78,6 +78,7 @@
     <Compile Include="Domain\Mobs\Turret.cs" />
     <Compile Include="Domain\Model\Direction.cs" />
     <Compile Include="Domain\Model\Game.cs" />
+    <Compile Include="Domain\Model\GameState.cs" />
     <Compile Include="Domain\Model\IGameObject.cs" />
     <Compile Include="Domain\Model\IHp.cs" />
     <Compile Include="Domain\Model\IModel.cs" />
@@ -93,12 +94,30 @@
     <Compile Include="Domain\Statics\Static.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />
     <Compile Include="Drawing\CrosshairDrawer.cs" />
+    <Compile Include="Drawing\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drawing\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\GameDrawer.cs" />
     <Compile Include="Drawing\GroundDrawer.cs" />
     <Compile Include="Drawing\HeroDrawer.cs" />
     <Compile Include="Drawing\HpBarDrawer.cs" />
     <Compile Include="Drawing\IDrawer.cs" />
     <Compile Include="Drawing\LevelDrawer.cs" />
+    <Compile Include="Drawing\MainMenuElement.cs" />
+    <Compile Include="Drawing\MainMenuResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainMenuResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\Menu.cs" />
     <Compile Include="Drawing\MenuAction.cs" />
     <Compile Include="Drawing\SceneDrawer.cs" />
@@ -111,10 +130,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameWindow.cs">
+    <Compile Include="Drawing\GameWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameWindow.Designer.cs">
+    <Compile Include="Drawing\GameWindow.Designer.cs">
       <DependentUpon>GameWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Images.Designer.cs">
@@ -127,6 +146,10 @@
     <Compile Include="Tests\ObjectsTest.cs" />
     <Compile Include="Tests\PlayerMovesTests.cs" />
     <Compile Include="Tests\ShotTest.cs" />
+    <EmbeddedResource Include="Drawing\MainMenuResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainMenuResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,7 +190,11 @@
     <None Include="Resources\Jump.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ChoseLevel.png" />
+    <None Include="Resources\ChoseLevelSelected.png" />
     <Content Include="Resources\Crosshair.png" />
+    <None Include="Resources\Exit.png" />
+    <None Include="Resources\ExitSelected.png" />
     <Content Include="Resources\Grass.png" />
     <Content Include="Resources\menu.png" />
     <Content Include="Resources\Player\CapsuleLeft.png" />
@@ -175,6 +202,7 @@
     <Content Include="Resources\Player\CapsuleRight.png" />
     <Content Include="Resources\Player\CapsuleRightFiring.png" />
     <None Include="Resources\shot.png" />
+    <None Include="Resources\RoD.png" />
     <Content Include="Resources\Tank\TankL.png" />
     <Content Include="Resources\Tank\TankLFiring.png" />
     <Content Include="Resources\Tank\TankR.png" />
@@ -184,6 +212,9 @@
     <Content Include="Resources\Turret\TurretLFiring.png" />
     <Content Include="Resources\Turret\TurretR.png" />
     <Content Include="Resources\Turret\TurretRFiring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\MainMenuPictures\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

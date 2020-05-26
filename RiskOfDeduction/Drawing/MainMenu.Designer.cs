@@ -1,0 +1,76 @@
+﻿using System.Drawing;
+using RiskOfDeduction.Domain;
+
+namespace RiskOfDeduction.Drawing
+{
+    partial class MainMenu
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.DoubleBuffered = true;
+            this.SuspendLayout();
+            // 
+            // MainMenu
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(179)))), ((int)(((byte)(233)))));
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "MainMenu";
+            this.Text = "Main menu";
+            this.ResumeLayout(false);
+            actions = new[]
+            {
+                new MainMenuElement(
+                    MainMenuResources.ExitSelected,
+                    MainMenuResources.Exit,
+                    new RectangleF(),
+                    "Exit"),
+
+                new MainMenuElement(
+                    MainMenuResources.ChoseLevelSelected,
+                    MainMenuResources.ChoseLevel,
+                    new RectangleF(),
+                    "ChooseLevel"),
+            };
+            this.Paint += DrawMenu;
+            this.MouseMove += (sender, args) => Invalidate();
+        }
+
+        #endregion
+
+        private Game Game { get; set; }
+
+        private MainMenuElement[] actions { get; set; }
+        private int Padding { get; } = 20;
+        private int Margin { get; } = 10;
+        private int ButtonHeight { get; } = 70;
+        private int ButtonWidth { get; } = 200;
+        private int LogoWidth { get; } = 300;
+        private int LogoHeight { get; } = 300;
+    }
+}

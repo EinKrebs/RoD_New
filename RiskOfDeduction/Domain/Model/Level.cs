@@ -8,12 +8,14 @@ namespace RiskOfDeduction.Domain
 {
     public class Level : IModel
     {
-        private List<Scene> scenes;
 
         public int CurrentSceneIndex { get; private set; }
         public IReadOnlyList<Scene> Scenes => scenes;
         public Scene CurrentScene => scenes[CurrentSceneIndex];
         public IEnumerable<IGameObject> Objects => CurrentScene.Objects;
+        public string Name { get; set; } = "None";
+
+        private List<Scene> scenes;
 
         public Level()
         {
@@ -87,6 +89,11 @@ namespace RiskOfDeduction.Domain
         public void Remove(IGameObject gameObject)
         {
             CurrentScene.Remove(gameObject);
+        }
+
+        public void SetName(string name)
+        {
+            Name = name;
         }
     }
 }

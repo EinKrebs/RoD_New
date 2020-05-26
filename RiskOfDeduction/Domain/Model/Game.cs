@@ -18,6 +18,10 @@ namespace RiskOfDeduction.Domain
         public bool Running { get; private set; }
         public IEnumerable<IGameObject> Objects => CurrentLevel.Objects.Append(Player);
         public bool IsPaused { get; private set; }
+        public GameState CurrentState { get; private set; } = GameState.MainMenu;
+        public int BlockSize { get; set; } = 50;
+
+        public event Action<GameState> GameStateChanged;
 
         public Game(int width, int height)
         {
@@ -79,7 +83,15 @@ namespace RiskOfDeduction.Domain
 
         public void Play()
         {
+            CurrentState = GameState.Playing;
             IsPaused = false;
+            GameStateChanged?.Invoke(CurrentState);
+        }
+
+        public void ToMainMenu()
+        {
+            CurrentState = GameState.MainMenu;
+            GameStateChanged?.Invoke(CurrentState);
         }
 
         private bool IsValid(IGameObject gameObject, List<IGameObject> objects)

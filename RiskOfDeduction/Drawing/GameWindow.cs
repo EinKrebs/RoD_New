@@ -15,35 +15,23 @@ namespace RiskOfDeduction
         private Game Game { get; set; }
         private bool ToRight { get; set; } = false;
         private bool ToLeft { get; set; } = false;
-        private GameDrawer Drawer { get; }
-        private Menu Menu { get; }
+        private GameDrawer Drawer { get; set; }
+        private Menu Menu { get; set; }
+
+        public void InitializeGame(Game game)
+        {
+            Game = game;
+            Drawer = new GameDrawer(game);
+            Menu = new Menu(this, game);
+            gameWidth = Game.Width;
+            gameHeight = Game.Height;
+
+            timer.Enabled = true;
+        }
 
         public GameWindow()
         {
             InitializeComponent();
-            Game = new Game(gameWidth, gameHeight);
-            var textLevel = new[]
-            {
-                "############################################################",
-                "#                            ##                            #",
-                "#                            ##                            #",
-                "#                            ##                            #",
-                "#                            ##                            #",
-                "#                            ##                            #",
-                "#                            ##                            #",
-                "#                   ML T     ##                   ML T     #",
-                "#           ####   ######                 ####   #####     #",
-                "#          ######                        ######            #",
-                "#     #############    T            #############    T     #",
-                "############################################################"
-                // "                              ",
-                // "##############################"
-            };
-            Game.InitializePlayer(200, 200, blockSize / 2, blockSize);
-            // Game.InitializePlayer(0, 0, blockSize, blockSize);
-            Game.AddLevel(Level.GenerateLevelFromStringArray(textLevel, gameWidth, blockSize, Game));
-            Drawer = new GameDrawer(Game);
-            Menu = new Menu(this, Game);
         }
 
         private void OnTimerTick(object sender, EventArgs e)
@@ -122,7 +110,6 @@ namespace RiskOfDeduction
                     {
                         Menu.OnClicked();
                     }
-
                     break;
             }
         }
@@ -166,6 +153,7 @@ namespace RiskOfDeduction
         private void Play()
         {
             timer.Start();
+            timer.Interval = 25;
             Game.Play();
             Menu.MenuFinish();
         }

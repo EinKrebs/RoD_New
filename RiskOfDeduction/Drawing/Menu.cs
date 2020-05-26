@@ -7,6 +7,7 @@ using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
@@ -22,6 +23,7 @@ namespace RiskOfDeduction.Drawing
             40,
             FontStyle.Bold,
             GraphicsUnit.Pixel);
+        private bool Stopped { get; set; }
 
         public Menu(GameWindow parent, Game game)
         {
@@ -30,19 +32,22 @@ namespace RiskOfDeduction.Drawing
             var a = new Label();
             Actions = new MenuAction[ActionLabels.Length];
             Game = game;
+            
 
             Timer.Interval = 25;
-            Timer.Tick += (sender, args) => Parent.Invalidate();
+            Timer.Tick += (sender, args) => OnTick();
         }
 
         public void MenuStart()
         {
             Timer.Start();
+            Stopped = false;
         }
 
         public void MenuFinish()
         {
             Timer.Stop();
+            Stopped = true;
         }
 
         public void Draw(Graphics g)
@@ -99,6 +104,14 @@ namespace RiskOfDeduction.Drawing
                 brush,
                 action.Rect,
                 stringFormat);
+        }
+
+        private void OnTick()
+        {
+            if (!Stopped)
+            {
+                Parent.Invalidate();
+            }
         }
     }
 }

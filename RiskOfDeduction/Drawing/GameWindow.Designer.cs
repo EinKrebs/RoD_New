@@ -2,6 +2,7 @@
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction
 {
@@ -9,8 +10,8 @@ namespace RiskOfDeduction
     {
         private System.ComponentModel.IContainer components = null;
         private Timer timer { get; set; }
-        private int gameHeight { get; } = 600;
-        private int gameWidth { get; } = 1500;
+        private int gameHeight { get; set; } = 600;
+        private int gameWidth { get; set; } = 1500;
         private int blockSize { get; } = 50;
 
         protected override void Dispose(bool disposing)
@@ -38,7 +39,6 @@ namespace RiskOfDeduction
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImage = global::RiskOfDeduction.Images.Sky;
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.timer.Enabled = true;
             this.timer.Interval = 25;
             this.timer.Tick += this.OnTimerTick;
             this.Paint += this.DrawGame;
