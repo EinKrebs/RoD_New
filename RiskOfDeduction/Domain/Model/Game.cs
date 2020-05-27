@@ -52,13 +52,6 @@ namespace RiskOfDeduction.Domain
             Player.Update();
             CurrentLevel.Update();
             var currentObjects = Objects.ToList();
-            // var collisions = (Func<List<IGameObject>, List<IGameObject>>) 
-            //     (objects => objects
-            //         .Where(gameObject => !IsValid(gameObject, objects))
-            //         .ToList());
-            // var collisionsResult = collisions.BeginInvoke(currentObjects, null, null);
-            // // Player.Update();
-            // collisions.EndInvoke(collisionsResult).ForEach(Remove);
             currentObjects
                 .Where(gameObject => !IsValid(gameObject, currentObjects))
                 .ToList()
@@ -91,6 +84,13 @@ namespace RiskOfDeduction.Domain
         public void ToMainMenu()
         {
             CurrentState = GameState.MainMenu;
+            GameStateChanged?.Invoke(CurrentState);
+        }
+
+        public void ChoosingLevel()
+        {
+            IsPaused = true;
+            CurrentState = GameState.ChoosingLevel;
             GameStateChanged?.Invoke(CurrentState);
         }
 

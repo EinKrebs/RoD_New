@@ -10,6 +10,8 @@ namespace RiskOfDeduction.Domain
         public IEnumerable<IActive> GetActives() => Actives;
         public Ground LandScape { get; }
 
+        public Level Level { get; }
+
         public event Action<IGameObject> ObjAdded;
         public event Action<IGameObject> ObjRemoved;
 
@@ -27,9 +29,10 @@ namespace RiskOfDeduction.Domain
             LandScape = ground;
         }
 
-        public Scene(string[] map, int blockSize, Game game)
+        public Scene(string[] map, int blockSize, Game game, Level level)
         {
             Game = game;
+            Level = level;
             var blocks = new List<Block>();
             for (var i = 0; i < map.Length; i++)
             {
@@ -57,9 +60,9 @@ namespace RiskOfDeduction.Domain
             LandScape = new Ground(map, blockSize);
         }
 
-        public static Scene BuildSceneFromStringArray(string[] map, int blockSize, Game game)
+        public static Scene BuildSceneFromStringArray(string[] map, int blockSize, Game game, Level level)
         {
-            return new Scene(map, blockSize, game);
+            return new Scene(map, blockSize, game, level);
         }
 
         public bool AreColliding(IGameObject first, IGameObject second)

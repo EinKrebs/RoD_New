@@ -37,6 +37,12 @@ namespace RiskOfDeduction.Drawing
                     GameWindow.Show();
                     GameWindow.Focus();
                     break;
+                case GameState.ChoosingLevel:
+                    HideScreens();
+                    ChoosingMenu.InitializeGame(Game);
+                    ChoosingMenu.Show();
+                    ChoosingMenu.Focus();
+                    break;
             }
         }
 
@@ -46,6 +52,7 @@ namespace RiskOfDeduction.Drawing
         {
             GameWindow.Hide();
             MainMenu.Hide();
+            ChoosingMenu.Hide();
         }
     }
 }

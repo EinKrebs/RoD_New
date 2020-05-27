@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
@@ -35,12 +36,16 @@ namespace RiskOfDeduction.Drawing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "MainForm";
+
             GameWindow = new GameWindow();
             MainMenu = new MainMenu();
             Game = new Game(1920, 1080);
+            ChoosingMenu = new LevelChoosingMenu();
+
             this.Width = Game.Width;
             this.Height = Game.Height;
             Game.GameStateChanged += On_GameStateChanged;
+            InitializeGame();
 
             MainMenu.Dock = DockStyle.Fill;
             MainMenu.TopLevel = false;
@@ -54,14 +59,31 @@ namespace RiskOfDeduction.Drawing
             GameWindow.FormBorderStyle = FormBorderStyle.None;
             GameWindow.KeyPreview = true;
 
+            ChoosingMenu.Dock = DockStyle.Fill;
+            ChoosingMenu.TopLevel = false;
+            ChoosingMenu.ControlBox = false;
+            ChoosingMenu.FormBorderStyle = FormBorderStyle.None;
+            ChoosingMenu.KeyPreview = true;
+
             this.Controls.Add(MainMenu);
             this.Controls.Add(GameWindow);
+            this.Controls.Add(ChoosingMenu);
+        }
+
+        private void InitializeGame()
+        {
+            var levelPaths = Directory.GetFiles(@"Resources\Levels", "*.txt");
+            foreach (var level in levelPaths)
+            {
+                Game.AddLevel(Level.FromFile(level, Game));   
+            }
         }
 
         #endregion
 
         private MainMenu MainMenu { get; set; }
         private GameWindow GameWindow { get; set; }
+        private LevelChoosingMenu ChoosingMenu { get; set; }
         private Game Game { get; set; }
     }
 }

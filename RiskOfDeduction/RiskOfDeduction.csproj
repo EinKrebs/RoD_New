@@ -94,6 +94,12 @@
     <Compile Include="Domain\Statics\Static.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />
     <Compile Include="Drawing\CrosshairDrawer.cs" />
+    <Compile Include="Drawing\LevelChoosingMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\LevelChoosingMenu.Designer.cs">
+      <DependentUpon>LevelChoosingMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

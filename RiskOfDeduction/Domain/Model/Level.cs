@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Windows.Forms;
@@ -14,7 +15,9 @@ namespace RiskOfDeduction.Domain
         public Scene CurrentScene => scenes[CurrentSceneIndex];
         public IEnumerable<IGameObject> Objects => CurrentScene.Objects;
         public string Name { get; set; } = "None";
+        public string LevelStyle { get; set; }
 
+        private Game Game { get; set; }
         private List<Scene> scenes;
 
         public Level()
@@ -49,7 +52,7 @@ namespace RiskOfDeduction.Domain
                 {
                     currentScene.Add(s.Substring(i * sceneLength, sceneLength));
                 }
-                scenesFromStringArray.Add(Scene.BuildSceneFromStringArray(currentScene.ToArray(), blockSize, game));
+                scenesFromStringArray.Add(Scene.BuildSceneFromStringArray(currentScene.ToArray(), blockSize, game, this));
             }
 
             scenes = scenesFromStringArray;
@@ -94,6 +97,39 @@ namespace RiskOfDeduction.Domain
         public void SetName(string name)
         {
             Name = name;
+        }
+
+        public void SetGame(Game game)
+        {
+            Game = game;
+        }
+
+        public static Level FromFile(string filePath, Game game)
+        {
+            var sr = new StreamReader(filePath);
+            var levelName = sr.ReadLine();
+            var style = sr.ReadLine();
+            var blocksPerScene = int.Parse(sr.ReadLine());
+            var textLevel = new List<string>();
+            while (true)
+            {
+                var str = sr.ReadLine();
+                if (str == null)
+                {
+                    break;
+                }
+                textLevel.Add(str);
+            }
+
+            var level = GenerateLevelFromStringArray(textLevel.ToArray(),
+                blocksPerScene * game.BlockSize,
+                game.BlockSize,
+                game);
+            level.SetGame(game);
+            level.SetName(levelName);
+            level.LevelStyle = style;
+
+            return level;
         }
     }
 }

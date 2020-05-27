@@ -1,10 +1,12 @@
 ﻿using System.Drawing;
+using System.Security.AccessControl;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
 {
-    partial class MainMenu
+    partial class LevelChoosingMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -33,50 +35,34 @@ namespace RiskOfDeduction.Drawing
         private void InitializeComponent()
         {
             this.DoubleBuffered = true;
-            this.SuspendLayout();
-            // 
-            // MainMenu
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(179)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainMenu";
-            this.Text = "Main menu";
-            this.ResumeLayout(false);
-            actions = new[]
-            {
-                new MainMenuElement(
-                    MainMenuResources.ExitSelected,
-                    MainMenuResources.Exit,
-                    new RectangleF(),
-                    "Exit"),
 
-                new MainMenuElement(
-                    MainMenuResources.ChoseLevelSelected,
-                    MainMenuResources.ChoseLevel,
-                    new RectangleF(),
-                    "ChooseLevel"),
-            };
+            this.Text = "LevelChoosingMenu";
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(179)))), ((int)(((byte)(233)))));
+
             this.Paint += DrawMenu;
+
             Timer = new Timer();
             Timer.Interval = 25;
-            Timer.Enabled = true;
 
             Timer.Tick += (sender, args) => Invalidate();
+
+            Timer.Enabled = true;
         }
 
         #endregion
 
+        private MenuAction[] Actions { get; set; }
         private Game Game { get; set; }
-
-        private MainMenuElement[] actions { get; set; }
         private int Padding { get; } = 50;
         private int Margin { get; } = 10;
         private int ButtonHeight { get; } = 100;
         private int ButtonWidth { get; } = 300;
-        private int LogoWidth { get; } = 300;
-        private int LogoHeight { get; } = 300;
+        private Font MainFont { get; } = new Font("Times New Roman",
+            40,
+            FontStyle.Bold,
+            GraphicsUnit.Pixel);
         private Timer Timer { get; set; }
     }
 }

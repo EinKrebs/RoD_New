@@ -51,29 +51,11 @@ namespace RiskOfDeduction.Drawing
             switch (action?.Label)
             {
                 case "Exit":
-                    // Game.Over(false);
-                    this.Close();
+                    Close();
                     break;
                 case "ChooseLevel":
-                    Game.BlockSize = 50;
-                    Game.InitializePlayer(300, 300, Game.BlockSize / 2, Game.BlockSize / 2);
-                    var map = new[]
-                    {
-                        "####################",
-                        "#        ##        #",
-                        "#        ##        #",
-                        "#        ##        #",
-                        "#        ##        #",
-                        "#        ##        #",
-                        "#        ##        #",
-                        "#                  #",
-                        "#                  #",
-                        "####################"
-                    };
-                    Game.AddLevel(Level.GenerateLevelFromStringArray(map, 10 * Game.BlockSize, Game.BlockSize, Game));
-                    Game.Play();
+                    Game.ChoosingLevel();
                     break;
-
             }
         }
     }
