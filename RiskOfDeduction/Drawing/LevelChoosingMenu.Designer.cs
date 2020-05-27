@@ -58,7 +58,7 @@ namespace RiskOfDeduction.Drawing
         private int Padding { get; } = 50;
         private int Margin { get; } = 10;
         private int ButtonHeight { get; } = 100;
-        private int ButtonWidth { get; } = 300;
+        private int ButtonWidth { get; } = 400;
         private Font MainFont { get; } = new Font("Times New Roman",
             40,
             FontStyle.Bold,
