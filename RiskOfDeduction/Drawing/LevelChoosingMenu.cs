@@ -33,6 +33,15 @@ namespace RiskOfDeduction.Drawing
         private void DrawMenu(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
+
+            for (var i = 0; i < Actions.Length; i++)
+            {
+                Actions[i].Rect = new RectangleF((Width - ButtonWidth) / 2,
+                    Padding + (ButtonHeight + Margin) * i,
+                    ButtonWidth,
+                    ButtonHeight);
+            }
+
             foreach (var action in Actions)
             {
                 DrawAction(action, g);
@@ -65,6 +74,7 @@ namespace RiskOfDeduction.Drawing
                 var index = actionTup.Item2;
                 Game.CurrentLevelIndex = index;
                 Game.InitializePlayer(100, 100, Game.BlockSize / 2, Game.BlockSize);
+                BlockDrawer.SetBlockImage(Image.FromFile($"{@"Resources\Textures\"}{Game.CurrentLevel.LevelStyle}{@"\1.png"}"));
                 Game.Play();
             }
         }

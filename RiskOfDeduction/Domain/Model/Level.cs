@@ -121,6 +121,7 @@ namespace RiskOfDeduction.Domain
                 textLevel.Add(str);
             }
 
+            game.BlockSize = game.Width / blocksPerScene;
             var level = GenerateLevelFromStringArray(textLevel.ToArray(),
                 blocksPerScene * game.BlockSize,
                 game.BlockSize,
