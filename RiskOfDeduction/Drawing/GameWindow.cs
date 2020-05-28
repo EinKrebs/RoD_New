@@ -13,8 +13,8 @@ namespace RiskOfDeduction
     public partial class GameWindow : Form
     {
         private Game Game { get; set; }
-        private bool ToRight { get; set; } = false;
-        private bool ToLeft { get; set; } = false;
+        private bool ToRight { get; set; }
+        private bool ToLeft { get; set; }
         private GameDrawer Drawer { get; set; }
         private Menu Menu { get; set; }
 
@@ -51,6 +51,11 @@ namespace RiskOfDeduction
             if (ToLeft)
             {
                 Game.Player.MoveTo(Direction.Left);
+            }
+
+            if (!ToRight && !ToLeft)
+            {
+                Game.Player.Stop();
             }
 
             Invalidate();

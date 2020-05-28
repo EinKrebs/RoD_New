@@ -23,7 +23,7 @@ namespace RiskOfDeduction.Domain
 
         public bool InJump =>
             Game != null
-            && Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X + 0.05f, Y + 0.05f,
+            && !Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X + 0.05f, Y + 0.5f,
                 Width - 0.05f, Height));
         public bool IsMoving { get; private set; }
 
@@ -107,7 +107,10 @@ namespace RiskOfDeduction.Domain
             }
             else
             {
-                IsMoving = false;
+                if (Math.Abs(oldX - X) < 0.5f)
+                {
+                    IsMoving = false;
+                }
             }
 
             if (X + Width > Game.Width - 1)
@@ -182,6 +185,11 @@ namespace RiskOfDeduction.Domain
             Y = (float) Math.Round(right);
             VelocityY = Math.Abs(newY - Y) < 1 ? VelocityY : 0;
             VelocityY += G * OneTick;
+        }
+
+        public void Stop()
+        {
+            IsMoving = false;
         }
     }
 }

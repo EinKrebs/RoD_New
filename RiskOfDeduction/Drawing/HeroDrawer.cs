@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing
@@ -16,6 +18,24 @@ namespace RiskOfDeduction.Drawing
         private int CurrentStandingIndex { get; set; }
         private int CurrentMovingIndex { get; set; }
         private int CurrentJumpingIndex { get; set; }
+
+        static HeroDrawer()
+        {
+            MovingFrames = Directory.GetFiles(@"Resources\Hero\Moving", "*.png")
+                .OrderBy(str => str)
+                .Select(Image.FromFile)
+                .ToArray();
+
+            StandingFrames = Directory.GetFiles(@"Resources\Hero\Standing", "*.png")
+                .OrderBy(str => str)
+                .Select(Image.FromFile)
+                .ToArray();
+
+            JumpingFrames = Directory.GetFiles(@"Resources\Hero\Jumping", "*.png")
+                .OrderBy(str => str)
+                .Select(Image.FromFile)
+                .ToArray();
+        }
 
         public HeroDrawer(Player player)
         {
@@ -48,9 +68,9 @@ namespace RiskOfDeduction.Drawing
                 CurrentJumpingIndex = 0;
                 CurrentMovingIndex = 0;
 
-                DrawFrameConsideringDirection(g, StandingFrames[CurrentStandingIndex]);
+                DrawFrameConsideringDirection(g, StandingFrames[CurrentStandingIndex / 20]);
 
-                CurrentStandingIndex = (CurrentStandingIndex + 1) % StandingFrames.Length;
+                CurrentStandingIndex = (CurrentStandingIndex + 1) % (StandingFrames.Length * 20);
 
             }
         }
