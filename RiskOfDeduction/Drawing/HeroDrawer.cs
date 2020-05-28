@@ -59,9 +59,9 @@ namespace RiskOfDeduction.Drawing
                 CurrentJumpingIndex = 0;
                 CurrentStandingIndex = 0;
 
-                DrawFrameConsideringDirection(g, MovingFrames[CurrentMovingIndex]);
+                DrawFrameConsideringDirection(g, MovingFrames[CurrentMovingIndex / 3]);
 
-                CurrentMovingIndex = (CurrentMovingIndex + 1) % MovingFrames.Length;
+                CurrentMovingIndex = (CurrentMovingIndex + 1) % (MovingFrames.Length * 3);
             }
             else
             {
