@@ -18,17 +18,9 @@ namespace RiskOfDeduction.Domain
         public string LevelStyle { get; set; }
 
         private Game Game { get; set; }
-        private List<Scene> scenes;
-
-        public Level()
-        {
-            scenes = new List<Scene>();
-        }
-
-        public Level(IEnumerable<Scene> scenes)
-        {
-            this.scenes = new List<Scene>(scenes);
-        }
+        private List<Scene> scenes { get; set; }
+        private List<string> ToRefresh { get; set; }
+        private int BlocksPerScene { get; set; }
 
         public Level(string[] map, int sceneLength, int blockSize, Game game)
         {
@@ -56,6 +48,9 @@ namespace RiskOfDeduction.Domain
             }
 
             scenes = scenesFromStringArray;
+            ToRefresh = map.ToList();
+            BlocksPerScene = sceneLength;
+            Game = game;
         }
 
         public bool NextScene()
@@ -130,6 +125,18 @@ namespace RiskOfDeduction.Domain
             level.SetName(levelName);
             level.LevelStyle = style;
 
+            return level;
+        }
+
+        public Level Refresh()
+        {
+            Game.BlockSize = Game.Width / BlocksPerScene;
+            var level = GenerateLevelFromStringArray(ToRefresh.ToArray(),
+                BlocksPerScene * Game.BlockSize,
+                Game.BlockSize,
+                Game);
+            level.SetName(Name);
+            level.LevelStyle = LevelStyle;
             return level;
         }
     }

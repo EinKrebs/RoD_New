@@ -16,7 +16,7 @@ namespace RiskOfDeduction.Domain
         public double Angle { get; }
         public ShotSender Sender { get;  }
 
-        private float Speed { get; } = 20f;
+        private float Speed { get; } = 30f;
         private Game Game { get; }
 
         public bool DiesInColliding(IGameObject other)
