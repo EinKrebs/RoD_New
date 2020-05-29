@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.Design;
+﻿using System;
+using System.ComponentModel.Design;
+using System.Media;
+using System.Windows.Media;
 using NUnit.Framework.Constraints;
 using static System.Math;
 
@@ -18,6 +21,8 @@ namespace RiskOfDeduction.Domain
 
         private float Speed { get; } = 30f;
         private Game Game { get; }
+        private static MediaPlayer PlayerShotSound { get; } = new MediaPlayer();
+        private static MediaPlayer EnemyShotSound { get; } = new MediaPlayer();
 
         public bool DiesInColliding(IGameObject other)
         {
@@ -41,7 +46,17 @@ namespace RiskOfDeduction.Domain
             Height = size;
             Game = game;
             Game.CurrentLevel.CurrentScene.AddShot(this);
-            this.Sender = sender;
+            Sender = sender;
+            if (sender == ShotSender.Player)
+            {
+                PlayerShotSound.Open(new Uri(@"Resources\Sounds\Shot\1.wav", UriKind.Relative));
+                PlayerShotSound.Play();
+            }
+            else
+            {
+                EnemyShotSound.Open(new Uri(@"Resources\Sounds\Shot\2.wav", UriKind.Relative));
+                EnemyShotSound.Play();
+            }
         }
 
         public void Update()

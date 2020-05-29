@@ -67,6 +67,7 @@ namespace RiskOfDeduction
                 if (ShootingTick == 0)
                 {
                     Game.Player.Shoot();
+                    // ShotSound.Play();
                 }
             }
             else
@@ -133,6 +134,7 @@ namespace RiskOfDeduction
                     {
                         IsShooting = true;
                         Game.Player.Shoot();
+                        // ShotSound.Play();
                     }
                     else
                     {

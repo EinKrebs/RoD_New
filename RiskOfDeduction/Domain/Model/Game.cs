@@ -66,6 +66,11 @@ namespace RiskOfDeduction.Domain
 
         public void Over(bool success)
         {
+            if (!success)
+            {
+                CurrentState = GameState.GameOver;
+                GameStateChanged?.Invoke(CurrentState);
+            }
             Running = success;
         }
 

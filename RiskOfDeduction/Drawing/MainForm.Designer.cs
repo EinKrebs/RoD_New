@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 using RiskOfDeduction.Domain;
+using System.Windows.Media;
 
 namespace RiskOfDeduction.Drawing
 {
@@ -65,6 +68,15 @@ namespace RiskOfDeduction.Drawing
             ChoosingMenu.FormBorderStyle = FormBorderStyle.None;
             ChoosingMenu.KeyPreview = true;
 
+            Player = new MediaPlayer();
+            Player.Open(new Uri(@"Resources\Sounds\BackGround\1.wav", UriKind.Relative));
+            Player.MediaEnded += (sender, args) =>
+            {
+                Player.Open(new Uri(@"Resources\Sounds\BackGround\1.wav", UriKind.Relative));
+                Player.Play();
+            };
+            Player.Play();
+
             this.Controls.Add(MainMenu);
             this.Controls.Add(GameWindow);
             this.Controls.Add(ChoosingMenu);
@@ -85,5 +97,6 @@ namespace RiskOfDeduction.Drawing
         private GameWindow GameWindow { get; set; }
         private LevelChoosingMenu ChoosingMenu { get; set; }
         private Game Game { get; set; }
+        private MediaPlayer Player { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     {
         MainMenu,
         Playing,
-        ChoosingLevel
+        ChoosingLevel,
+        GameOver
     }
 }

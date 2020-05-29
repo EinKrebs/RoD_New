@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Media;
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
@@ -13,6 +14,7 @@ namespace RiskOfDeduction
         private int gameHeight { get; set; } = 600;
         private int gameWidth { get; set; } = 1500;
         private int blockSize { get; } = 50;
+        private SoundPlayer ShotSound { get; set; }
 
         protected override void Dispose(bool disposing)
         {
@@ -51,6 +53,7 @@ namespace RiskOfDeduction
             this.MouseUp += Game_OnMouseUp;
             this.MouseDown += Game_OnMouseDown;
             Cursor.Clip = new Rectangle(this.Location, this.Size);
+            ShotSound = new SoundPlayer(@"D:\RoD\RoD_New\RiskOfDeduction\bin\Debug\Resources\Sounds\Shot\1.wav");
         }
 
         #endregion
