@@ -15,6 +15,9 @@ namespace RiskOfDeduction
         private Game Game { get; set; }
         private bool ToRight { get; set; }
         private bool ToLeft { get; set; }
+        private bool IsShooting { get; set; }
+        private int ShootingTick { get; set; }
+        private int MaxShootingTick { get; set; } = 4;
         private GameDrawer Drawer { get; set; }
         private Menu Menu { get; set; }
 
@@ -56,6 +59,19 @@ namespace RiskOfDeduction
             if (!ToRight && !ToLeft)
             {
                 Game.Player.Stop();
+            }
+
+            if (IsShooting)
+            {
+                ShootingTick = (ShootingTick + 1) % MaxShootingTick;
+                if (ShootingTick == 0)
+                {
+                    Game.Player.Shoot();
+                }
+            }
+            else
+            {
+                ShootingTick = 0; 
             }
 
             Invalidate();
@@ -115,12 +131,41 @@ namespace RiskOfDeduction
                 case MouseButtons.Left:
                     if (!Game.IsPaused)
                     {
+                        IsShooting = true;
                         Game.Player.Shoot();
                     }
                     else
                     {
                         Menu.OnClicked();
                     }
+                    break;
+            }
+        }
+
+        protected void Game_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    if (!Game.IsPaused)
+                    {
+                        IsShooting = true;
+                    }
+
+                    break;
+            }
+        }
+
+        protected void Game_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    if (!Game.IsPaused)
+                    {
+                        IsShooting = false;
+                    }
+
                     break;
             }
         }

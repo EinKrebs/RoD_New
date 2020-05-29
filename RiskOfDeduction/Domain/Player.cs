@@ -133,8 +133,8 @@ namespace RiskOfDeduction.Domain
 
         public void Shoot()
         {
-            if (Timer > 0) return;
-            Timer = 5;
+            // if (Timer > 0) return;
+            // Timer = 5;
             var initX = Direction == Direction.Left ? X : X + Width;
             var initY = Y + Height / 2 - 10;
             var angle = Math.Atan2(
