@@ -47,16 +47,16 @@ namespace RiskOfDeduction.Drawing
             actions = new[]
             {
                 new MainMenuElement(
-                    MainMenuResources.ExitSelected,
-                    MainMenuResources.Exit,
-                    new RectangleF(),
-                    "Exit"),
-
-                new MainMenuElement(
                     MainMenuResources.ChoseLevelSelected,
                     MainMenuResources.ChoseLevel,
                     new RectangleF(),
                     "ChooseLevel"),
+
+                new MainMenuElement(
+                    MainMenuResources.ExitSelected,
+                    MainMenuResources.Exit,
+                    new RectangleF(),
+                    "Exit")
             };
             this.Paint += DrawMenu;
             Timer = new Timer();

@@ -55,12 +55,14 @@ namespace RiskOfDeduction.Drawing
             MainMenu.ControlBox = false;
             MainMenu.FormBorderStyle = FormBorderStyle.None;
             MainMenu.KeyPreview = true;
+            MainMenu.Closed += (sender, args) => Close();
 
             GameWindow.Dock = DockStyle.Fill;
             GameWindow.TopLevel = false;
             GameWindow.ControlBox = false;
             GameWindow.FormBorderStyle = FormBorderStyle.None;
             GameWindow.KeyPreview = true;
+            GameWindow.Closed += (sender, args) => Close();
 
             ChoosingMenu.Dock = DockStyle.Fill;
             ChoosingMenu.TopLevel = false;

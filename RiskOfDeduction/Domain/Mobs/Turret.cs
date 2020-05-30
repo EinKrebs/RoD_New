@@ -11,7 +11,7 @@ namespace RiskOfDeduction.Domain
         public Direction Direction { get; private set; }
         public bool Firing { get; private set; }
         public float VelocityX { get; } = 0;
-        public float VelocityY { get; } = 0;
+        public float VelocityY { get; } = 10;
         public float G { get; } = 10;
         public int Hp { get; private set; } = 4;
         public int MaxHP { get; } = 4;
@@ -54,6 +54,11 @@ namespace RiskOfDeduction.Domain
         public void Update()
         {
             Firing = false;
+            if (Game.Player == null)
+            {
+                return;
+            }
+
             Direction = Game.Player.X < Center ? Direction.Left : Direction.Right;
             X = Direction == Direction.Left ? Center - Width / 2 : Center;
             if (Timer == 0)
