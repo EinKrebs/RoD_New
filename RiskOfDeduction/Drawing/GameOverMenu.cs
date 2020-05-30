@@ -37,7 +37,7 @@ namespace RiskOfDeduction.Drawing
                 var menuY = (Parent.Height - menuSize.Height) / 2;
                 var padding = 200;
 
-                var gameOverSize = new Size(200, 200);
+                var gameOverSize = new Size(300, 200);
                 var gameOverPos = new PointF(Parent.Width / 2 - gameOverSize.Width / 2, menuY + 20);
 
                 var textWidth = 400;
