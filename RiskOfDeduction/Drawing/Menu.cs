@@ -18,7 +18,8 @@ namespace RiskOfDeduction.Drawing
         private string[] ActionLabels { get; } = {"Continue", "Exit", "To main menu"};
         private MenuAction[] Actions { get; }
         private Game Game { get; }
-        private Font MainFont { get; } = new Font("Times New Roman",
+        private Font MainFont { get; } = new Font(
+            "Times New Roman",
             40,
             FontStyle.Bold,
             GraphicsUnit.Pixel);

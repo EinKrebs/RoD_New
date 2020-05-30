@@ -95,6 +95,7 @@
     <Compile Include="Domain\Statics\Static.cs" />
     <Compile Include="Drawing\BlockDrawer.cs" />
     <Compile Include="Drawing\CrosshairDrawer.cs" />
+    <Compile Include="Drawing\GameOverMenu.cs" />
     <Compile Include="Drawing\LevelChoosingMenu.cs">
       <SubType>Form</SubType>
     </Compile>

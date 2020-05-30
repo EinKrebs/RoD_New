@@ -20,12 +20,14 @@ namespace RiskOfDeduction
         private int MaxShootingTick { get; set; } = 4;
         private GameDrawer Drawer { get; set; }
         private Menu Menu { get; set; }
+        private GameOverMenu GameOverMenu { get; set; }
 
         public void InitializeGame(Game game)
         {
             Game = game;
             Drawer = new GameDrawer(game);
             Menu = new Menu(this, game);
+            GameOverMenu = new GameOverMenu(this, game);
             gameWidth = Game.Width;
             gameHeight = Game.Height;
 
@@ -39,7 +41,7 @@ namespace RiskOfDeduction
 
         private void OnTimerTick(object sender, EventArgs e)
         {
-            if (Game.IsPaused)
+            if (Game.IsPaused || !Game.Running)
             {
                 Invalidate();
                 return;
@@ -80,13 +82,14 @@ namespace RiskOfDeduction
 
         private void DrawGame(object sender, PaintEventArgs e)
         {
-            if (!Game.Running)
-            {
-                return;
-            }
-
             var g = e.Graphics;
             Drawer.DrawItem(g);
+
+            if (!Game.Running)
+            {
+                GameOverMenu.Draw(g);
+            }
+
             if (Game.IsPaused)
             {
                 Menu.Draw(g);
@@ -107,7 +110,7 @@ namespace RiskOfDeduction
                     Play();
                 }
             }
-            if (Game.IsPaused)
+            if (Game.IsPaused || !Game.Running)
             {
                 return;
             }
@@ -130,7 +133,7 @@ namespace RiskOfDeduction
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    if (!Game.IsPaused)
+                    if (!Game.IsPaused || !Game.Running)
                     {
                         IsShooting = true;
                         Game.Player.Shoot();
@@ -138,7 +141,14 @@ namespace RiskOfDeduction
                     }
                     else
                     {
-                        Menu.OnClicked();
+                        if (Game.Running)
+                        {
+                            Menu.OnClicked();
+                        }
+                        else
+                        {
+                            GameOverMenu.OnClicked();
+                        }
                     }
                     break;
             }
@@ -149,7 +159,7 @@ namespace RiskOfDeduction
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    if (!Game.IsPaused)
+                    if (!Game.IsPaused || !Game.Running)
                     {
                         IsShooting = true;
                     }

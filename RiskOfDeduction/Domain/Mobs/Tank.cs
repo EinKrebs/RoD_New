@@ -48,8 +48,9 @@ namespace RiskOfDeduction.Domain
         public void Shoot()
         {
             var x = Direction == Direction.Left ? X - ShotSize : X + Width;
-            var y = Y + 20;
-            var angle = Direction == Direction.Left ? Math.PI : 0;
+            var y = Y + 5;
+            // var angle = Direction == Direction.Left ? Math.PI : 0;
+            var angle = Math.Atan2(Game.Player.Y + Game.Player.Height / 2 - 5 - Y, Game.Player.X - X);
             var shot = new Shot(x, y, angle, ShotSize, Game, ShotSender.Tank);
             Firing = true;
         }
@@ -60,9 +61,9 @@ namespace RiskOfDeduction.Domain
             var directionToPlayer = Game.Player.X + Game.Player.Width / 2 - (X + Width / 2) < 0 
                 ? Direction.Left 
                 : Direction.Right;
-            if (Y - Game.Player.Height <= Game.Player.Y
-                && Game.Player.Y <= Y + Height
-                && Tick == 0
+            if (// Y - Game.Player.Height <= Game.Player.Y
+                // Game.Player.Y <= Y + Height
+                Tick == 0
                 && directionToPlayer == Direction)
             {
                 Shoot();

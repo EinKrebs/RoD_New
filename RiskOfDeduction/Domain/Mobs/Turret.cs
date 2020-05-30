@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 
 namespace RiskOfDeduction.Domain
 {
     public class Turret : IActive, IMovable, IHp
     {
         public float X { get; set; }
-        public float Y { get; }
+        public float Y { get; set; }
         public int Width { get; } = 100;
         public int Height { get; } = 50;
         public Direction Direction { get; private set; }
@@ -53,6 +54,17 @@ namespace RiskOfDeduction.Domain
 
         public void Update()
         {
+            try
+            {
+                if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
+                {
+                    Y += 1;
+                }
+            }
+            catch
+            {
+            }
+            
             Firing = false;
             if (Game.Player == null)
             {

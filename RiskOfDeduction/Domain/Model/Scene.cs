@@ -44,12 +44,15 @@ namespace RiskOfDeduction.Domain
                             blocks.Add(new Block(j * blockSize, i * blockSize, blockSize, blockSize));
                             break;
                         case 'T':
-                            Actives.Add(new Turret(j * blockSize, i * blockSize, game));
+                            Actives.Add(new Turret(
+                                j * blockSize,
+                                i * blockSize,
+                                game));
                             break;
                         case 'M':
                             Actives.Add(new Tank(
                                 j * blockSize,
-                                i * blockSize,
+                                (i - 2) * blockSize,
                                 map[i][j + 1] == 'L' ? Direction.Left : Direction.Right,
                                 game));
                             j++;
