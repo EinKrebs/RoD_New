@@ -5,7 +5,7 @@ namespace RiskOfDeduction.Drawing
 {
     public static class HpBarDrawer
     {
-        public static int HpHeight = 20;
+        public static int HpHeight = 10;
         public static int Padding = 5;
         public static void DrawHp<T>(T obj, Graphics g) where T : IHp, IGameObject
         {
