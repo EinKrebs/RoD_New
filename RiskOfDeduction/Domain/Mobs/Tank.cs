@@ -75,17 +75,24 @@ namespace RiskOfDeduction.Domain
             var oldX = X;
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
             X += Direction == Direction.Left ? -Width : Width;
-            Y += 0.1f;
+            Y += 1;
             if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
             {
                 X = oldX;
-                Y -= 0.1f;
+                Y -= 1;
                 Direction = 1 - Direction;
             }
             else
             {
                 X -= (Direction == Direction.Left ? -Width : Width);
-                Y -= 0.1f;
+                Y -= 1f;
+                if (Game.Objects.Any(obj => obj != this 
+                                            && !(obj is Shot)
+                                            && Game.AreColliding(obj, this)))
+                {
+                    X = oldX;
+                    Direction = 1 - Direction;
+                }
             }
             
             Y += 1;
