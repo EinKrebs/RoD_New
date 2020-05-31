@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Domain\Actives\Portal.cs" />
     <Compile Include="Domain\Actives\IActive.cs" />
+    <Compile Include="Domain\Actives\Spikes.cs" />
     <Compile Include="Domain\Actives\Tank.cs" />
     <Compile Include="Domain\Actives\Turret.cs" />
     <Compile Include="Domain\Model\Direction.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Drawing\PortalDrawer.cs" />
     <Compile Include="Drawing\SceneDrawer.cs" />
     <Compile Include="Drawing\ShotDrawer.cs" />
+    <Compile Include="Drawing\SpikeDrawer.cs" />
     <Compile Include="Drawing\TankDrawer.cs" />
     <Compile Include="Drawing\TurretDrawer.cs" />
     <Compile Include="Form1.cs">

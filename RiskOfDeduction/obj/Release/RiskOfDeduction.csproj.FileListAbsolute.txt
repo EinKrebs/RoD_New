@@ -91,3 +91,5 @@ D:\RoD\RoD_New\RiskOfDeduction\obj\Release\RiskOfDeduction.csproj.CoreCompileInp
 D:\RoD\RoD_New\RiskOfDeduction\obj\Release\RiskOfDeduction.csproj.CopyComplete
 D:\RoD\RoD_New\RiskOfDeduction\obj\Release\RiskOfDeduction.exe
 D:\RoD\RoD_New\RiskOfDeduction\obj\Release\RiskOfDeduction.pdb
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Release\RiskOfDeduction.Drawing.MainMenuResources.resources
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Release\RiskOfDeduction.csproj.CoreCompileInputs.cache

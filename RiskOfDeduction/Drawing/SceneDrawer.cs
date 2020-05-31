@@ -46,6 +46,8 @@ namespace RiskOfDeduction.Drawing
                     return new GroundDrawer(ground);
                 case Portal portal:
                     return new PortalDrawer(portal);
+                case Spikes spikes:
+                    return new SpikeDrawer(spikes);
                 default:
                     throw new InvalidOperationException();
             }

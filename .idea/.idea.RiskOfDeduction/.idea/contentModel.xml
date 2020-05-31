@@ -17,6 +17,7 @@
           <e p="Actives" t="Include">
             <e p="IActive.cs" t="Include" />
             <e p="Portal.cs" t="Include" />
+            <e p="Spikes.cs" t="Include" />
             <e p="Tank.cs" t="Include" />
             <e p="Turret.cs" t="Include" />
           </e>
@@ -68,6 +69,7 @@
           <e p="PortalDrawer.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
           <e p="ShotDrawer.cs" t="Include" />
+          <e p="SpikeDrawer.cs" t="Include" />
           <e p="TankDrawer.cs" t="Include" />
           <e p="TurretDrawer.cs" t="Include" />
         </e>

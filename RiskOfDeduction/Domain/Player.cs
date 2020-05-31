@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace RiskOfDeduction.Domain
@@ -44,7 +40,19 @@ namespace RiskOfDeduction.Domain
 
         public bool DiesInColliding(IGameObject other)
         {
-            if (!(other is Shot) || (other as Shot).Sender == ShotSender.Player) return false;
+            if (!(other is Shot || other is Spikes)) 
+                return false;
+            if (other is Shot shot && shot.Sender == ShotSender.Player) 
+                return false;
+            if (other is Spikes spikes)
+            {
+                if (spikes.Timer > 0)
+                    return false;
+                if (Hp == 0)
+                    return true;
+                Hp--;
+                spikes.Timer = spikes.MaxTimer;
+            }
             if (Hp == 0) return true;
             Hp--;
             return false;
@@ -72,7 +80,8 @@ namespace RiskOfDeduction.Domain
                 X = mid;
                 if (Game.Objects.Any(gameObject => !gameObject.Equals(this)
                                                    && !(gameObject is Shot)
-                                                   && !(gameObject is Portal) 
+                                                   && !(gameObject is Portal)
+                                                   && !(gameObject is Spikes)
                                                    && Game.AreColliding(this, gameObject)))
                 {
                     if (X < oldX)
@@ -180,6 +189,7 @@ namespace RiskOfDeduction.Domain
                 if (Game.Objects.Any(gameObject => gameObject != this
                                                    && !(gameObject is Shot)
                                                    && !(gameObject is Portal)
+                                                   && !(gameObject is Spikes)
                                                    && Game.AreColliding(this, gameObject)))
                 {
                     right = mid;

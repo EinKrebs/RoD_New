@@ -52,13 +52,16 @@ namespace RiskOfDeduction.Domain
                         case 'M':
                             Actives.Add(new Tank(
                                 j * blockSize,
-                                (i) * blockSize,
+                                i * blockSize,
                                 map[i][j + 1] == 'L' ? Direction.Left : Direction.Right,
                                 game));
                             j++;
                             break;
                         case 'E':
                             Actives.Add(new Portal(j * blockSize, i * blockSize, game));
+                            break;
+                        case 'S':
+                            Actives.Add(new Spikes(j * blockSize, i * blockSize + blockSize / 3 * 2, game));
                             break;
                     }
                 }
