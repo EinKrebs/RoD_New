@@ -15,7 +15,7 @@ namespace RiskOfDeduction.Domain
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
-        public int Hp { get; private set; } = 10;
+        public int Hp { get; private set; } = 7;
         public int MaxHP { get; } = 5;
 
         public bool InJump =>
