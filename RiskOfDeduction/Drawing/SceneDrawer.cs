@@ -44,6 +44,8 @@ namespace RiskOfDeduction.Drawing
                     return new ShotDrawer(shot);
                 case Ground ground:
                     return new GroundDrawer(ground);
+                case Portal portal:
+                    return new PortalDrawer(portal);
                 default:
                     throw new InvalidOperationException();
             }

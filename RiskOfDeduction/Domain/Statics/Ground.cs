@@ -51,7 +51,9 @@ namespace RiskOfDeduction.Domain
                         groundBlocks.Add(new Block(j * blockSize, i * blockSize, blockSize, blockSize));
                     }
 
-                    Objects[j, i] = map[i][j] == '#' ? StaticObject.Block : StaticObject.Nothing;
+                    Objects[j, i] = map[i][j] == '#' 
+                        ? StaticObject.Block 
+                        : StaticObject.Nothing;
                 }
             }
         }

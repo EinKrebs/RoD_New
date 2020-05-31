@@ -57,6 +57,9 @@ namespace RiskOfDeduction.Domain
                                 game));
                             j++;
                             break;
+                        case 'E':
+                            Actives.Add(new Portal(j * blockSize, i * blockSize, game));
+                            break;
                     }
                 }
             }

@@ -74,9 +74,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Mobs\IActive.cs" />
-    <Compile Include="Domain\Mobs\Tank.cs" />
-    <Compile Include="Domain\Mobs\Turret.cs" />
+    <Compile Include="Domain\Actives\Portal.cs" />
+    <Compile Include="Domain\Actives\IActive.cs" />
+    <Compile Include="Domain\Actives\Tank.cs" />
+    <Compile Include="Domain\Actives\Turret.cs" />
     <Compile Include="Domain\Model\Direction.cs" />
     <Compile Include="Domain\Model\Game.cs" />
     <Compile Include="Domain\Model\GameState.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Drawing\LevelChoosingMenu.Designer.cs">
       <DependentUpon>LevelChoosingMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drawing\LevelFinishedMenu.cs" />
     <Compile Include="Drawing\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +130,7 @@
     </Compile>
     <Compile Include="Drawing\Menu.cs" />
     <Compile Include="Drawing\MenuAction.cs" />
+    <Compile Include="Drawing\PortalDrawer.cs" />
     <Compile Include="Drawing\SceneDrawer.cs" />
     <Compile Include="Drawing\ShotDrawer.cs" />
     <Compile Include="Drawing\TankDrawer.cs" />

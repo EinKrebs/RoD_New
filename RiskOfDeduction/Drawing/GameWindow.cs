@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using RiskOfDeduction.Domain;
-using System.Media;
 using RiskOfDeduction.Drawing;
 using Menu = RiskOfDeduction.Drawing.Menu;
 
@@ -21,6 +17,7 @@ namespace RiskOfDeduction
         private GameDrawer Drawer { get; set; }
         private Menu Menu { get; set; }
         private GameOverMenu GameOverMenu { get; set; }
+        private LevelFinishedMenu LevelFinishedMenu { get; set; }
 
         public void InitializeGame(Game game)
         {
@@ -28,6 +25,7 @@ namespace RiskOfDeduction
             Drawer = new GameDrawer(game);
             Menu = new Menu(this, game);
             GameOverMenu = new GameOverMenu(this, game);
+            LevelFinishedMenu = new LevelFinishedMenu(this, game);
             gameWidth = Game.Width;
             gameHeight = Game.Height;
 
@@ -87,6 +85,12 @@ namespace RiskOfDeduction
 
             if (!Game.Running)
             {
+                if (Game.CurrentLevel.Finished)
+                {
+                    LevelFinishedMenu.Draw(g);
+                    Drawer.CrosshairDrawer.DrawItem(g);
+                    return;
+                }
                 GameOverMenu.Draw(g);
                 Drawer.CrosshairDrawer.DrawItem(g);
             }
@@ -144,7 +148,10 @@ namespace RiskOfDeduction
                     {
                         if (!Game.Running)
                         {
-                            GameOverMenu.OnClicked();
+                            if (Game.CurrentLevel.Finished)
+                                LevelFinishedMenu.OnClicked();
+                            else
+                                GameOverMenu.OnClicked();
                         }
                         else
                         {
@@ -223,6 +230,13 @@ namespace RiskOfDeduction
             Game.Pause();
             Game.Over(true);
             Game.ToMainMenu();
+        }
+
+        public void ToLevelChoose()
+        {
+            Game.Pause();
+            Game.Over(true);
+            Game.ChoosingLevel();
         }
     }
 }

@@ -69,7 +69,10 @@ namespace RiskOfDeduction.Domain
             {
                 var mid = (right + left) / 2;
                 X = mid;
-                if (Game.Objects.Any(gameObject => !gameObject.Equals(this) && Game.AreColliding(this, gameObject)))
+                if (Game.Objects.Any(gameObject => !gameObject.Equals(this)
+                                                   && !(gameObject is Shot)
+                                                   && !(gameObject is Portal) 
+                                                   && Game.AreColliding(this, gameObject)))
                 {
                     if (X < oldX)
                     {
@@ -172,6 +175,7 @@ namespace RiskOfDeduction.Domain
                 Y = mid;
                 if (Game.Objects.Any(gameObject => gameObject != this
                                                    && !(gameObject is Shot)
+                                                   && !(gameObject is Portal)
                                                    && Game.AreColliding(this, gameObject)))
                 {
                     right = mid;

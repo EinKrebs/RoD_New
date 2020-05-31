@@ -14,8 +14,9 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain" t="Include">
-          <e p="Mobs" t="Include">
+          <e p="Actives" t="Include">
             <e p="IActive.cs" t="Include" />
+            <e p="Portal.cs" t="Include" />
             <e p="Tank.cs" t="Include" />
             <e p="Turret.cs" t="Include" />
           </e>
@@ -54,6 +55,7 @@
           <e p="LevelChoosingMenu.cs" t="Include" />
           <e p="LevelChoosingMenu.Designer.cs" t="Include" />
           <e p="LevelDrawer.cs" t="Include" />
+          <e p="LevelFinishedMenu.cs" t="Include" />
           <e p="MainForm.cs" t="Include" />
           <e p="MainForm.Designer.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
@@ -63,6 +65,7 @@
           <e p="MainMenuResources.resx" t="Include" />
           <e p="Menu.cs" t="Include" />
           <e p="MenuAction.cs" t="Include" />
+          <e p="PortalDrawer.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
           <e p="ShotDrawer.cs" t="Include" />
           <e p="TankDrawer.cs" t="Include" />

@@ -21,6 +21,8 @@ namespace RiskOfDeduction.Domain
         private List<Scene> scenes { get; set; }
         private List<string> ToRefresh { get; set; }
         private int BlocksPerScene { get; set; }
+        
+        public bool Finished { get; set; }
 
         public Level(string[] map, int sceneLength, int blockSize, Game game)
         {

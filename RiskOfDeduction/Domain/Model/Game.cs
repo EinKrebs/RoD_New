@@ -56,7 +56,10 @@ namespace RiskOfDeduction.Domain
                 .Where(gameObject => !IsValid(gameObject, currentObjects))
                 .ToList()
                 .ForEach(Remove);
-            
+            if (CurrentLevel.Finished)
+            {
+                Running = false;
+            }
         }
 
         public void Remove(IGameObject gameObject)
