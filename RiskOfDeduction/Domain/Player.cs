@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace RiskOfDeduction.Domain
 {
@@ -131,6 +132,9 @@ namespace RiskOfDeduction.Domain
             if (Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X, Y + 1, Width, Height)))
             {
                 VelocityY = JumpInitialVelocity;
+                var sound = new MediaPlayer();
+                sound.Open(new Uri(@"Resources\Sounds\Jump\Jump.wav", UriKind.Relative));
+                sound.Play();
             }
         }
 
