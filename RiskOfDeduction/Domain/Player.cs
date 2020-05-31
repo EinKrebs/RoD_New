@@ -14,7 +14,7 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 50f;
+        public float VelocityX { get; } = 70f;
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
@@ -30,7 +30,7 @@ namespace RiskOfDeduction.Domain
         private int Timer { get; set; } = 0;
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
-        private float JumpInitialVelocity { get; } = -60;
+        private float JumpInitialVelocity { get; } = -90;
 
         public Player(float x, float y, int width, int height, Game game)
         {
