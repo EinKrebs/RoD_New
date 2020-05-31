@@ -52,7 +52,7 @@ namespace RiskOfDeduction.Domain
                         case 'M':
                             Actives.Add(new Tank(
                                 j * blockSize,
-                                (i - 2) * blockSize,
+                                (i) * blockSize,
                                 map[i][j + 1] == 'L' ? Direction.Left : Direction.Right,
                                 game));
                             j++;

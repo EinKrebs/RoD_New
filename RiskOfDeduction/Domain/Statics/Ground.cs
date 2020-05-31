@@ -39,8 +39,8 @@ namespace RiskOfDeduction.Domain
             Y = 0;
             Width = map[0].Length * blockSize;
             Height = map.Length * blockSize;
-            groundBlocks = new HashSet<Block>();
             BlockSize = blockSize;
+            groundBlocks = new HashSet<Block>();
             Objects = new StaticObject[map[0].Length, map.Length];
             for (var i = 0; i < map.Length; i++)
             {

@@ -7,8 +7,8 @@ namespace RiskOfDeduction.Domain
     {
         public float X { get; set; }
         public float Y { get; set; }
-        public int Width { get; } = 100;
-        public int Height { get; } = 50;
+        public int Width { get; private set; }
+        public int Height { get; private set; }
         public Direction Direction { get; private set; }
         public bool Firing { get; private set; }
         public float VelocityX { get; } = 0;
@@ -40,6 +40,8 @@ namespace RiskOfDeduction.Domain
             Center = x;
             Y = y;
             Game = game;
+            Width = Game.BlockSize * 2;
+            Height = Game.BlockSize;
             Timer = 30;
             Update();
         }

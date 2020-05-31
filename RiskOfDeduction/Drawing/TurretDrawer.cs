@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Drawing;
 using RiskOfDeduction.Domain;
 
 namespace RiskOfDeduction.Drawing

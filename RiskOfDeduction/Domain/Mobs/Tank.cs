@@ -30,6 +30,8 @@ namespace RiskOfDeduction.Domain
             Y = y;
             Direction = direction;
             Game = game;
+            Width = Game.BlockSize * 2;
+            Height = Game.BlockSize;
         }
         
         public bool DiesInColliding(IGameObject other)
@@ -72,7 +74,7 @@ namespace RiskOfDeduction.Domain
             Tick = Math.Max(Tick - 1, 0);
             var oldX = X;
             X += VelocityX * (Direction == Direction.Left ? -1 : 1);
-            X += (Direction == Direction.Left ? -Width : Width);
+            X += Direction == Direction.Left ? -Width : Width;
             Y += 0.1f;
             if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
             {
@@ -86,15 +88,16 @@ namespace RiskOfDeduction.Domain
                 Y -= 0.1f;
             }
             
-            Y += 0.1f;
+            Y += 1;
             if (!Game.Objects.Any(obj => obj != this && Game.AreColliding(obj, this)))
             {
+                Y -= 1;
                 Y += VelocityY;
                 VelocityY += G;
             }
             else
             {
-                Y -= 0.1f;
+                Y -= 1;
                 VelocityY = 0;
             }
         }

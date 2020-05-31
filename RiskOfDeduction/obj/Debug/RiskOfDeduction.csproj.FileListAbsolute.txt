@@ -123,3 +123,4 @@ D:\RoD\RoD_New\RiskOfDeduction\obj\Debug\RiskOfDeduction.csproj.CopyComplete
 D:\RoD\RoD_New\RiskOfDeduction\obj\Debug\RiskOfDeduction.exe
 D:\RoD\RoD_New\RiskOfDeduction\obj\Debug\RiskOfDeduction.pdb
 D:\RoD\RoD_New\RiskOfDeduction\obj\Debug\RiskOfDeduction.Drawing.MainMenuResources.resources
+D:\C# Projects\RiskOfDeduction\RiskOfDeduction\obj\Debug\RiskOfDeduction.Drawing.MainMenuResources.resources

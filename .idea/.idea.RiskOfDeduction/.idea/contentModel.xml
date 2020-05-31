@@ -14,17 +14,19 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain" t="Include">
-          <e p="Direction.cs" t="Include" />
-          <e p="IModel.cs" t="Include" />
-          <e p="IMovable.cs" t="Include" />
           <e p="Mobs" t="Include">
             <e p="IActive.cs" t="Include" />
             <e p="Tank.cs" t="Include" />
             <e p="Turret.cs" t="Include" />
           </e>
-          <e p="Models" t="Include">
+          <e p="Model" t="Include">
+            <e p="Direction.cs" t="Include" />
             <e p="Game.cs" t="Include" />
+            <e p="GameState.cs" t="Include" />
             <e p="IGameObject.cs" t="Include" />
+            <e p="IHp.cs" t="Include" />
+            <e p="IModel.cs" t="Include" />
+            <e p="IMovable.cs" t="Include" />
             <e p="Level.cs" t="Include" />
             <e p="Scene.cs" t="Include" />
             <e p="ShotSender.cs" t="Include" />
@@ -42,10 +44,25 @@
           <e p="BlockDrawer.cs" t="Include" />
           <e p="CrosshairDrawer.cs" t="Include" />
           <e p="GameDrawer.cs" t="Include" />
+          <e p="GameOverMenu.cs" t="Include" />
+          <e p="GameWindow.cs" t="Include" />
+          <e p="GameWindow.Designer.cs" t="Include" />
           <e p="GroundDrawer.cs" t="Include" />
           <e p="HeroDrawer.cs" t="Include" />
+          <e p="HpBarDrawer.cs" t="Include" />
           <e p="IDrawer.cs" t="Include" />
+          <e p="LevelChoosingMenu.cs" t="Include" />
+          <e p="LevelChoosingMenu.Designer.cs" t="Include" />
           <e p="LevelDrawer.cs" t="Include" />
+          <e p="MainForm.cs" t="Include" />
+          <e p="MainForm.Designer.cs" t="Include" />
+          <e p="MainMenu.cs" t="Include" />
+          <e p="MainMenu.Designer.cs" t="Include" />
+          <e p="MainMenuElement.cs" t="Include" />
+          <e p="MainMenuResources.Designer.cs" t="Include" />
+          <e p="MainMenuResources.resx" t="Include" />
+          <e p="Menu.cs" t="Include" />
+          <e p="MenuAction.cs" t="Include" />
           <e p="SceneDrawer.cs" t="Include" />
           <e p="ShotDrawer.cs" t="Include" />
           <e p="TankDrawer.cs" t="Include" />
@@ -54,8 +71,6 @@
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
         <e p="Form1.resx" t="Include" />
-        <e p="GameWindow.cs" t="Include" />
-        <e p="GameWindow.Designer.cs" t="Include" />
         <e p="Images.Designer.cs" t="Include" />
         <e p="Images.resx" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
@@ -69,16 +84,23 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="Resources" t="Include">
+          <e p="ChoseLevel.png" t="Include" />
+          <e p="ChoseLevelSelected.png" t="Include" />
           <e p="Crosshair.png" t="Include" />
+          <e p="Exit.png" t="Include" />
+          <e p="ExitSelected.png" t="Include" />
           <e p="Grass.png" t="Include" />
           <e p="Ground.png" t="Include" />
           <e p="Jump.wav" t="Include" />
+          <e p="MainMenuPictures" t="Include" />
+          <e p="menu.png" t="Include" />
           <e p="Player" t="Include">
             <e p="CapsuleLeft.png" t="Include" />
             <e p="CapsuleLeftFiring.png" t="Include" />
             <e p="CapsuleRight.png" t="Include" />
             <e p="CapsuleRightFiring.png" t="Include" />
           </e>
+          <e p="RoD.png" t="Include" />
           <e p="Shot.png" t="Include" />
           <e p="sky.jpg" t="Include" />
           <e p="Tank" t="Include">
