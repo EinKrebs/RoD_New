@@ -41,6 +41,9 @@ namespace RiskOfDeduction
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImage = global::RiskOfDeduction.Images.Sky;
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1920, 1080);
+            this.MinimumSize = this.MaximumSize;
             this.timer.Interval = 25;
             this.timer.Tick += this.OnTimerTick;
             this.Paint += this.DrawGame;

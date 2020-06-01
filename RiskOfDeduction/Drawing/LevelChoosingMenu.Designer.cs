@@ -37,6 +37,9 @@ namespace RiskOfDeduction.Drawing
             this.DoubleBuffered = true;
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1920, 1080);
+            this.MinimumSize = this.MaximumSize;
 
             this.Text = "LevelChoosingMenu";
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(179)))), ((int)(((byte)(233)))));

@@ -44,6 +44,9 @@ namespace RiskOfDeduction.Drawing
             this.Name = "MainMenu";
             this.Text = "Main menu";
             this.ResumeLayout(false);
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1920, 1080);
+            this.MinimumSize = this.MaximumSize;
             actions = new[]
             {
                 new MainMenuElement(
