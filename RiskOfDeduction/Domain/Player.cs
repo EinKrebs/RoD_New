@@ -13,7 +13,7 @@ namespace RiskOfDeduction.Domain
         public int Height { get; }
         public float VelocityX { get; } = 60f;
         public float VelocityY { get; private set; }
-        public float G { get; } = 20f;
+        public float G { get; } = 18f;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 7;
         public int MaxHP { get; } = 10;

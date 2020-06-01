@@ -211,6 +211,7 @@ namespace RiskOfDeduction
         private void Game_MouseLeave(object sender, EventArgs e)
         {
             Cursor.Show();
+            var mouseEvent = e as MouseEventArgs;
             ToLeft = false;
             ToRight = false;
         }

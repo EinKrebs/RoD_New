@@ -42,6 +42,9 @@ namespace RiskOfDeduction
             this.BackgroundImage = global::RiskOfDeduction.Images.Sky;
             this.timer = new System.Windows.Forms.Timer(this.components);
             // this.WindowState = FormWindowState.Maximized;
+            Cursor.Clip = new Rectangle(this.Location, this.Size);
+            this.Move += (sender, args) => 
+                Cursor.Clip = new Rectangle(this.Location, this.Size);
             this.MaximumSize = new Size(1300, 760);
             this.MinimumSize = this.MaximumSize;
             this.timer.Interval = 25;
