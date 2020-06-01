@@ -37,8 +37,8 @@ namespace RiskOfDeduction.Drawing
             this.DoubleBuffered = true;
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximumSize = new Size(1920, 1080);
+            // this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1280, 720);
             this.MinimumSize = this.MaximumSize;
 
             this.Text = "LevelChoosingMenu";
@@ -58,12 +58,12 @@ namespace RiskOfDeduction.Drawing
 
         private MenuAction[] Actions { get; set; }
         private Game Game { get; set; }
-        private int Padding { get; } = 50;
-        private int Margin { get; } = 10;
-        private int ButtonHeight { get; } = 100;
-        private int ButtonWidth { get; } = 400;
+        private int Padding { get; } = 33;
+        private int Margin { get; } = 6;
+        private int ButtonHeight { get; } = 66;
+        private int ButtonWidth { get; } = 254;
         private Font MainFont { get; } = new Font("Times New Roman",
-            40,
+            20,
             FontStyle.Bold,
             GraphicsUnit.Pixel);
         private Timer Timer { get; set; }

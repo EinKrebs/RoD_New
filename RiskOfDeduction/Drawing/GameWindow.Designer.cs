@@ -11,9 +11,9 @@ namespace RiskOfDeduction
     {
         private System.ComponentModel.IContainer components = null;
         private Timer timer { get; set; }
-        private int gameHeight { get; set; } = 600;
-        private int gameWidth { get; set; } = 1500;
-        private int blockSize { get; } = 50;
+        private int gameHeight { get; set; } = 720;
+        private int gameWidth { get; set; } = 1280;
+        private int blockSize { get; } = 40;
         private SoundPlayer ShotSound { get; set; }
 
         protected override void Dispose(bool disposing)
@@ -41,8 +41,8 @@ namespace RiskOfDeduction
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImage = global::RiskOfDeduction.Images.Sky;
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximumSize = new Size(1920, 1080);
+            // this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1300, 760);
             this.MinimumSize = this.MaximumSize;
             this.timer.Interval = 25;
             this.timer.Tick += this.OnTimerTick;

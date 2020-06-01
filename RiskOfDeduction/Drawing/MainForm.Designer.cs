@@ -40,13 +40,13 @@ namespace RiskOfDeduction.Drawing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             //this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "MainForm";
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximumSize = new Size(1920, 1080);
+            // this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1298, 720);
             this.MinimumSize = this.MaximumSize;
 
             GameWindow = new GameWindow();
             MainMenu = new MainMenu();
-            Game = new Game(1920, 1080);
+            Game = new Game(1280, 720);
             ChoosingMenu = new LevelChoosingMenu();
 
             this.Width = Game.Width;

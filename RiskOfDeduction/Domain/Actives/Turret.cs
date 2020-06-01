@@ -51,7 +51,7 @@ namespace RiskOfDeduction.Domain
             var initX = Direction == Direction.Left ? X - 20 : X + Width;
             var initY = Y + 15;
             var angle = Direction == Direction.Left ? Math.PI : 0;
-            var shot = new Shot(initX, initY, angle, 20, Game, ShotSender.Turret);
+            var shot = new Shot(initX, initY, angle, 14, Game, ShotSender.Turret);
         }
 
         public void Update()

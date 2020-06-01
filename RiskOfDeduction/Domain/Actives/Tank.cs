@@ -20,7 +20,7 @@ namespace RiskOfDeduction.Domain
         public bool Dead => Hp <= 0;
 
         private int Tick = 40;
-        private int ShotSize { get; } = 18;
+        private int ShotSize { get; } = 14;
         private Game Game { get; set; }
 
 

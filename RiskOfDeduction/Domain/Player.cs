@@ -11,12 +11,12 @@ namespace RiskOfDeduction.Domain
         public float Y { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public float VelocityX { get; } = 70f;
+        public float VelocityX { get; } = 60f;
         public float VelocityY { get; private set; }
         public float G { get; } = 20f;
         public Direction Direction { get; private set; }
         public int Hp { get; private set; } = 7;
-        public int MaxHP { get; } = 5;
+        public int MaxHP { get; } = 10;
 
         public bool InJump =>
             Game != null
@@ -27,7 +27,7 @@ namespace RiskOfDeduction.Domain
         private int Timer { get; set; } = 0;
         private Game Game { get; }
         private float OneTick { get; } = 0.25f;
-        private float JumpInitialVelocity { get; } = -90;
+        private float JumpInitialVelocity { get; } = -70;
 
         public Player(float x, float y, int width, int height, Game game)
         {
@@ -138,13 +138,20 @@ namespace RiskOfDeduction.Domain
 
         public void Jump()
         {
-            if (Game.CurrentLevel.CurrentScene.LandScape.IntersectsWith(new RectangleF(X, Y + 1, Width, Height)))
+            Y += 1;
+            if (Game.Objects.Any(gameObject => gameObject != this
+                                               && !(gameObject is Shot)
+                                               && !(gameObject is Portal)
+                                               && !(gameObject is Spikes)
+                                               && Game.AreColliding(this, gameObject)))
             {
                 VelocityY = JumpInitialVelocity;
                 var sound = new MediaPlayer();
                 sound.Open(new Uri(@"Resources\Sounds\Jump\Jump.wav", UriKind.Relative));
                 sound.Play();
             }
+
+            Y -= 1;
         }
 
         public void Shoot()
@@ -159,7 +166,7 @@ namespace RiskOfDeduction.Domain
             var direction = -Math.PI / 2 < angle && angle < Math.PI / 2 ? Direction.Right : Direction.Left;
             //if (direction == Direction)
             //{
-            var shot = new Shot(initX, initY, angle, 15, Game, ShotSender.Player);
+            var shot = new Shot(initX, initY, angle, 10, Game, ShotSender.Player);
             //}
         }
 

@@ -74,7 +74,7 @@ namespace RiskOfDeduction.Drawing
                 var index = actionTup.Item2;
                 Game.CurrentLevelIndex = index;
                 Game.Levels[index] = Game.Levels[index].Refresh();
-                Game.InitializePlayer(65, 65, Game.BlockSize / 2, Game.BlockSize);
+                Game.InitializePlayer(Game.BlockSize + 1, Game.BlockSize + 1, Game.BlockSize / 2, Game.BlockSize);
                 BlockDrawer.SetBlockImage(Image.FromFile($"{@"Resources\Textures\"}{Game.CurrentLevel.LevelStyle}{@"\1.png"}"));
                 Game.Play();
             }

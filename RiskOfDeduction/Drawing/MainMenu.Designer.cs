@@ -44,8 +44,8 @@ namespace RiskOfDeduction.Drawing
             this.Name = "MainMenu";
             this.Text = "Main menu";
             this.ResumeLayout(false);
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximumSize = new Size(1920, 1080);
+            // this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = new Size(1280, 720);
             this.MinimumSize = this.MaximumSize;
             actions = new[]
             {
@@ -74,12 +74,12 @@ namespace RiskOfDeduction.Drawing
         private Game Game { get; set; }
 
         private MainMenuElement[] actions { get; set; }
-        private int Padding { get; } = 50;
-        private int Margin { get; } = 10;
-        private int ButtonHeight { get; } = 100;
-        private int ButtonWidth { get; } = 300;
-        private int LogoWidth { get; } = 300;
-        private int LogoHeight { get; } = 300;
+        private int Padding { get; } = 33;
+        private int Margin { get; } = 6;
+        private int ButtonHeight { get; } = 66;
+        private int ButtonWidth { get; } = 200;
+        private int LogoWidth { get; } = 200;
+        private int LogoHeight { get; } = 200;
         private Timer Timer { get; set; }
     }
 }
