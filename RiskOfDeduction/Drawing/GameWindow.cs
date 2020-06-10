@@ -18,6 +18,8 @@ namespace RiskOfDeduction
         private Menu Menu { get; set; }
         private GameOverMenu GameOverMenu { get; set; }
         private LevelFinishedMenu LevelFinishedMenu { get; set; }
+        private MainForm MainForm { get; }
+        private bool Playing { get; set; }
 
         public void InitializeGame(Game game)
         {
@@ -32,8 +34,9 @@ namespace RiskOfDeduction
             timer.Enabled = true;
         }
 
-        public GameWindow()
+        public GameWindow(MainForm mainForm)
         {
+            MainForm = mainForm;
             InitializeComponent();
         }
 
@@ -126,6 +129,18 @@ namespace RiskOfDeduction
                     break;
                 case Keys.A:
                     ToLeft = true;
+                    break;
+                case Keys.M:
+                    if (Playing)
+                    {
+                        MainForm.Player.Pause();
+                        Playing = false;
+                    }
+                    else
+                    {
+                        MainForm.Player.Play();
+                        Playing = true;
+                    }
                     break;
                 case Keys.Space:
                     Game.Player.Jump();

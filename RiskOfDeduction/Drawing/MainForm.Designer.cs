@@ -44,7 +44,7 @@ namespace RiskOfDeduction.Drawing
             this.MaximumSize = new Size(1920, 1080);
             this.MinimumSize = this.MaximumSize;
 
-            GameWindow = new GameWindow();
+            GameWindow = new GameWindow(this);
             MainMenu = new MainMenu();
             Game = new Game(1920, 1080);
             ChoosingMenu = new LevelChoosingMenu();
@@ -103,6 +103,6 @@ namespace RiskOfDeduction.Drawing
         private GameWindow GameWindow { get; set; }
         private LevelChoosingMenu ChoosingMenu { get; set; }
         private Game Game { get; set; }
-        private MediaPlayer Player { get; set; }
+        public MediaPlayer Player { get; set; }
     }
 }
